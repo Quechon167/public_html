@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1/16〜1/17 スノボ旅行計画</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
+      line-height: 1.6;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      color: #2563eb;
+    }
+    details {
+      margin-bottom: 16px;
+    }
+    summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: #2563eb;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: "▼";
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    details[open] summary {
+      border-radius: 6px 6px 0 0;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h3 {
+      font-size: 1rem;
+      color: #2563eb;
+      margin: 16px 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    h3:first-child {
+      margin-top: 0;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 4px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+    li::before {
+      content: "□";
+      position: absolute;
+      left: 0;
+      color: #9ca3af;
+    }
+    .schedule-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+    .time {
+      font-weight: bold;
+      color: #2563eb;
+      min-width: 60px;
+      flex-shrink: 0;
+    }
+    .detail {
+      flex: 1;
+    }
+    .sub {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+    .note {
+      background: #fef3c7;
+      border-left: 3px solid #f59e0b;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      border-radius: 0 4px 4px 0;
+    }
+    a {
+      color: #2563eb;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>1/16〜1/17 スノボ旅行計画</h1>
+
+    <details open>
+      <summary>持ち物リスト</summary>
+      <div class="card">
+        <h3>スノボ用品</h3>
+        <ul>
+          <li>ウェア上下</li>
+          <li>ゴーグル</li>
+          <li>グローブ</li>
+          <li>ニット帽</li>
+          <li>ブーツ / ボード（レンタルなら不要）</li>
+        </ul>
+
+        <h3>宿泊・身だしなみ</h3>
+        <ul>
+          <li>着替え</li>
+          <li>寝巻き</li>
+          <li>タオル</li>
+          <li>歯ブラシ & 歯磨き粉</li>
+          <li>シャンプー</li>
+          <li>ボディソープ</li>
+          <li>綿棒（必要なら）</li>
+          <li>うがい用コップ（必要なら）</li>
+          <li>ポケットティッシュ / ウエットティッシュ</li>
+        </ul>
+        <div class="note">⚠️ 宿にティッシュがないので必ず持参</div>
+
+        <h3>貴重品・電子機器</h3>
+        <ul>
+          <li>保険証</li>
+          <li>現金（自販機・スキー場内の買い物用）</li>
+          <li>スマホ充電器</li>
+          <li>モバイルバッテリー（充電切れたら遭難する）</li>
+          <li>電源タップ（優しい人が1人持ってくる）</li>
+          <li>スマブラのコントローラー（GCタップはあり）</li>
+        </ul>
+
+        <h3>その他</h3>
+        <ul>
+          <li>常備薬</li>
+          <li>ゴミ袋</li>
+        </ul>
+      </div>
+    </details>
+
+    <details open>
+      <summary>1日目（1/16）</summary>
+      <div class="card">
+        <div class="schedule-item">
+          <span class="time">8:04</span>
+          <div class="detail">
+            こうや 大宮から新幹線乗車
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">8:50</span>
+          <div class="detail">
+            しょうご・しゅうや 新幹線の改札入って乗り場前で集合
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:05</span>
+          <div class="detail">
+            とき305号 越後湯沢行き
+            <div class="sub">10号車 12番A〜C席</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:20頃</span>
+          <div class="detail">
+            越後湯沢駅 到着
+            <div class="note">⚠️ 翌日の朝飯が必要な人はここで購入！コンビニに寄る予定なし</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">9:20<br>or<br>9:40</span>
+          <div class="detail">
+            シャトルバス乗車
+            <div class="sub">20分間隔で運行</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">10:00</span>
+          <div class="detail">
+            湯沢中里スノーリゾート 到着
+            <div class="sub">
+              レンタルする人はレンタル<br>
+              <a href="https://www.yuzawa-nakazato.com/winter/rental/" target="_blank">https://www.yuzawa-nakazato.com/winter/rental/</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">16:00</span>
+          <div class="detail">スノボ終了</div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">16:20頃</span>
+          <div class="detail">
+            徒歩でリヴィエールへ移動（約20分）
+            <div class="sub">ホワイトプラザ湯沢リヴィエール</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">夜</span>
+          <div class="detail">
+            風呂 → 夕飯「材食屋 たるっぺ」
+            <div class="note">⚠️ 予約してないので入れなかったら絶食</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time"></span>
+          <div class="detail">スマブラ → 就寝</div>
+        </div>
+      </div>
+    </details>
+
+    <details open>
+      <summary>2日目（1/17）</summary>
+      <div class="card">
+        <div class="schedule-item">
+          <span class="time">10:00</span>
+          <div class="detail">チェックアウト</div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">〜11:40</span>
+          <div class="detail">
+            リヴィエール内でグダグダ
+            <div class="sub">卓球できる・風呂も入れる</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">11:40頃</span>
+          <div class="detail">
+            徒歩で越後中里駅へ（約20分）
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">12:04</span>
+          <div class="detail">
+            越後中里駅 発
+            <div class="sub">JR上越線 長岡行（2駅）</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">12:13</span>
+          <div class="detail">
+            越後湯沢駅 着
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">昼</span>
+          <div class="detail">
+            昼食（しょうごは蕎麦希望）
+            <div class="sub">
+              <a href="https://maps.app.goo.gl/3M5952qa5PUZNu2Q6" target="_blank">https://maps.app.goo.gl/3M5952qa5PUZNu2Q6</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">14:11</span>
+          <div class="detail">
+            とき322号 越後湯沢発
+            <div class="sub">8号車 10番A〜C席</div>
+          </div>
+        </div>
+
+        <div class="schedule-item">
+          <span class="time">15:28</span>
+          <div class="detail">東京着 → 解散 🎉</div>
+        </div>
+      </div>
+    </details>
+  </div>
+</body>
+</html>
