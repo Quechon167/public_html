@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新NISA完全ガイド</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --text-light: #555;
+      --accent: #0066cc;
+      --border: #ddd;
+      --card-bg: #fff;
+      --highlight: #f0f7ff;
+      --faq-bg: #f8f8f8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 32px;
+      margin-bottom: 40px;
+    }
+
+    .toc h2 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .toc ol {
+      list-style: decimal;
+      padding-left: 20px;
+    }
+
+    .toc li {
+      margin-bottom: 8px;
+    }
+
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 20px 0 10px;
+      color: var(--text-light);
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    ul ul {
+      list-style: circle;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .highlight-box {
+      background: var(--highlight);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+    }
+
+    .highlight-box ul {
+      margin-bottom: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    th {
+      background: #f5f5f5;
+      font-weight: 500;
+    }
+
+    td {
+      background: var(--card-bg);
+    }
+
+    .compare-table th:first-child,
+    .compare-table td:first-child {
+      width: 30%;
+    }
+
+    strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .note {
+      background: #fffbeb;
+      border: 1px solid #f0d68a;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .note-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .faq {
+      background: var(--faq-bg);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .faq-a {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .supplement {
+      background: #f0fff4;
+      border: 1px solid #9ae6b4;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .supplement-title {
+      font-weight: 700;
+      color: #276749;
+      margin-bottom: 8px;
+    }
+
+    .example {
+      background: #fff5f5;
+      border: 1px solid #feb2b2;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .example-title {
+      font-weight: 700;
+      color: #c53030;
+      margin-bottom: 8px;
+    }
+
+    .merit {
+      background: #ebf8ff;
+      border: 1px solid #90cdf4;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .merit-title {
+      font-weight: 700;
+      color: #2b6cb0;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-light);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 24px 16px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>新NISA制度 完全ガイド</h1>
+      <p class="subtitle">SBI証券×Oliveゴールド＋オルカンで始める資産形成</p>
+    </header>
+
+    <nav class="toc">
+      <h2>目次</h2>
+      <ol>
+        <li><a href="#overview">そもそもNISAとは何か</a></li>
+        <li><a href="#why">なぜNISAを使うべきなのか</a></li>
+        <li><a href="#basic">非課税になるものと制度の基本</a></li>
+        <li><a href="#limit">投資上限額の仕組み</a></li>
+        <li><a href="#two-waku">2つの投資枠の違いと使い分け</a></li>
+        <li><a href="#buy">買い方：一括投資と積立投資</a></li>
+        <li><a href="#sell">売り方と非課税枠の復活ルール</a></li>
+        <li><a href="#products">主要な投資商品の比較とオルカン</a></li>
+        <li><a href="#sbi-olive">証券会社の選び方：SBI証券×Oliveゴールド</a></li>
+        <li><a href="#strategy">実践：一括＋積立戦略</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <!-- ==================== -->
+    <!-- セクション1: NISAとは -->
+    <!-- ==================== -->
+    <section id="overview">
+      <h2>1. そもそもNISAとは何か</h2>
+      
+      <h3>NISAの正体：投資の利益にかかる税金をゼロにできる制度</h3>
+      <p>NISAは「少額投資非課税制度」の略称で、国が用意した「投資で得た利益に税金がかからない特別な口座」です。イギリスのISA（Individual Savings Account）をモデルに、日本版として2014年に始まりました。</p>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「非課税」とは？</p>
+        <p>本来、投資で利益が出ると約20%の税金がかかります。100万円儲かったら約20万円が税金として引かれ、手元に残るのは約80万円。NISAを使えば、この税金がゼロになり、100万円がまるまる手元に残ります。</p>
+      </div>
+
+      <h3>NISAは「口座の種類」である</h3>
+      <p>証券会社で口座を開設するとき、主に3種類の口座があります。</p>
+      <ul>
+        <li><strong>特定口座</strong>：一般的な投資用口座。利益に約20%課税される</li>
+        <li><strong>一般口座</strong>：自分で税金の計算をする口座。利益に約20%課税される</li>
+        <li><strong>NISA口座</strong>：利益が非課税になる特別な口座</li>
+      </ul>
+      <p>つまりNISAとは「投資商品の名前」ではなく「口座の種類」です。NISA口座の中で株式や投資信託を買うと、その利益が非課税になります。</p>
+
+      <div class="faq">
+        <p class="faq-q">Q. 投資信託やオルカンを買うのにNISA口座は必須？</p>
+        <p class="faq-a">必須ではありません。特定口座でも同じ商品を買えます。ただし、特定口座だと利益に約20%課税されるため、非課税のNISA口座で買う方が圧倒的に有利です。</p>
+      </div>
+
+      <h3>2024年から「新NISA」に生まれ変わった</h3>
+      <p>2023年までの旧NISA制度は使い勝手に制限が多く、2024年1月から大幅に改良された「新NISA」がスタートしました。</p>
+      
+      <table>
+        <tr>
+          <th>項目</th>
+          <th>旧NISA</th>
+          <th>新NISA</th>
+        </tr>
+        <tr>
+          <td>非課税期間</td>
+          <td>5年または20年</td>
+          <td><strong>無期限</strong></td>
+        </tr>
+        <tr>
+          <td>年間投資枠</td>
+          <td>最大120万円</td>
+          <td><strong>最大360万円</strong></td>
+        </tr>
+        <tr>
+          <td>生涯投資枠</td>
+          <td>最大800万円</td>
+          <td><strong>1,800万円</strong></td>
+        </tr>
+        <tr>
+          <td>枠の併用</td>
+          <td>どちらか一方のみ</td>
+          <td><strong>両方同時に使える</strong></td>
+        </tr>
+        <tr>
+          <td>売却後の枠</td>
+          <td>復活しない</td>
+          <td><strong>翌年復活する</strong></td>
+        </tr>
+      </table>
+
+      <div class="highlight-box">
+        <p>新NISAは旧制度とは別物と考えてOK。旧NISAを使っていなかった人も、2024年以降は新NISAをゼロから始められます。</p>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- セクション2: なぜ使うべきか -->
+    <!-- ======================== -->
+    <section id="why">
+      <h2>2. なぜNISAを使うべきなのか</h2>
+
+      <h3>理由1：税金の差が長期で巨大になる</h3>
+      <p>投資は長期になるほど複利効果で利益が膨らみます。その利益に毎回20%課税されるか、ゼロかで、最終的な手取りは大きく変わります。</p>
+
+      <div class="example">
+        <p class="example-title">📊 具体例：毎月3万円を20年間、年利5%で運用した場合</p>
+        <ul>
+          <li>投資元本：720万円</li>
+          <li>運用益：約513万円</li>
+          <li>特定口座の場合：運用益に約20%課税 → 手取り約1,130万円</li>
+          <li>NISA口座の場合：課税ゼロ → 手取り約1,233万円</li>
+          <li><strong>差額：約103万円</strong></li>
+        </ul>
+      </div>
+
+      <h3>理由2：国が「使ってほしい」と設計した制度</h3>
+      <p>日本政府は「貯蓄から投資へ」を推進しており、NISAはその中核施策です。制度設計上、長期・分散・積立投資に向いた商品が選ばれており、投資初心者でも始めやすい仕組みになっています。</p>
+
+      <h3>理由3：いつでも引き出せる柔軟性</h3>
+      <p>同じく非課税制度のiDeCoは原則60歳まで引き出せませんが、NISAはいつでも売却・現金化できます。住宅購入、教育資金、転職など、ライフイベントに応じて柔軟に使えます。</p>
+
+      <div class="faq">
+        <p class="faq-q">Q. 投資は怖い。元本保証はないの？</p>
+        <p class="faq-a">ありません。投資信託は価格が上下し、元本割れ（投資した金額を下回る）リスクがあります。ただし、全世界株式のような分散された商品を20年以上保有した場合、過去のデータでは元本割れの確率は非常に低くなっています。NISAの非課税メリットは「利益が出たとき」に発揮されるため、長期投資が前提です。</p>
+      </div>
+    </section>
+
+    <!-- ========================== -->
+    <!-- セクション3: 非課税の基本 -->
+    <!-- ========================== -->
+    <section id="basic">
+      <h2>3. 非課税になるものと制度の基本</h2>
+      
+      <h3>非課税になるもの</h3>
+      <ul>
+        <li><strong>売却益（譲渡益）</strong>：投資信託や株式を売って得た利益</li>
+        <li><strong>配当金</strong>：株式を保有していると受け取れるお金</li>
+        <li><strong>分配金</strong>：投資信託から支払われるお金</li>
+      </ul>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「売却益」とは？</p>
+        <p>100万円で買った投資信託が150万円になったときに売ると、50万円の利益が出ます。これが売却益です。通常なら約10万円（20%）が税金で取られますが、NISAなら50万円がまるまる手元に残ります。</p>
+      </div>
+
+      <h3>非課税期間</h3>
+      <ul>
+        <li><strong>無期限</strong>（新NISAの最大の改良点）</li>
+        <li>旧制度では「5年以内に売らないと課税される」等の制限があった</li>
+        <li>新NISAでは、制度が続く限りずっと非課税で持ち続けられる</li>
+        <li>「いつ売らなきゃ」という焦りがなくなった</li>
+      </ul>
+
+      <div class="note">
+        <p class="note-title">⚠️ 配当金の受取方式に注意</p>
+        <p>株式の配当金を非課税で受け取るには「株式数比例配分方式」を選択する必要があります。他の受取方式（登録配当金受領口座方式など）を選ぶと、NISA口座で買った株でも配当金に課税されてしまいます。投資信託の分配金は方式に関係なく非課税です。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. オルカンには配当金・分配金はある？</p>
+        <p class="faq-a">オルカン（eMAXIS Slim 全世界株式）は「分配金を出さない」設計になっています。ファンド内部で配当金を再投資するため、投資家が受け取る分配金は0円。したがって、受取方式の設定を気にする必要はありません。分配金を出さないことで、複利効果が最大化されるメリットがあります。</p>
+      </div>
+    </section>
+
+    <!-- ============================ -->
+    <!-- セクション4: 投資上限額 -->
+    <!-- ============================ -->
+    <section id="limit">
+      <h2>4. 投資上限額の仕組み</h2>
+
+      <h3>2種類の上限がある</h3>
+      <p>NISAには「年間の上限」と「生涯の上限」の2つの制限があります。</p>
+
+      <table>
+        <tr>
+          <th>上限の種類</th>
+          <th>金額</th>
+          <th>意味</th>
+        </tr>
+        <tr>
+          <td>年間投資上限</td>
+          <td>360万円</td>
+          <td>1年間に投資できる金額の上限</td>
+        </tr>
+        <tr>
+          <td>生涯投資上限</td>
+          <td>1,800万円</td>
+          <td>一生涯で投資できる金額の上限</td>
+        </tr>
+      </table>
+
+      <h3>年間投資上限（360万円）の内訳</h3>
+      <ul>
+        <li>つみたて投資枠：年間120万円まで</li>
+        <li>成長投資枠：年間240万円まで</li>
+        <li>両方を合わせて年間最大360万円</li>
+        <li>使い切れなかった枠は翌年に繰り越せない（毎年リセット）</li>
+      </ul>
+
+      <div class="faq">
+        <p class="faq-q">Q. 年間360万円も投資できないけど大丈夫？</p>
+        <p class="faq-a">まったく問題ありません。月1万円（年12万円）でも、月3万円（年36万円）でも、自分のペースで投資すればOKです。枠を使い切る必要はなく、無理のない金額で継続することが最も重要です。</p>
+      </div>
+
+      <h3>生涯投資上限（1,800万円）の仕組み</h3>
+      <ul>
+        <li>一生涯でNISA口座に投資できる総額</li>
+        <li><strong>簿価（取得価格）ベース</strong>で計算される</li>
+        <li>うち成長投資枠だけで使えるのは最大1,200万円</li>
+        <li>つみたて投資枠だけで1,800万円全額を使うことは可能</li>
+      </ul>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「簿価ベース」とは？</p>
+        <p>「買ったときの金額」で枠を管理するという意味です。100万円で買った投資信託が値上がりして200万円になっても、使っている枠は100万円のまま。値上がり分は枠を圧迫しません。これは投資家にとって有利なルールです。</p>
+      </div>
+
+      <div class="example">
+        <p class="example-title">📊 具体例：枠の消費の仕方</p>
+        <ul>
+          <li>100万円でオルカンを購入 → 生涯枠を100万円使用（残り1,700万円）</li>
+          <li>その後、評価額が150万円に値上がり → 枠の消費は100万円のまま</li>
+          <li>評価額が80万円に値下がり → 枠の消費は100万円のまま</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- セクション5: 2つの投資枠 -->
+    <!-- =============================== -->
+    <section id="two-waku">
+      <h2>5. 2つの投資枠の違いと使い分け</h2>
+
+      <h3>なぜ2種類の枠があるのか</h3>
+      <p>新NISAには「つみたて投資枠」と「成長投資枠」があります。これは投資スタイルに合わせて選べるようにした設計です。</p>
+      <ul>
+        <li><strong>つみたて投資枠</strong>：コツコツ積立したい初心者向け</li>
+        <li><strong>成長投資枠</strong>：まとまった資金を一括投資したい人、個別株も買いたい人向け</li>
+      </ul>
+
+      <h3>2つの枠の比較</h3>
+      <table class="compare-table">
+        <tr>
+          <th>項目</th>
+          <th>つみたて投資枠</th>
+          <th>成長投資枠</th>
+        </tr>
+        <tr>
+          <td>年間上限</td>
+          <td>120万円</td>
+          <td>240万円</td>
+        </tr>
+        <tr>
+          <td>生涯上限</td>
+          <td>1,800万円（合計）</td>
+          <td>1,200万円まで</td>
+        </tr>
+        <tr>
+          <td>買える商品</td>
+          <td>金融庁が認めた投資信託のみ<br>（約300本）</td>
+          <td>上場株式、ETF、REIT、<br>投資信託など幅広い</td>
+        </tr>
+        <tr>
+          <td>購入方法</td>
+          <td>積立購入のみ</td>
+          <td>一括購入・積立購入の両方OK</td>
+        </tr>
+      </table>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「金融庁が認めた投資信託」とは？</p>
+        <p>つみたて投資枠で買える商品は、金融庁が「長期・積立・分散投資に適している」と認定した投資信託に限られます。手数料が高すぎる商品や、投機的な商品は除外されているため、初心者でも安心して選べる設計になっています。オルカンもこの中に含まれています。</p>
+      </div>
+
+      <h3>両方の枠を同時に使える</h3>
+      <p>旧NISAでは「つみたてNISA」か「一般NISA」のどちらか一方しか使えませんでしたが、新NISAでは両方を同時に使えます。これにより、年間最大360万円の投資が可能になりました。</p>
+
+      <div class="faq">
+        <p class="faq-q">Q. オルカンはどっちの枠で買える？</p>
+        <p class="faq-a"><strong>両方で買えます。</strong>オルカンは金融庁認定商品なので、つみたて投資枠でも成長投資枠でも購入可能です。例えば、つみたて投資枠で毎月10万円積立しながら、成長投資枠でボーナス時に追加購入、という使い方ができます。</p>
+      </div>
+
+      <h3>オルカン一本で運用する場合のおすすめの使い方</h3>
+      <ul>
+        <li><strong>パターンA：つみたて投資枠だけ使う</strong>
+          <ul>
+            <li>毎月10万円の積立で年間120万円</li>
+            <li>15年で1,800万円の枠を使い切れる</li>
+            <li>シンプルで管理が楽</li>
+          </ul>
+        </li>
+        <li><strong>パターンB：両方の枠を使う</strong>
+          <ul>
+            <li>つみたて投資枠：毎月の定額積立</li>
+            <li>成長投資枠：ボーナス時や余裕資金発生時に追加投資</li>
+            <li>最短5年で1,800万円を投資できる</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ======================== -->
+    <!-- セクション6: 買い方 -->
+    <!-- ======================== -->
+    <section id="buy">
+      <h2>6. 買い方：一括投資と積立投資</h2>
+
+      <h3>成長投資枠での一括投資（スポット購入）</h3>
+      <ul>
+        <li>年間240万円まで、好きなタイミングで一括投資できる</li>
+        <li>証券会社のサイトで「スポット購入」や「金額買付」を選択</li>
+        <li>購入したい金額を入力して注文</li>
+        <li>翌営業日以降に約定（売買成立）</li>
+      </ul>
+
+      <h3>つみたて投資枠での積立購入</h3>
+      <ul>
+        <li>「毎月○日に○円を自動購入」という設定をする</li>
+        <li>一度設定すれば、あとは自動で買い付けてくれる</li>
+        <li>引き落とし方法：銀行口座、証券口座、クレジットカード</li>
+      </ul>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「積立投資」のメリット</p>
+        <p>毎月定額で買う方法を「ドルコスト平均法」といいます。価格が高いときは少なく、安いときは多く買うことになるため、平均購入単価を抑える効果があります。また、「いつ買うか」を悩まなくていいので、精神的にも楽です。</p>
+      </div>
+
+      <h3>つみたて投資枠でも「実質一括投資」ができる</h3>
+      <p>つみたて投資枠は制度上「積立のみ」ですが、<strong>ボーナス設定</strong>を使えば実質的な一括投資ができます。</p>
+      <ul>
+        <li>毎月の積立額を最小（100円など）に設定</li>
+        <li>ボーナス月（例：1月）に残りの枠（119万9,800円など）を設定</li>
+        <li>結果として、年初にほぼ全額を一括投資したのと同じ効果</li>
+      </ul>
+
+      <div class="note">
+        <p class="note-title">⚠️ ボーナス設定の注意点</p>
+        <p>クレジットカード決済ではボーナス設定が使えません。証券口座からの引き落とし（現金決済）で設定する必要があります。また、証券会社によって設定方法や上限が異なるため、各社のサイトで確認してください。</p>
+      </div>
+
+      <h3>積立額の変更・停止</h3>
+      <ul>
+        <li><strong>いつでも変更可能</strong>（手数料・ペナルティなし）</li>
+        <li>一時停止もできる（積立設定を解除するだけ）</li>
+        <li>余裕がなくなったら減額し、余裕が出たら増額すればOK</li>
+      </ul>
+
+      <h4>余裕資金が減ったときの優先順位</h4>
+      <ul>
+        <li>1. 固定費の見直し（サブスク解約など）</li>
+        <li>2. 積立額の減額（月3万円→月1万円など）</li>
+        <li>3. 一時停止（最終手段の一歩手前）</li>
+        <li>4. 売却（本当に必要なときだけ）</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p>完全に停止するよりも、月1,000円でも継続する方が長期的には有利。投資習慣を維持することが重要です。</p>
+      </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- セクション7: 売り方 -->
+    <!-- ======================== -->
+    <section id="sell">
+      <h2>7. 売り方と非課税枠の復活ルール</h2>
+
+      <h3>売却の自由度</h3>
+      <ul>
+        <li><strong>いつでも売却できる</strong>（iDeCoのような年齢制限なし）</li>
+        <li>全額売却でも、一部売却でもOK</li>
+        <li>売却回数に制限なし</li>
+        <li>売却から現金化まで約4〜7営業日かかる</li>
+      </ul>
+
+      <div class="faq">
+        <p class="faq-q">Q. 売却したらペナルティはある？</p>
+        <p class="faq-a">ありません。NISAは自由に売却でき、ペナルティは一切ありません。ただし、長期投資で複利効果を最大化するには「売らずに持ち続ける」のが基本戦略です。</p>
+      </div>
+
+      <h3>非課税枠の復活ルール（新NISAの重要な特徴）</h3>
+      <p>旧NISAでは、一度使った非課税枠は売却しても復活しませんでした。新NISAでは、<strong>売却すると翌年以降に枠が復活</strong>します。</p>
+
+      <h4>復活の仕組み</h4>
+      <ul>
+        <li>復活するのは「簿価（取得価格）」の分だけ</li>
+        <li>利益が出ていても、損失が出ていても、復活額は同じ</li>
+        <li>復活するのは<strong>翌年1月1日以降</strong>（同年内は復活しない）</li>
+      </ul>
+
+      <table>
+        <tr>
+          <th>購入金額</th>
+          <th>売却時の価格</th>
+          <th>復活する枠</th>
+        </tr>
+        <tr>
+          <td>100万円</td>
+          <td>150万円（利益50万円）</td>
+          <td>100万円</td>
+        </tr>
+        <tr>
+          <td>100万円</td>
+          <td>70万円（損失30万円）</td>
+          <td>100万円</td>
+        </tr>
+      </table>
+
+      <div class="example">
+        <p class="example-title">📊 具体例：枠の復活</p>
+        <ul>
+          <li>2025年1月に100万円でオルカンを購入 → 生涯枠を100万円使用</li>
+          <li>2025年12月に150万円で売却 → 利益50万円は非課税で確定</li>
+          <li>2025年中：枠はまだ復活しない（使用中のまま）</li>
+          <li>2026年1月1日：100万円分の枠が復活 → 再び投資に使える</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <p class="note-title">⚠️ よくある誤解</p>
+        <ul style="margin-bottom: 0;">
+          <li><strong>誤解1</strong>：売却したら年間枠が復活する → 年間投資枠（360万円）は売却しても復活しません。毎年1月1日にリセットされるだけです</li>
+          <li><strong>誤解2</strong>：売却した年に枠が復活する → 復活は翌年以降です。2025年に売却しても、2025年の枠は増えません</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================================ -->
+    <!-- セクション8: 投資商品の比較 -->
+    <!-- ================================ -->
+    <section id="products">
+      <h2>8. 主要な投資商品の比較とオルカン</h2>
+
+      <h3>投資信託とは何か</h3>
+      <p>投資信託とは、投資家から集めたお金をまとめて、運用の専門家が株式や債券に投資する仕組みです。個人で多くの銘柄を買うには莫大な資金が必要ですが、投資信託なら少額から「プロにおまかせ」で分散投資できます。</p>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 「インデックスファンド」と「アクティブファンド」</p>
+        <p>投資信託には大きく2種類あります。<strong>インデックスファンド</strong>は日経平均やS&P500などの「指数」に連動することを目指すファンドで、手数料が安いのが特徴。<strong>アクティブファンド</strong>はプロが銘柄を選んで指数を上回る成績を目指すファンドで、手数料が高めです。長期投資では、手数料の安いインデックスファンドの方が有利とされています。</p>
+      </div>
+
+      <h3>新NISAで人気の主要商品を比較</h3>
+      <p>新NISAで購入できる代表的なインデックスファンドを比較します。</p>
+
+      <table>
+        <tr>
+          <th>商品名</th>
+          <th>投資対象</th>
+          <th>信託報酬（年率）</th>
+          <th>特徴</th>
+        </tr>
+        <tr>
+          <td><strong>eMAXIS Slim 全世界株式<br>（オール・カントリー）</strong></td>
+          <td>全世界約3,000銘柄<br>（先進国23＋新興国24カ国）</td>
+          <td>0.05775%</td>
+          <td>これ1本で世界中に分散投資。迷ったらこれ</td>
+        </tr>
+        <tr>
+          <td>eMAXIS Slim 米国株式<br>（S&P500）</td>
+          <td>米国の主要500社</td>
+          <td>0.09372%</td>
+          <td>米国経済の成長に集中投資</td>
+        </tr>
+        <tr>
+          <td>eMAXIS Slim 先進国株式</td>
+          <td>日本を除く先進国<br>約1,300銘柄</td>
+          <td>0.09889%</td>
+          <td>新興国リスクを避けたい人向け</td>
+        </tr>
+        <tr>
+          <td>楽天・全米株式<br>（楽天VTI）</td>
+          <td>米国の約4,000銘柄<br>（ほぼ全ての米国株）</td>
+          <td>0.162%</td>
+          <td>S&P500より広く米国全体に投資</td>
+        </tr>
+        <tr>
+          <td>SBI・V・S&P500</td>
+          <td>米国の主要500社</td>
+          <td>0.0938%</td>
+          <td>バンガード社のETFに投資</td>
+        </tr>
+      </table>
+
+      <h3>オルカン vs S&P500：どちらを選ぶべきか</h3>
+      <p>新NISA開始以来、最も議論されるテーマが「オルカンとS&P500のどちらがいいか」です。それぞれの特徴を整理します。</p>
+
+      <table>
+        <tr>
+          <th></th>
+          <th>オルカン</th>
+          <th>S&P500</th>
+        </tr>
+        <tr>
+          <td>投資先</td>
+          <td>全世界（米国約60%含む）</td>
+          <td>米国のみ</td>
+        </tr>
+        <tr>
+          <td>銘柄数</td>
+          <td>約3,000銘柄</td>
+          <td>500銘柄</td>
+        </tr>
+        <tr>
+          <td>過去10年リターン<br>（参考値）</td>
+          <td>年率約10%</td>
+          <td>年率約12%</td>
+        </tr>
+        <tr>
+          <td>向いている人</td>
+          <td>「世界経済全体の成長」に投資したい人<br>米国一極集中が不安な人</td>
+          <td>「米国が今後も最強」と考える人<br>過去のリターン重視の人</td>
+        </tr>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>結論：迷ったらオルカン</strong>。過去10年は米国株が圧倒的に強かったため、S&P500のリターンが高くなっています。しかし、将来も米国が最強であり続ける保証はありません。オルカンなら米国が強い間は米国分が伸び、他の国が台頭すればその国の分も取り込めます。「どこが伸びるか分からないから全部持つ」という考え方です。</p>
+      </div>
+
+      <h3>オルカンの中身を詳しく見る</h3>
+      <ul>
+        <li>正式名称：<strong>eMAXIS Slim 全世界株式（オール・カントリー）</strong></li>
+        <li>運用会社：三菱UFJアセットマネジメント</li>
+        <li>設定日：2018年10月31日</li>
+        <li>純資産総額：約5兆円（国内最大級）</li>
+      </ul>
+
+      <h4>国・地域別の構成比率（2024年時点）</h4>
+      <ul>
+        <li>米国：約62%</li>
+        <li>日本：約5%</li>
+        <li>イギリス：約3%</li>
+        <li>フランス：約3%</li>
+        <li>その他先進国：約15%</li>
+        <li>新興国：約12%</li>
+      </ul>
+
+      <div class="note">
+        <p class="note-title">⚠️ 「全世界」でも米国が6割を占める理由</p>
+        <p>オルカンは「時価総額加重平均」という方式で各国の比率を決めています。世界の株式市場で米国企業の時価総額が圧倒的に大きいため、結果として米国が約6割を占めます。これは設計上の問題ではなく、世界経済の現実を反映しています。米国比率が高すぎると感じる場合は「eMAXIS Slim 全世界株式（除く米国）」という商品もあります。</p>
+      </div>
+
+      <h3>オルカンが選ばれる5つの理由</h3>
+      <ul>
+        <li><strong>1. 信託報酬が最安水準</strong>：年0.05775%は業界最低クラス。100万円を20年運用しても手数料は約1万円程度</li>
+        <li><strong>2. 分配金を出さない設計</strong>：配当金はファンド内で自動再投資され、複利効果が最大化。NISA枠も消費しない</li>
+        <li><strong>3. 純資産総額が巨大</strong>：約5兆円の規模があり、運用が安定。途中で繰上償還（ファンドが終了）されるリスクが極めて低い</li>
+        <li><strong>4. 両方の枠で買える</strong>：つみたて投資枠でも成長投資枠でも購入可能</li>
+        <li><strong>5. 「ほったらかし」でOK</strong>：構成銘柄は自動で入れ替わるため、リバランスの必要がない</li>
+      </ul>
+
+      <h3>知っておくべきリスク</h3>
+      <ul>
+        <li><strong>元本保証がない</strong>
+          <ul>
+            <li>価格は毎日変動し、購入時より下がることもある</li>
+            <li>リーマンショック級の暴落では30〜50%下落することも</li>
+            <li>ただし、20年以上保有すれば元本割れの確率は極めて低い（過去データ）</li>
+          </ul>
+        </li>
+        <li><strong>為替リスク</strong>
+          <ul>
+            <li>約94%が海外資産のため、円高になると評価額が下がる</li>
+            <li>逆に円安になると評価額が上がる</li>
+            <li>長期では為替変動は平準化される傾向</li>
+          </ul>
+        </li>
+        <li><strong>短期的な値動き</strong>
+          <ul>
+            <li>1年で20〜30%下落することもありえる</li>
+            <li>しかし5年、10年、20年と保有期間が長くなるほど、プラスリターンの確率が高まる</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================================== -->
+    <!-- セクション9: SBI証券×Olive -->
+    <!-- ================================== -->
+    <section id="sbi-olive">
+      <h2>9. 証券会社の選び方：SBI証券×Oliveゴールド</h2>
+
+      <h3>なぜSBI証券×Oliveゴールドがおすすめなのか</h3>
+      <p>新NISAを始める証券会社は多数ありますが、<strong>SBI証券と三井住友カード（Olive）の組み合わせ</strong>が現時点で最もコストパフォーマンスに優れています。</p>
+
+      <div class="merit">
+        <p class="merit-title">✨ SBI証券×Oliveゴールドの主なメリット</p>
+        <ul style="margin-bottom: 0;">
+          <li>クレカ積立で最大1.0%のVポイント還元</li>
+          <li>投信マイレージで保有残高に応じたポイント付与</li>
+          <li>年間100万円利用で年会費5,500円が永年無料＋継続特典10,000ポイント</li>
+        </ul>
+      </div>
+
+      <h3>クレカ積立とは</h3>
+      <p>クレジットカードで直接投資信託を購入する方法です。毎月の積立金額がカード決済され、ポイントが貯まります。SBI証券では<strong>月10万円まで</strong>クレカ積立が可能で、つみたて投資枠の年間120万円を全額カバーできます。</p>
+
+      <div class="supplement">
+        <p class="supplement-title">💡 クレカ積立のイメージ</p>
+        <p>通常の買い物と同じようにカード決済されますが、購入するのは投資信託。毎月の引き落とし日に、設定した金額が自動で投資信託の購入に充てられます。「投資しながらポイントも貯まる」一石二鳥の仕組みです。</p>
+      </div>
+
+      <h3>カード種類別のクレカ積立還元率</h3>
+      <p>2024年11月の改定により、<strong>年間カード利用額に応じた条件付き還元</strong>になりました。</p>
+
+      <table>
+        <tr>
+          <th>カード種類</th>
+          <th>年会費</th>
+          <th>年間利用10万円未満</th>
+          <th>年間利用10万円以上</th>
+          <th>年間利用100万円以上</th>
+        </tr>
+        <tr>
+          <td>一般カード/Olive一般</td>
+          <td>無料</td>
+          <td>0%</td>
+          <td>0.5%</td>
+          <td>0.5%</td>
+        </tr>
+        <tr>
+          <td><strong>ゴールド/Oliveゴールド</strong></td>
+          <td>5,500円<br>（条件達成で永年無料）</td>
+          <td>0%</td>
+          <td>0.75%</td>
+          <td><strong>1.0%</strong></td>
+        </tr>
+        <tr>
+          <td>プラチナプリファード</td>
+          <td>33,000円</td>
+          <td>1.0%</td>
+          <td>1.0%</td>
+          <td>1.0%〜3.0%</td>
+        </tr>
+      </table>
+
+      <div class="note">
+        <p class="note-title">⚠️ クレカ積立は年間利用額にカウントされない</p>
+        <p>クレカ積立だけで年間100万円投資しても、還元率アップの条件は満たせません。日常の買い物（食費、公共料金、通信費など）でカードを使い、年間100万円を達成する必要があります。これを俗に「100万円修行」と呼びます。</p>
+      </div>
+
+      <h3>投信マイレージ</h3>
+      <p>投資信託の保有残高に応じてVポイントが毎月付与される制度です。楽天証券では対象商品が6銘柄のみですが、SBI証券はほぼ全商品が対象です。</p>
+
+      <table>
+        <tr>
+          <th>商品名</th>
+          <th>年率付与率</th>
+          <th>残高1,000万円で年間</th>
+        </tr>
+        <tr>
+          <td>eMAXIS Slim 全世界株式（オルカン）</td>
+          <td>0.0175%</td>
+          <td>約1,750pt</td>
+        </tr>
+        <tr>
+          <td>eMAXIS Slim 米国株式（S&P500）</td>
+          <td>0.028%</td>
+          <td>約2,800pt</td>
+        </tr>
+      </table>
+
+      <h3>年間メリットのシミュレーション</h3>
+      <p>年間100万円利用を達成し、月10万円をクレカ積立した場合：</p>
+      <ul>
+        <li>クレカ積立ポイント：120万円 × 1.0% = <strong>12,000pt</strong></li>
+        <li>100万円利用継続特典：<strong>10,000pt</strong></li>
+        <li>投信マイレージ（残高500万円想定）：約<strong>875pt</strong></li>
+        <li><strong>年間合計：約22,875円相当</strong>（年会費は永年無料）</li>
+      </ul>
+
+      <h3>仲介口座の注意点</h3>
+      <p>Olive経由でSBI証券口座を開設すると「仲介口座」となり、以下の制限があります。</p>
+      <ul>
+        <li>貯まるポイントがVポイントに固定（Pontaやdポイントは選べない）</li>
+        <li>国内株式へのポイント投資ができない（投資信託は可能）</li>
+        <li>個人情報がSBI証券と三井住友カード/銀行の2社に共有される</li>
+      </ul>
+
+      <h3>楽天証券との比較</h3>
+      <table>
+        <tr>
+          <th></th>
+          <th>SBI証券×Oliveゴールド</th>
+          <th>楽天証券×楽天カード</th>
+        </tr>
+        <tr>
+          <td>クレカ積立還元率</td>
+          <td>最大1.0%<br>（年間100万円利用が条件）</td>
+          <td>0.5%〜1.0%<br>（利用額条件なし）</td>
+        </tr>
+        <tr>
+          <td>投信保有ポイント</td>
+          <td>ほぼ全商品が対象</td>
+          <td>6銘柄のみ</td>
+        </tr>
+        <tr>
+          <td>向いている人</td>
+          <td>カードを年100万円以上使う人</td>
+          <td>カードをあまり使わない人<br>楽天経済圏の人</td>
+        </tr>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>結論</strong>：年間100万円以上カードを使うなら<strong>SBI証券×Oliveゴールド</strong>が最強。カードをあまり使わない、または楽天経済圏で生活している人は<strong>楽天証券×楽天カード</strong>がおすすめです。</p>
+      </div>
+    </section>
+
+    <!-- ============================ -->
+    <!-- セクション10: 実践戦略 -->
+    <!-- ============================ -->
+    <section id="strategy">
+      <h2>10. 実践：一括＋積立戦略</h2>
+
+      <h3>想定している戦略</h3>
+      <ul>
+        <li>最初にまとまったお金を一括投資</li>
+        <li>その後は毎月定額で積立</li>
+        <li>余裕資金がなくなりそうなら積立額を減額</li>
+      </ul>
+      <p>この戦略は新NISAの制度設計と相性が良い、合理的なアプローチです。</p>
+
+      <h3>1年目の具体的な流れ（例）</h3>
+      <ul>
+        <li><strong>成長投資枠</strong>で一括投資
+          <ul>
+            <li>余裕資金（例：200万円）をスポット購入でオルカンに投資</li>
+            <li>年間上限は240万円なので、余裕があれば追加も可能</li>
+          </ul>
+        </li>
+        <li><strong>つみたて投資枠</strong>でクレカ積立設定
+          <ul>
+            <li>Oliveゴールドで毎月10万円（年間120万円）をオルカンに自動購入</li>
+            <li>Vポイント1.0%還元で年間12,000ポイント獲得</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>2年目以降</h3>
+      <ul>
+        <li>つみたて投資枠は毎月クレカ積立を継続</li>
+        <li>成長投資枠はボーナス時や臨時収入があったときに追加投資</li>
+        <li>年間枠を使い切れなくても焦らない（非課税期間は無期限）</li>
+      </ul>
+
+      <h3>一括投資 vs 積立投資</h3>
+      <table>
+        <tr>
+          <th></th>
+          <th>一括投資</th>
+          <th>積立投資</th>
+        </tr>
+        <tr>
+          <td>メリット</td>
+          <td>複利効果を早期から最大化できる<br>長期的に右肩上がりなら有利</td>
+          <td>高値掴みリスクを分散<br>精神的負担が少ない</td>
+        </tr>
+        <tr>
+          <td>デメリット</td>
+          <td>投資直後に暴落すると精神的にきつい<br>タイミングを外すリスク</td>
+          <td>上昇相場では一括より不利<br>投資完了まで時間がかかる</td>
+        </tr>
+      </table>
+
+      <div class="highlight-box">
+        <p>一括と積立を組み合わせることで、両方のメリットを取り込みながらリスクを分散できます。「正解」はないので、自分が続けられる方法を選ぶことが大切です。</p>
+      </div>
+
+      <h3>長期投資を成功させる心構え</h3>
+      <ul>
+        <li><strong>生活防衛資金を確保してから投資する</strong>
+          <ul>
+            <li>生活費の6ヶ月〜1年分は現金で持っておく</li>
+            <li>投資は「なくなっても生活に困らないお金」で行う</li>
+          </ul>
+        </li>
+        <li><strong>暴落時こそ売らない</strong>
+          <ul>
+            <li>価格が下がったときは「安く買えるチャンス」</li>
+            <li>積立を止めず、淡々と買い続けることが重要</li>
+          </ul>
+        </li>
+        <li><strong>売却はライフプランで判断する</strong>
+          <ul>
+            <li>「株価が下がったから売る」はNG</li>
+            <li>住宅購入、教育資金、老後資金など「お金が必要になったとき」に売る</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================ -->
+    <!-- セクション11: よくある質問 -->
+    <!-- ============================ -->
+    <section id="faq">
+      <h2>11. よくある質問</h2>
+
+      <div class="faq">
+        <p class="faq-q">Q. 特定口座で投資信託を持っているけど、NISAに移せる？</p>
+        <p class="faq-a">直接移すことはできません。特定口座の投資信託を売却し、そのお金でNISA口座で買い直す必要があります。売却時に利益が出ていれば課税されるため、含み益が大きい場合は計画的に。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. NISA口座で損失が出たらどうなる？</p>
+        <p class="faq-a">NISAは「損益通算」ができません。特定口座なら、ある銘柄の損失と別の銘柄の利益を相殺して税金を減らせますが、NISAではこれができません。NISAで損失が出ても、他の口座の利益を減らすことはできないため、NISAでは「長期で利益が出やすい商品」を選ぶことが重要です。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. 毎月いくら投資すればいい？</p>
+        <p class="faq-a">「収入－生活費－貯蓄」で余るお金の範囲内で。目安として、手取り収入の10〜20%を投資に回す人が多いです。月3万円なら年36万円、20年で720万円の元本になります。大切なのは「無理なく続けられる金額」を設定することです。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. 投資を始めるのに最低いくら必要？</p>
+        <p class="faq-a">100円から始められます。SBI証券や楽天証券では、投資信託を100円から購入可能。まずは少額で始めて、値動きに慣れてから増額するのも良い方法です。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. 口座開設にはどのくらい時間がかかる？</p>
+        <p class="faq-a">ネット証券なら最短で数日〜2週間程度。マイナンバーカードがあればオンラインで完結します。NISA口座は税務署の審査があるため、通常の特定口座より少し時間がかかります。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. 確定申告は必要？</p>
+        <p class="faq-a">NISA口座の利益は非課税なので、確定申告は不要です。特定口座（源泉徴収あり）で投資している分も、証券会社が税金を自動計算・納付してくれるため、通常は確定申告不要です。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. 旧NISAの資産はどうなる？</p>
+        <p class="faq-a">旧NISAで保有している資産は、そのまま非課税期間終了まで保有できます（一般NISAは購入から5年、つみたてNISAは20年）。新NISAとは完全に別枠なので、旧NISAの資産があっても新NISAの1,800万円枠は減りません。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. Oliveゴールドの100万円修行ができなかったらどうなる？</p>
+        <p class="faq-a">年会費5,500円がかかります。ただし、クレカ積立のポイント還元や継続特典を考慮すると、年間10万円以上カードを使っていれば元は取れます。修行が難しそうなら、年会費無料の一般カードでも0.5%還元は得られます。</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-q">Q. iDeCoとNISA、どっちを優先すべき？</p>
+        <p class="faq-a">一般的には「iDeCoで節税メリットを最大化 → 残りをNISAに」が効率的です。iDeCoは掛金全額が所得控除になるため、所得税率が高い人ほど節税効果が大きくなります。ただし、iDeCoは60歳まで引き出せないため、流動性を重視するならNISA優先でもOKです。</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>新NISA制度は2024年1月から開始。本資料は2025年1月時点の情報に基づいています。</p>
+      <p>投資にはリスクが伴います。最終的な投資判断はご自身の責任で行ってください。</p>
+    </footer>
+  </div>
+</body>
+</html>
