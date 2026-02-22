@@ -220,15 +220,50 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
-  .shopping-item::before {
-    content: '';
-    width: 14px;
-    height: 14px;
+  .shopping-item input[type="checkbox"] {
+    display: none;
+  }
+
+  .shopping-item .checkbox {
+    width: 16px;
+    height: 16px;
     border: 1.5px solid var(--border);
     border-radius: 4px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .shopping-item .checkbox::after {
+    content: '';
+    width: 8px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) scale(0);
+    transition: transform 0.15s ease;
+    margin-bottom: 2px;
+  }
+
+  .shopping-item input:checked + .checkbox {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+
+  .shopping-item input:checked + .checkbox::after {
+    transform: rotate(-45deg) scale(1);
+  }
+
+  .shopping-item input:checked ~ .item-text {
+    text-decoration: line-through;
+    color: var(--text-sub);
   }
 
   @media (max-width: 480px) {
@@ -355,41 +390,41 @@
     <div class="shopping-card">
       <h3>🥬 具材</h3>
       <div class="shopping-grid">
-        <div class="shopping-item">米</div>
-        <div class="shopping-item">しらす</div>
-        <div class="shopping-item">ほうれん草</div>
-        <div class="shopping-item">コーン（缶 or 冷凍）</div>
-        <div class="shopping-item">ブロッコリー</div>
-        <div class="shopping-item">大根</div>
-        <div class="shopping-item">豆腐</div>
-        <div class="shopping-item">わかめ</div>
-        <div class="shopping-item">バナナ</div>
-        <div class="shopping-item">ヨーグルト</div>
-        <div class="shopping-item">ソフトフランスパン</div>
-        <div class="shopping-item">トマト缶</div>
-        <div class="shopping-item">玉ねぎ</div>
-        <div class="shopping-item">にんじん</div>
-        <div class="shopping-item">キャベツ</div>
-        <div class="shopping-item">卵</div>
-        <div class="shopping-item">合いびき肉</div>
-        <div class="shopping-item">胡麻</div>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">米</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">しらす</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ほうれん草</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">コーン（缶 or 冷凍）</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ブロッコリー</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">大根</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">豆腐</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">わかめ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">バナナ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ヨーグルト</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ソフトフランスパン</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">トマト缶</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">玉ねぎ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">にんじん</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">キャベツ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">卵</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">合いびき肉</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">胡麻</span></label>
       </div>
     </div>
 
     <div class="shopping-card">
       <h3>🧂 調味料</h3>
       <div class="shopping-grid">
-        <div class="shopping-item">バター</div>
-        <div class="shopping-item">味噌</div>
-        <div class="shopping-item">だしの素</div>
-        <div class="shopping-item">塩</div>
-        <div class="shopping-item">こしょう</div>
-        <div class="shopping-item">コンソメ</div>
-        <div class="shopping-item">オリーブオイル</div>
-        <div class="shopping-item">ケチャップ</div>
-        <div class="shopping-item">ソース</div>
-        <div class="shopping-item">パン粉</div>
-        <div class="shopping-item">牛乳</div>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">バター</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">味噌</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">だしの素</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">塩</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">こしょう</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">コンソメ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">オリーブオイル</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ケチャップ</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">ソース</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">パン粉</span></label>
+        <label class="shopping-item"><input type="checkbox"><span class="checkbox"></span><span class="item-text">牛乳</span></label>
       </div>
     </div>
   </div>
