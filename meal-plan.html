@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凪くんの献立</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-card: #FFFFFF;
+    --text: #2D2A26;
+    --text-sub: #6B6560;
+    --accent-dark: #B86B3F;
+    --border: #E8E2DA;
+    --shadow: rgba(45, 42, 38, 0.06);
+    --lunch-accent: #7BA086;
+    --lunch-bg: #F0F5F1;
+    --dinner-accent: #C47A5A;
+    --dinner-bg: #FFF5EF;
+    --badge-bg: #F0EBE5;
+    --badge-text: #5C5550;
+    --badge-seasoning-bg: #FFF0E6;
+    --badge-seasoning-text: #9E6B4A;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1816;
+      --bg-card: #242220;
+      --text: #E8E2DA;
+      --text-sub: #9E9690;
+      --accent-dark: #E8A07A;
+      --border: #3A3632;
+      --shadow: rgba(0, 0, 0, 0.2);
+      --lunch-accent: #7BA086;
+      --lunch-bg: #1E2A22;
+      --dinner-accent: #D4845A;
+      --dinner-bg: #2A2220;
+      --badge-bg: #33302C;
+      --badge-text: #B0A89E;
+      --badge-seasoning-bg: #352A22;
+      --badge-seasoning-text: #D4A070;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Zen Maru Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  header .emoji-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  header h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+
+  header .subtitle {
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+
+  .meal-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .meal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .meal-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .meal-icon.lunch { background: var(--lunch-bg); }
+  .meal-icon.dinner { background: var(--dinner-bg); }
+
+  .meal-title-group h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .meal-title-group .meal-label {
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+
+  .meal-items { list-style: none; }
+
+  .meal-items li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .meal-items li:last-child { border-bottom: none; }
+
+  .item-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14.5px;
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.lunch { background: var(--lunch-accent); }
+  .dot.dinner { background: var(--dinner-accent); }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-left: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .badge.ing {
+    background: var(--badge-bg);
+    color: var(--badge-text);
+  }
+
+  .badge.sea {
+    background: var(--badge-seasoning-bg);
+    color: var(--badge-seasoning-text);
+  }
+
+  /* Shopping */
+  .shopping-section { margin-top: 36px; }
+
+  .shopping-section > h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .shopping-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .shopping-card h3 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shopping-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+
+  .shopping-item {
+    font-size: 13.5px;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shopping-item::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 36px;
+    padding: 20px;
+    font-size: 13px;
+    color: var(--text-sub);
+    border-top: 1px solid var(--border);
+    line-height: 1.9;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 28px 16px 48px; }
+    .meal-section { padding: 18px; }
+    .shopping-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <span class="emoji-icon">🍽️</span>
+    <h1>凪くんの献立</h1>
+    <p class="subtitle">お預かり中にご用意するお食事の内容です</p>
+  </header>
+
+  <!-- Lunch -->
+  <section class="meal-section">
+    <div class="meal-header">
+      <div class="meal-icon lunch">🌿</div>
+      <div class="meal-title-group">
+        <p class="meal-label">LUNCH</p>
+        <h2>お昼ごはん（和食）</h2>
+      </div>
+    </div>
+    <ul class="meal-items">
+      <li>
+        <div class="item-name"><span class="dot lunch"></span>ごはん</div>
+        <div class="badges"><span class="badge ing">米</span></div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot lunch"></span>しらす</div>
+        <div class="badges"><span class="badge ing">しらす</span></div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot lunch"></span>ほうれん草・コーン・ブロッコリーのバターソテー</div>
+        <div class="badges">
+          <span class="badge ing">ほうれん草</span>
+          <span class="badge ing">コーン</span>
+          <span class="badge ing">ブロッコリー</span>
+          <span class="badge sea">バター</span>
+          <span class="badge sea">塩</span>
+          <span class="badge sea">こしょう</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot lunch"></span>具だくさん味噌汁</div>
+        <div class="badges">
+          <span class="badge ing">大根</span>
+          <span class="badge ing">豆腐</span>
+          <span class="badge ing">わかめ</span>
+          <span class="badge sea">味噌</span>
+          <span class="badge sea">だしの素</span>
+          <span class="badge ing">胡麻</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot lunch"></span>バナナヨーグルト</div>
+        <div class="badges">
+          <span class="badge ing">バナナ</span>
+          <span class="badge ing">ヨーグルト</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Dinner -->
+  <section class="meal-section">
+    <div class="meal-header">
+      <div class="meal-icon dinner">🍞</div>
+      <div class="meal-title-group">
+        <p class="meal-label">DINNER</p>
+        <h2>夜ごはん（洋食）</h2>
+      </div>
+    </div>
+    <ul class="meal-items">
+      <li>
+        <div class="item-name"><span class="dot dinner"></span>ソフトフランスパン</div>
+        <div class="badges"><span class="badge ing">ソフトフランスパン</span></div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot dinner"></span>ミネストローネたまごスープ</div>
+        <div class="badges">
+          <span class="badge ing">トマト缶</span>
+          <span class="badge ing">玉ねぎ</span>
+          <span class="badge ing">にんじん</span>
+          <span class="badge ing">キャベツ</span>
+          <span class="badge ing">卵</span>
+          <span class="badge sea">コンソメ</span>
+          <span class="badge sea">オリーブオイル</span>
+          <span class="badge sea">塩</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot dinner"></span>ハンバーグ</div>
+        <div class="badges">
+          <span class="badge ing">合いびき肉</span>
+          <span class="badge ing">豆腐</span>
+          <span class="badge ing">玉ねぎ</span>
+          <span class="badge ing">卵</span>
+          <span class="badge sea">パン粉</span>
+          <span class="badge sea">牛乳</span>
+          <span class="badge sea">塩</span>
+          <span class="badge sea">こしょう</span>
+          <span class="badge sea">ケチャップ</span>
+          <span class="badge sea">ソース</span>
+        </div>
+      </li>
+      <li>
+        <div class="item-name"><span class="dot dinner"></span>茹でブロッコリー</div>
+        <div class="badges">
+          <span class="badge ing">ブロッコリー</span>
+          <span class="badge sea">塩</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Shopping list -->
+  <div class="shopping-section">
+    <h2>🛒 買い物リスト</h2>
+
+    <div class="shopping-card">
+      <h3>🥬 具材</h3>
+      <div class="shopping-grid">
+        <div class="shopping-item">米</div>
+        <div class="shopping-item">しらす</div>
+        <div class="shopping-item">ほうれん草</div>
+        <div class="shopping-item">コーン（缶 or 冷凍）</div>
+        <div class="shopping-item">ブロッコリー</div>
+        <div class="shopping-item">大根</div>
+        <div class="shopping-item">豆腐</div>
+        <div class="shopping-item">わかめ</div>
+        <div class="shopping-item">バナナ</div>
+        <div class="shopping-item">ヨーグルト</div>
+        <div class="shopping-item">ソフトフランスパン</div>
+        <div class="shopping-item">トマト缶</div>
+        <div class="shopping-item">玉ねぎ</div>
+        <div class="shopping-item">にんじん</div>
+        <div class="shopping-item">キャベツ</div>
+        <div class="shopping-item">卵</div>
+        <div class="shopping-item">合いびき肉</div>
+        <div class="shopping-item">胡麻</div>
+      </div>
+    </div>
+
+    <div class="shopping-card">
+      <h3>🧂 調味料</h3>
+      <div class="shopping-grid">
+        <div class="shopping-item">バター</div>
+        <div class="shopping-item">味噌</div>
+        <div class="shopping-item">だしの素</div>
+        <div class="shopping-item">塩</div>
+        <div class="shopping-item">こしょう</div>
+        <div class="shopping-item">コンソメ</div>
+        <div class="shopping-item">オリーブオイル</div>
+        <div class="shopping-item">ケチャップ</div>
+        <div class="shopping-item">ソース</div>
+        <div class="shopping-item">パン粉</div>
+        <div class="shopping-item">牛乳</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    ご不明点や気になることがあれば<br>お気軽にお知らせください 🙏
+  </div>
+
+</div>
+</body>
+</html>
