@@ -58,10 +58,12 @@
   .sub-label.teiban { color: var(--classic-text); }
 
   .cards { display: flex; flex-direction: column; gap: 12px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: background 0.2s, transform 0.15s; cursor: default; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: background 0.2s, transform 0.15s; cursor: default; overflow: hidden; }
   .card:hover { background: var(--card-hover); transform: translateY(-1px); }
   .card.classic { background: rgba(255,255,255,0.025); border: 1px dashed rgba(255,255,255,0.1); }
   .card.classic:hover { background: rgba(255,255,255,0.045); }
+  .card-img { margin: -20px -20px 14px; overflow: hidden; }
+  .card-img img { width: 100%; height: 200px; object-fit: cover; display: block; }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
   .card-name { font-family: 'Zen Maru Gothic', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.4; }
   .card-badges { display: flex; gap: 5px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
@@ -71,6 +73,8 @@
   .card-meta { display: flex; flex-wrap: wrap; gap: 6px; }
   .meta-chip { font-size: 11px; padding: 3px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); display: flex; align-items: center; gap: 4px; }
   .meta-chip .icon { font-size: 12px; }
+  a.map-link { color: #5eaeff; text-decoration: none; border-color: rgba(94,174,255,0.25); transition: background 0.2s; }
+  a.map-link:hover { background: rgba(94,174,255,0.12); }
   .tip-box { margin-top: 16px; padding: 14px 16px; border-radius: 10px; font-size: 12.5px; line-height: 1.75; border-left: 3px solid; }
 
   .s-view .section-icon { background: rgba(94,196,182,0.12); color: var(--accent-view); }
@@ -96,7 +100,7 @@
 
   .divider { max-width: 900px; margin: 8px auto; border: none; border-top: 1px solid var(--border); }
   .footer { text-align: center; padding: 32px 20px 48px; color: var(--text-muted); font-size: 11px; line-height: 1.8; }
-  @media (max-width: 500px) { .section { padding: 28px 16px 16px; } .card { padding: 16px; } .section-desc { padding-left: 0; } }
+  @media (max-width: 500px) { .section { padding: 28px 16px 16px; } .card { padding: 16px; } .card-img { margin: -16px -16px 12px; } .card-img img { height: 160px; } .section-desc { padding-left: 0; } }
 </style>
 </head>
 <body>
@@ -132,63 +136,74 @@
   <div class="sub-label teiban">👑 定番・王道</div>
   <div class="cards">
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Lake_Kawaguchi.JPG/800px-Lake_Kawaguchi.JPG" alt="大石公園から見た河口湖と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">大石公園</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">河口湖北岸の代表的ビュースポット。湖畔沿いの花街道と富士山の共演は「河口湖といえばここ」の定番構図。3月下旬は花が少ないが、冠雪した富士山が最も美しい時期。売店・カフェ併設。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>無料 約50台</span><span class="meta-chip"><span class="icon">⏱️</span>20〜30分</span><span class="meta-chip"><span class="icon">⚠️</span>休日は混雑</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>無料 約50台</span><span class="meta-chip"><span class="icon">⏱️</span>20〜30分</span><span class="meta-chip"><span class="icon">⚠️</span>休日は混雑</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=大石公園+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/170505_Kachikachiyama_Ropeway_Lake_Kawaguchi_Japan01s3.jpg/800px-170505_Kachikachiyama_Ropeway_Lake_Kawaguchi_Japan01s3.jpg" alt="カチカチ山ロープウェイと河口湖" loading="lazy"></div>
       <div class="card-top"><div class="card-name">河口湖天上山公園（カチカチ山ロープウェイ）</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">ロープウェイで標高1,075mの展望台へ。河口湖越しに富士山を見下ろす大パノラマは圧巻。山頂にはうさぎ神社やブランコなどのフォトスポットあり。混雑時はロープウェイに30分以上並ぶことも。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>往復 大人1,000円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00（土日）</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>往復 大人1,000円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00（土日）</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=カチカチ山ロープウェイ" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Chureito_Pagoda_and_Mount_Fuji_(44951842365).jpg/800px-Chureito_Pagoda_and_Mount_Fuji_(44951842365).jpg" alt="新倉山浅間公園の忠霊塔と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">新倉山浅間公園（忠霊塔）</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">五重塔×桜×富士山のアイコニックな構図で世界的に有名。398段の階段を登った先の展望デッキが撮影ポイント。3月下旬は桜が咲き始め〜つぼみ。2026年は桜まつり中止だが公園は入場可能。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>有料（桜期は交通規制あり）</span><span class="meta-chip"><span class="icon">⏱️</span>60〜90分</span><span class="meta-chip"><span class="icon">⚠️</span>外国人観光客で混雑</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>有料（桜期は交通規制あり）</span><span class="meta-chip"><span class="icon">⏱️</span>60〜90分</span><span class="meta-chip"><span class="icon">⚠️</span>外国人観光客で混雑</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=新倉山浅間公園" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Kagamiike_Pond%2C_Oshino_Hakkai.JPG/800px-Kagamiike_Pond%2C_Oshino_Hakkai.JPG" alt="忍野八海の鏡池と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">忍野八海</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">富士山の伏流水が湧き出す8つの泉。世界文化遺産の構成資産。透明な湧水池越しに望む茅葺き屋根×富士山は日本の原風景。観光地化が進んでおり中池周辺は常時混雑。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>一部有料エリアあり</span><span class="meta-chip"><span class="icon">🅿️</span>有料 300〜500円</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span><span class="meta-chip"><span class="icon">🚗</span>河口湖から約20分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>一部有料エリアあり</span><span class="meta-chip"><span class="icon">🅿️</span>有料 300〜500円</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span><span class="meta-chip"><span class="icon">🚗</span>河口湖から約20分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=忍野八海" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
 
   <div class="sub-label anaba">🔍 穴場・隠れスポット</div>
   <div class="cards">
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Mount_Fuji_from_Lake_Sh%C5%8Dji.JPG/800px-Mount_Fuji_from_Lake_Sh%C5%8Dji.JPG" alt="精進湖から見た子抱き富士" loading="lazy"></div>
       <div class="card-top"><div class="card-name">精進湖・他手合浜（たてごうはま）</div><div class="card-badges"><span class="card-badge">穴場度 ★★★</span></div></div>
       <div class="card-body">手前の大室山が重なる「子抱き富士」は唯一無二の構図。逆さ富士の撮影確率も高く、休日でも静か。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料 約50台</span><span class="meta-chip"><span class="icon">🚻</span>トイレあり</span><span class="meta-chip"><span class="icon">⏱️</span>15〜20分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料 約50台</span><span class="meta-chip"><span class="icon">🚻</span>トイレあり</span><span class="meta-chip"><span class="icon">⏱️</span>15〜20分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=精進湖+他手合浜" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Lake_Sh%C5%8Dji_from_Panoramadai.JPG/800px-Lake_Sh%C5%8Dji_from_Panoramadai.JPG" alt="西湖と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">西湖・根場浜（ねんばはま）</div><div class="card-badges"><span class="card-badge">穴場度 ★★★</span></div></div>
       <div class="card-body">青木ヶ原樹海越しの富士山。車を浜まで乗り入れ可能で、愛車×富士山の写真が撮れる。休日朝でも数組程度。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🕐</span>24時間OK</span><span class="meta-chip"><span class="icon">⏱️</span>15分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🕐</span>24時間OK</span><span class="meta-chip"><span class="icon">⏱️</span>15分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=西湖+根場浜" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG/800px-Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG" alt="産屋ヶ崎から見た河口湖と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">産屋ヶ崎（うぶやがさき）</div><div class="card-badges"><span class="card-badge">穴場度 ★★☆</span></div></div>
       <div class="card-body">河口湖大橋北岸の小さな岬。橋を前景にした逆さ富士はここだけの構図。トンネル通過直後のため通り過ぎやすい。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料 約30台</span><span class="meta-chip"><span class="icon">⏱️</span>10分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料 約30台</span><span class="meta-chip"><span class="icon">⏱️</span>10分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=産屋ヶ崎+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Lake_Sh%C5%8Dji_from_Panoramadai.JPG/800px-Lake_Sh%C5%8Dji_from_Panoramadai.JPG" alt="紅葉台からのパノラマ" loading="lazy"></div>
       <div class="card-top"><div class="card-name">紅葉台展望レストハウス</div><div class="card-badges"><span class="card-badge">穴場度 ★★★</span></div></div>
       <div class="card-body">標高1,165m、昭和レトロなレストハウスの屋上から360度パノラマ。樹海・西湖・本栖湖・南アルプスまで一望。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人300円</span><span class="meta-chip"><span class="icon">🕐</span>8:30〜17:00</span><span class="meta-chip"><span class="icon">⚠️</span>未舗装路あり・降雪時休業</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人300円</span><span class="meta-chip"><span class="icon">🕐</span>8:30〜17:00</span><span class="meta-chip"><span class="icon">⚠️</span>未舗装路あり・降雪時休業</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=紅葉台展望レストハウス" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Mount_Omuro_from_Lake_Motosu.JPG/800px-Mount_Omuro_from_Lake_Motosu.JPG" alt="本栖湖から見た富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">本栖湖・二つ岩</div><div class="card-badges"><span class="card-badge">穴場度 ★★★</span></div></div>
       <div class="card-body">透明度日本屈指の本栖湖越しの富士山。千円札の裏面はこの湖から。溶岩の荒々しい風景が独特。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🥾</span>徒歩5〜7分</span><span class="meta-chip"><span class="icon">⚠️</span>残雪注意</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🥾</span>徒歩5〜7分</span><span class="meta-chip"><span class="icon">⚠️</span>残雪注意</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=本栖湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Lake_Kawaguchi.JPG/800px-Lake_Kawaguchi.JPG" alt="ふじさんデッキからの眺望" loading="lazy"></div>
       <div class="card-top"><div class="card-name">ふじさんデッキ</div><div class="card-badges"><span class="card-badge">穴場度 ★★☆</span></div></div>
       <div class="card-body">「ハーブ庭園 旅日記 富士河口湖庭園」内にある高さ13mの展望台。富士山・河口湖・庭園を一望。2Fカフェで樹海パフェも。隣接の赤富士ワインセラーで試飲も可（運転手以外）。庭園自体は入園無料。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>庭園無料 / デッキ500円</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>30〜45分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>庭園無料 / デッキ500円</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>30〜45分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=ふじさんデッキ+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Lake_Yamanakako_with_Mount_Fuji.JPG/800px-Lake_Yamanakako_with_Mount_Fuji.JPG" alt="山中湖パノラマ台からの富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">山中湖パノラマ台</div><div class="card-badges"><span class="card-badge">穴場度 ★★☆</span></div></div>
       <div class="card-body">標高1,090m、ススキの草原に囲まれた展望台。山中湖全体と富士山を見下ろす大パノラマ。車を停めるだけ。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料・トイレあり</span><span class="meta-chip"><span class="icon">🚗</span>河口湖から約30分</span><span class="meta-chip"><span class="icon">⚠️</span>凍結注意</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🅿️</span>無料・トイレあり</span><span class="meta-chip"><span class="icon">🚗</span>河口湖から約30分</span><span class="meta-chip"><span class="icon">⚠️</span>凍結注意</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=山中湖パノラマ台" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
   <div class="tip-box">💡 午後は富士山に雲がかかりやすいため、絶景スポットは到着直後（12〜14時）が勝負。</div>
@@ -203,58 +218,66 @@
   <div class="sub-label teiban">👑 定番・王道</div>
   <div class="cards">
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/H%C5%8Dt%C5%8D.jpg/800px-H%C5%8Dt%C5%8D.jpg" alt="ほうとう不動のほうとう" loading="lazy"></div>
       <div class="card-top"><div class="card-name">ほうとう不動（東恋路店）</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">ほうとう</span></div></div>
       <div class="card-body">河口湖畔の巨大な雲のようなユニークな建物が目印。メニューはほうとう1種類のみという潔さで、味は間違いなし。観光客に最も知られたほうとう店の一つ。待ち時間が出やすいが回転は早い。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖東恋路</span><span class="meta-chip"><span class="icon">💰</span>1,210円</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜19:00（L.O.）</span><span class="meta-chip"><span class="icon">🅿️</span>大型無料</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖東恋路</span><span class="meta-chip"><span class="icon">💰</span>1,210円</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜19:00（L.O.）</span><span class="meta-chip"><span class="icon">🅿️</span>大型無料</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=ほうとう不動+東恋路店" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/H%C5%8Dt%C5%8D.jpg/800px-H%C5%8Dt%C5%8D.jpg" alt="小作のほうとう" loading="lazy"></div>
       <div class="card-top"><div class="card-name">小作 河口湖店</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">ほうとう</span></div></div>
       <div class="card-body">山梨県内に複数店舗を構えるほうとうの老舗。かぼちゃほうとう（1,300円）が代表メニュー。豚肉・猪肉・鴨肉など具のバリエーションが豊富で、グループで食べ比べできる。営業時間が長く安心。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖駅前</span><span class="meta-chip"><span class="icon">💰</span>1,200〜2,000円</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜21:00</span><span class="meta-chip"><span class="icon">🅿️</span>あり</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖駅前</span><span class="meta-chip"><span class="icon">💰</span>1,200〜2,000円</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜21:00</span><span class="meta-chip"><span class="icon">🅿️</span>あり</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=小作+河口湖店" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG/800px-Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG" alt="天下茶屋から見た河口湖と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">天下茶屋</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">文学の聖地</span></div></div>
       <div class="card-body">御坂峠にある太宰治ゆかりの茶屋。ここで「富嶽百景」を執筆したとされ、2階に資料室あり。峠から見下ろす河口湖×富士山は文豪が愛した絶景。ほうとうと名物だんごが人気。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>御坂峠・旧道沿い</span><span class="meta-chip"><span class="icon">💰</span>ほうとう 1,000円〜</span><span class="meta-chip"><span class="icon">🕐</span>9:30〜16:30</span><span class="meta-chip"><span class="icon">⚠️</span>冬季休業あり・要確認</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>御坂峠・旧道沿い</span><span class="meta-chip"><span class="icon">💰</span>ほうとう 1,000円〜</span><span class="meta-chip"><span class="icon">🕐</span>9:30〜16:30</span><span class="meta-chip"><span class="icon">⚠️</span>冬季休業あり・要確認</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=天下茶屋+御坂峠" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
 
   <div class="sub-label anaba">🔍 穴場・隠れスポット</div>
   <div class="cards">
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Yoshida_udon_by_ucb.jpg/800px-Yoshida_udon_by_ucb.jpg" alt="吉田うどん" loading="lazy"></div>
       <div class="card-top"><div class="card-name">くれちうどん</div><div class="card-badges"><span class="card-badge">吉田うどん</span></div></div>
       <div class="card-body">マイスター選出「すりだね」同率1位。全て手作業の本格手打ち＋国産馬肉。座敷含め約40席で5人でも余裕。裏手にトトロのオブジェが目印の駐車場。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市上暮地</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜14:00</span><span class="meta-chip"><span class="icon">🚫</span>火曜定休</span><span class="meta-chip"><span class="icon">💰</span>〜700円</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市上暮地</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜14:00</span><span class="meta-chip"><span class="icon">🚫</span>火曜定休</span><span class="meta-chip"><span class="icon">💰</span>〜700円</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=くれちうどん+富士吉田" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Yoshida_udon_by_ucb.jpg/800px-Yoshida_udon_by_ucb.jpg" alt="吉田うどん" loading="lazy"></div>
       <div class="card-top"><div class="card-name">手打ちうどんムサシ</div><div class="card-badges"><span class="card-badge">吉田うどん</span></div></div>
       <div class="card-body">マイスター総合おすすめ1位・麺の硬さ1位。2日以上寝かせた極太もちもち麺＋水出し煮干し出汁。看板がない「知る人ぞ知る」店。巨大かき揚げが名物。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00</span><span class="meta-chip"><span class="icon">🚫</span>日曜定休</span><span class="meta-chip"><span class="icon">⚠️</span>看板なし・要地図確認</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00</span><span class="meta-chip"><span class="icon">🚫</span>日曜定休</span><span class="meta-chip"><span class="icon">⚠️</span>看板なし・要地図確認</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=手打ちうどんムサシ+富士吉田" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Yoshida_udon_by_ucb.jpg/800px-Yoshida_udon_by_ucb.jpg" alt="吉田うどん" loading="lazy"></div>
       <div class="card-top"><div class="card-name">ふもとや</div><div class="card-badges"><span class="card-badge">吉田うどん</span></div></div>
       <div class="card-body">店内広く大人数に最適。「肉きんうどん」（馬肉＋きんぴらごぼう）が絶品。セルフ漬物あり、限定「まぜごはん」も人気。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市新屋・国道138号沿い</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市新屋・国道138号沿い</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=ふもとや+うどん+富士吉田" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Yoshida_udon_by_ucb.jpg/800px-Yoshida_udon_by_ucb.jpg" alt="吉田うどん" loading="lazy"></div>
       <div class="card-top"><div class="card-name">彩花（さいか）</div><div class="card-badges"><span class="card-badge">吉田うどん</span></div></div>
       <div class="card-body">河口湖エリアの住宅街にある穴場。他店と一線を画す貝出汁のまろやかスープ。富士吉田中心部の混雑を避けられる。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士河口湖町船津</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00頃</span><span class="meta-chip"><span class="icon">🅿️</span>約10台</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士河口湖町船津</span><span class="meta-chip"><span class="icon">🕐</span>11:00〜14:00頃</span><span class="meta-chip"><span class="icon">🅿️</span>約10台</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=彩花+うどん+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/H%C5%8Dt%C5%8D.jpg/800px-H%C5%8Dt%C5%8D.jpg" alt="もみじ亭のほうとう" loading="lazy"></div>
       <div class="card-top"><div class="card-name">もみじ亭</div><div class="card-badges"><span class="card-badge">ほうとう</span></div></div>
       <div class="card-body">河口湖北岸。2年間熟成の自家製味噌ほうとうが絶品。19時まで営業で夕方の訪問にも対応可能。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖北岸</span><span class="meta-chip"><span class="icon">🕐</span>〜19:00</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖北岸</span><span class="meta-chip"><span class="icon">🕐</span>〜19:00</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=もみじ亭+ほうとう+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">ふじやまビール ハーベステラス</div><div class="card-badges"><span class="card-badge">地ビール</span></div></div>
       <div class="card-body">道の駅富士吉田内。富士山の天然伏流水で醸造した自家製地ビール3種。120席の広々空間。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>300ml 580円〜</span><span class="meta-chip"><span class="icon">🕐</span>土曜 11:00〜17:30</span><span class="meta-chip"><span class="icon">⚠️</span>貸切休業あり・要確認</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>300ml 580円〜</span><span class="meta-chip"><span class="icon">🕐</span>土曜 11:00〜17:30</span><span class="meta-chip"><span class="icon">⚠️</span>貸切休業あり・要確認</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=ふじやまビール+ハーベステラス" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">大西肉店</div><div class="card-badges"><span class="card-badge">馬刺し・コロッケ</span></div></div>
       <div class="card-body">冷凍していない鮮度抜群の馬刺しをイートイン可能。注文後揚げたてのコロッケも絶品。3/28は第4土曜なので営業。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜17:00</span><span class="meta-chip"><span class="icon">🚫</span>第2土曜休み</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>富士吉田市</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜17:00</span><span class="meta-chip"><span class="icon">🚫</span>第2土曜休み</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=大西肉店+富士吉田" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
   <div class="tip-box">💡 吉田うどん店の大半は現金のみ。温泉の券売機も現金が多いので、事前に準備を。</div>
@@ -269,14 +292,16 @@
   <div class="sub-label teiban">👑 定番・王道</div>
   <div class="cards">
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Tsurunoyu_onsen_rotenburo.JPG/800px-Tsurunoyu_onsen_rotenburo.JPG" alt="露天風呂イメージ" loading="lazy"></div>
       <div class="card-top"><div class="card-name">富士眺望の湯 ゆらり</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">富士山ビュー No.1</span></div></div>
       <div class="card-body">河口湖エリアで最も有名な日帰り温泉。「霊峰露天風呂」から裾野まで大パノラマ。全16種の風呂（洞窟風呂・炭酸泉・サウナ等）。SL列車が料理を運ぶ個室「お狩場」は5人旅にぴったり。定番ゆえの満足度は折り紙付き。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>土日祝 1,700円（タオル付）</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜22:00</span><span class="meta-chip"><span class="icon">🅿️</span>130台 無料</span><span class="meta-chip"><span class="icon">⚠️</span>土曜夕方は混雑</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>土日祝 1,700円（タオル付）</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜22:00</span><span class="meta-chip"><span class="icon">🅿️</span>130台 無料</span><span class="meta-chip"><span class="icon">⚠️</span>土曜夕方は混雑</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=富士眺望の湯+ゆらり" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Tsurunoyu_onsen_rotenburo.JPG/800px-Tsurunoyu_onsen_rotenburo.JPG" alt="露天風呂イメージ" loading="lazy"></div>
       <div class="card-top"><div class="card-name">山中湖温泉 紅富士の湯</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">コスパ◎</span></div></div>
       <div class="card-body">露天風呂から富士山を間近に一望。内湯も富士山側が一面ガラス張り。pH10.3の高アルカリ性は国内有数。ゆるキャン△聖地としても人気。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 11:00〜20:00</span><span class="meta-chip"><span class="icon">🚫</span>月火定休</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 11:00〜20:00</span><span class="meta-chip"><span class="icon">🚫</span>月火定休</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=山中湖温泉+紅富士の湯" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
 
@@ -285,17 +310,17 @@
     <div class="card">
       <div class="card-top"><div class="card-name">石割の湯</div><div class="card-badges"><span class="card-badge">穴場・個室あり</span></div></div>
       <div class="card-body">林野庁表彰の栗材・檜の木造ドーム建築。pH10.2の高アルカリ性で肌すべすべ。個室利用（3時間3,000円）で5人でゆっくり。紅富士の湯と同等の泉質をより空いた環境で。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 11:00〜20:00</span><span class="meta-chip"><span class="icon">🚫</span>木曜定休</span><span class="meta-chip"><span class="icon">🅿️</span>150台 無料</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 11:00〜20:00</span><span class="meta-chip"><span class="icon">🚫</span>木曜定休</span><span class="meta-chip"><span class="icon">🅿️</span>150台 無料</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=石割の湯" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">葭之池温泉（よしのいけおんせん）</div><div class="card-badges"><span class="card-badge">歴史 ★★★</span></div></div>
       <div class="card-body">安政3年（1856年）創業、170年の歴史。富士五湖地域最古の温泉。レトロな木造建築でタイムスリップ体験。吉田うどんも食べられる。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>600円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00 / 18:00〜21:00</span><span class="meta-chip"><span class="icon">⚠️</span>浴室小さめ・5人だとやや窮屈</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>600円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00 / 18:00〜21:00</span><span class="meta-chip"><span class="icon">⚠️</span>浴室小さめ・5人だとやや窮屈</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=葭之池温泉" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">富士山溶岩の湯 泉水</div><div class="card-badges"><span class="card-badge">夜遅くOK</span></div></div>
       <div class="card-body">河口湖ICから数分。露天風呂から富士山が見え、マイクロバブル風呂が人気。土日祝は23時まで営業で「最後の砦」。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 〜23:00</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>900円</span><span class="meta-chip"><span class="icon">🕐</span>土日祝 〜23:00</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=富士山溶岩の湯+泉水" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
   <div class="tip-box">💡 道の駅なるさわで「ゆらり」の100円割引券がもらえるので先に立ち寄ること。</div>
@@ -308,24 +333,27 @@
   <p class="section-desc">3/28はさくら祭り初日＋ほうとう祭り同日開催。桜は咲き始めの見込み。</p>
   <div class="cards">
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG/800px-Lake_Kawaguchiko_Sakura_Mount_Fuji_3.JPG" alt="河口湖の桜と富士山" loading="lazy"></div>
       <div class="card-top"><div class="card-name">富士・河口湖さくら祭り（初日）</div><div class="card-badges"><span class="card-badge">3/28 開幕</span></div></div>
       <div class="card-body">河口湖北岸のソメイヨシノ約200本。クラフト市＋飲食ブース（10:00〜17:00）、夜桜ライトアップ（日没〜21:00）。桜はつぼみ〜咲き始めだが初日の活気あり。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖北岸</span><span class="meta-chip"><span class="icon">🌸</span>つぼみ〜咲き始め</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>河口湖北岸</span><span class="meta-chip"><span class="icon">🌸</span>つぼみ〜咲き始め</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=河口湖北岸+さくら祭り" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/H%C5%8Dt%C5%8D.jpg/800px-H%C5%8Dt%C5%8D.jpg" alt="ほうとう" loading="lazy"></div>
       <div class="card-top"><div class="card-name">第4回 ほうとう祭り</div><div class="card-badges"><span class="card-badge">この日限定！</span></div></div>
       <div class="card-body">八木崎公園（河口湖南岸）で1日限定開催。山梨名物ほうとうの食べ比べ。昼食をここに切り替えるのもアリ。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>八木崎公園</span><span class="meta-chip"><span class="icon">📅</span>3/28のみ</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📍</span>八木崎公園</span><span class="meta-chip"><span class="icon">📅</span>3/28のみ</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=八木崎公園+河口湖" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Chureito_Pagoda_and_Mount_Fuji_(44951842365).jpg/800px-Chureito_Pagoda_and_Mount_Fuji_(44951842365).jpg" alt="新倉山浅間公園の忠霊塔" loading="lazy"></div>
       <div class="card-top"><div class="card-name">新倉山浅間公園 桜まつり</div><div class="card-badges"><span class="card-badge badge-classic">⚠️ 2026年は中止</span></div></div>
       <div class="card-body">オーバーツーリズム対策で2026年の桜まつりは開催中止。公園自体は訪問可能だが混雑が予想される。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">⚠️</span>まつりは中止・公園は入場可</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">⚠️</span>まつりは中止・公園は入場可</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=新倉山浅間公園" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
       <div class="card-top"><div class="card-name">富士芝桜まつり</div><div class="card-badges"><span class="card-badge badge-classic">未開催</span></div></div>
       <div class="card-body">2026年は4月11日開幕予定。3/28は未開催。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">📅</span>4/11〜開催</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">📅</span>4/11〜開催</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=富士芝桜まつり" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
 </div>
@@ -339,29 +367,32 @@
   <div class="sub-label teiban">👑 定番・王道</div>
   <div class="cards">
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ice_Block_in_Fugaku_wind_cave.jpg/800px-Ice_Block_in_Fugaku_wind_cave.jpg" alt="溶岩洞窟内の氷柱" loading="lazy"></div>
       <div class="card-top"><div class="card-name">鳴沢氷穴</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">溶岩洞窟</span></div></div>
       <div class="card-body">天然記念物の竪穴型溶岩洞窟。地下21mまで降りる冒険感が男グループにぴったり。3月下旬は最大3mの氷柱がライトアップされる見頃。富岳風穴と車で3分のセット訪問が王道。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人350円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🌡️</span>洞内 0〜3℃</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人350円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🌡️</span>洞内 0〜3℃</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=鳴沢氷穴" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ice_Block_in_Fugaku_wind_cave.jpg/800px-Ice_Block_in_Fugaku_wind_cave.jpg" alt="富岳風穴内の氷" loading="lazy"></div>
       <div class="card-top"><div class="card-name">富岳風穴</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">溶岩洞窟</span></div></div>
       <div class="card-body">鳴沢氷穴より平坦で歩きやすい横穴型。天然の冷蔵庫として使われてきた歴史あり。2洞窟セットで約1時間。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人350円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🚗</span>鳴沢氷穴から車3分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人350円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🚗</span>鳴沢氷穴から車3分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=富岳風穴" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
+      <div class="card-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Kitaguchi_Hongu_Fuji_Sengen_Shrine_Oratory_Internal.JPG/800px-Kitaguchi_Hongu_Fuji_Sengen_Shrine_Oratory_Internal.JPG" alt="北口本宮冨士浅間神社の本殿" loading="lazy"></div>
       <div class="card-top"><div class="card-name">北口本宮冨士浅間神社</div><div class="card-badges"><span class="card-badge badge-classic">定番</span><span class="card-badge badge-classic">世界遺産</span></div></div>
       <div class="card-body">創建1900年、富士山信仰の中心地。高さ18mの木造大鳥居、樹齢約1000年の「冨士太郎杉」、天狗と烏天狗の彫刻が圧巻の本殿（重文）。参道の巨木群が荘厳。何度来ても見応えがある。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>約160台 無料</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🅿️</span>約160台 無料</span><span class="meta-chip"><span class="icon">⏱️</span>40〜60分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=北口本宮冨士浅間神社" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
       <div class="card-top"><div class="card-name">河口湖音楽と森の美術館</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">ヨーロッパの街並みを再現した庭園に、世界最大級のダンスオルガンや自動演奏楽器が並ぶ。富士山をバックにした庭園は写真映え抜群。オルゴールコンサートも定期開催。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人1,800円</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜17:00</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>60〜90分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>大人1,800円</span><span class="meta-chip"><span class="icon">🕐</span>10:00〜17:00</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>60〜90分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=河口湖音楽と森の美術館" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card classic">
       <div class="card-top"><div class="card-name">富士山世界遺産センター</div><div class="card-badges"><span class="card-badge badge-classic">定番</span></div></div>
       <div class="card-body">富士山の自然・歴史・文化を映像やジオラマで体感。南館は無料エリアでも見ごたえあり。北館の和紙でできた逆さ富士のオブジェが印象的。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>南館 無料 / 北館 420円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>30〜60分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>南館 無料 / 北館 420円</span><span class="meta-chip"><span class="icon">🕐</span>9:00〜17:00</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>30〜60分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=富士山世界遺産センター" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
 
@@ -370,17 +401,17 @@
     <div class="card">
       <div class="card-top"><div class="card-name">新屋山神社（本宮）</div><div class="card-badges"><span class="card-badge">金運パワスポ</span></div></div>
       <div class="card-body">日本三大金運神社の一つ。「お伺い石」を3回持ち上げ、2回目が最も軽く感じたら願いが叶うという体験型スポット。起業家・投資家に人気。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🕐</span>お札所 9:00〜16:00</span><span class="meta-chip"><span class="icon">🚗</span>浅間神社から車10分</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">🕐</span>お札所 9:00〜16:00</span><span class="meta-chip"><span class="icon">🚗</span>浅間神社から車10分</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=新屋山神社" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">鐘山の滝</div><div class="card-badges"><span class="card-badge">穴場度 ★★★</span></div></div>
       <div class="card-body">落差約10mの2条の滝。武田信玄が鐘を落としたという伝説。ふじさんミュージアム裏手で15〜20分のちょい寄りに最適。22時までライトアップ。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>15〜20分</span><span class="meta-chip"><span class="icon">💡</span>22時までライトアップ</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>無料</span><span class="meta-chip"><span class="icon">⏱️</span>15〜20分</span><span class="meta-chip"><span class="icon">💡</span>22時までライトアップ</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=鐘山の滝+富士吉田" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
     <div class="card">
       <div class="card-top"><div class="card-name">道の駅なるさわ</div><div class="card-badges"><span class="card-badge">休憩・買物</span></div></div>
       <div class="card-body">富士山を正面に望む。無料の「なるさわ富士山博物館」、名物「ビスケットの天ぷら」（5枚100円）、富士山の湧水を無料で汲める。ゆらり温泉隣接。</div>
-      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>入場無料</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🎫</span>ゆらり100円割引券あり</span></div>
+      <div class="card-meta"><span class="meta-chip"><span class="icon">💰</span>入場無料</span><span class="meta-chip"><span class="icon">🅿️</span>無料</span><span class="meta-chip"><span class="icon">🎫</span>ゆらり100円割引券あり</span><a class="meta-chip map-link" href="https://www.google.com/maps/search/?api=1&query=道の駅なるさわ" target="_blank" rel="noopener"><span class="icon">🗺️</span>Google Map</a></div>
     </div>
   </div>
   <div class="tip-box">💡 西湖コウモリ穴は12〜3月は入洞不可の可能性あり。事前に要確認。</div>
