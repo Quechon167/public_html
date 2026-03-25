@@ -152,10 +152,34 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
   line-height: 1.4;
 }
 .tl-title i { margin-right: 4px; }
-.tl-duration { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-.tl-info { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
-.tl-info span { display: inline-block; margin-right: 12px; white-space: nowrap; }
-.tl-info i { width: 14px; text-align: center; margin-right: 2px; }
+.tl-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: #f9f8f6;
+  border-radius: 6px;
+}
+.tl-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+.tl-meta i {
+  font-size: 11px;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+  color: #aaa;
+}
+.tl-meta .tl-meta-full {
+  grid-column: 1 / -1;
+}
 
 .tl-img {
   width: 100%;
@@ -329,7 +353,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-title">大井町IC ピックアップ</div>
         <div class="tl-label">合流</div>
       </div>
-      <div class="tl-info"><span><i class="fa-solid fa-user-group"></i> 勇太・龍次</span></div>
+      <div class="tl-meta"><span><i class="fa-solid fa-user-group"></i>勇太・龍次</span></div>
     </div>
   </div>
 
@@ -342,7 +366,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-title">稲城IC ピックアップ</div>
         <div class="tl-label">合流</div>
       </div>
-      <div class="tl-info"><span><i class="fa-solid fa-user-group"></i> 翔伍・優輔</span></div>
+      <div class="tl-meta"><span><i class="fa-solid fa-user-group"></i>翔伍・優輔</span></div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-road"></i>ルート</div>
         稲城IC → 中央道 → 河口湖IC（約1.5〜2h）<br>
@@ -361,13 +385,13 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-label">昼食</div>
       </div>
       <img class="tl-img" src="https://image.co-trip.jp/content/14renewal_images_l/607343/main_image_20230306120428276.JPG" alt="ほうとう">
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約60分</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 船津6931</span>
-        <span><i class="fa-regular fa-clock"></i> 11:00〜21:00</span><br>
-        <span><i class="fa-solid fa-square-parking"></i> 130台 無料</span>
-        <span><i class="fa-solid fa-chair"></i> 200席</span>
-        <span><i class="fa-solid fa-coins"></i> 1,200円〜</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>船津6931</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約60分</span>
+        <span><i class="fa-regular fa-clock"></i>11:00〜21:00</span>
+        <span><i class="fa-solid fa-coins"></i>1,200円〜</span>
+        <span><i class="fa-solid fa-square-parking"></i>130台 無料</span>
+        <span><i class="fa-solid fa-chair"></i>200席</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-trophy"></i>おすすめ</div>
@@ -389,12 +413,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-label">絶景</div>
       </div>
       <img class="tl-img" src="https://static.gltjp.com/glt/data/directory/13000/12120/20210902_004551_0086c452_w1920.webp" alt="カチカチ山ロープウェイと河口湖">
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約50〜60分（並び時間含む）</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 浅川1163-1</span>
-        <span><i class="fa-regular fa-clock"></i> 8:30〜17:00</span><br>
-        <span><i class="fa-solid fa-coins"></i> 往復 大人1,000円</span>
-        <span><i class="fa-solid fa-square-parking"></i> 有料（県営駐車場 300円）</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>浅川1163-1</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約50〜60分</span>
+        <span><i class="fa-regular fa-clock"></i>8:30〜17:00</span>
+        <span><i class="fa-solid fa-coins"></i>往復 1,000円</span>
+        <span><i class="fa-solid fa-square-parking"></i>県営駐車場 300円</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-bullseye"></i>楽しみ方</div>
@@ -416,11 +440,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-label">絶景</div>
       </div>
       <img class="tl-img" src="https://tw.wamazing.com/media/wp-content/uploads/sites/4/2025/03/ooishipark_pixta_90606576_M.jpg.webp" alt="大石公園から見た河口湖と富士山">
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約25〜30分</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 河口湖北岸・大石</span>
-        <span><i class="fa-solid fa-coins"></i> 無料</span>
-        <span><i class="fa-solid fa-square-parking"></i> 無料 約50台</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>河口湖北岸・大石</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約25〜30分</span>
+        <span><i class="fa-solid fa-coins"></i>無料</span>
+        <span><i class="fa-solid fa-square-parking"></i>無料 約50台</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-camera-retro"></i>楽しみ方</div>
@@ -442,12 +466,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-label">探検</div>
       </div>
       <img class="tl-img" src="https://satoyama-travel.jp/mediagallery/mediaobjects/orig/e/e35__.jpg" alt="溶岩洞窟内の氷柱">
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約30〜40分</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 鳴沢村8533</span>
-        <span><i class="fa-regular fa-clock"></i> 9:00〜17:00</span><br>
-        <span><i class="fa-solid fa-coins"></i> 大人350円</span>
-        <span><i class="fa-solid fa-temperature-low"></i> 洞内 0〜3℃</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>鳴沢村8533</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約30〜40分</span>
+        <span><i class="fa-regular fa-clock"></i>9:00〜17:00</span>
+        <span><i class="fa-solid fa-coins"></i>350円</span>
+        <span class="tl-meta-full"><i class="fa-solid fa-temperature-low"></i>洞内 0〜3℃</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-triangle-exclamation"></i>攻略ポイント</div>
@@ -469,12 +493,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-label">温泉</div>
       </div>
       <img class="tl-img" src="https://www.fuji-yurari.jp/yrrAdm/wp-content/uploads/2017/09/c7ec12a4fe0acbb985befa0e6be896f1-900x506.jpg.webp" alt="露天風呂イメージ">
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約90分</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 鳴沢村8532-5</span>
-        <span><i class="fa-regular fa-clock"></i> 10:00〜22:00</span><br>
-        <span><i class="fa-solid fa-coins"></i> 土日祝 1,700円（タオル付）</span>
-        <span><i class="fa-solid fa-square-parking"></i> 130台 無料</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>鳴沢村8532-5</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約90分</span>
+        <span><i class="fa-regular fa-clock"></i>10:00〜22:00</span>
+        <span><i class="fa-solid fa-coins"></i>1,700円（タオル付）</span>
+        <span><i class="fa-solid fa-square-parking"></i>130台 無料</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-spa"></i>おすすめの過ごし方</div>
@@ -512,9 +536,9 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-title"><i class="fa-solid fa-utensils"></i>談合坂SA（上り）で夕食</div>
         <div class="tl-label">夕食</div>
       </div>
-      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約30〜40分</div>
-      <div class="tl-info">
-        <span><i class="fa-solid fa-location-dot"></i> 中央道 談合坂SA（上り）</span>
+      <div class="tl-meta">
+        <span><i class="fa-solid fa-location-dot"></i>中央道 談合坂SA（上り）</span>
+        <span><i class="fa-solid fa-stopwatch"></i>約30〜40分</span>
       </div>
       <div class="tl-tip">
         <div class="tl-tip-title"><i class="fa-solid fa-bowl-food"></i>フードコート</div>
@@ -533,7 +557,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', s
         <div class="tl-title"><i class="fa-solid fa-house"></i>東京帰着（目安）</div>
         <div class="tl-label">到着</div>
       </div>
-      <div class="tl-info"><span>渋滞状況により前後します</span></div>
+      <div class="tl-meta"><span>渋滞状況により前後します</span></div>
     </div>
   </div>
 
