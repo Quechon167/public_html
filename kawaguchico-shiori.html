@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>河口湖ドライブ 旅のしおり 3/28</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg: #f6f3ee;
+  --white: #ffffff;
+  --text: #2c2c2c;
+  --muted: #777;
+  --blue: #3d7ec7;
+  --orange: #d97b2a;
+  --green: #4a8c5c;
+  --pink: #c75a7a;
+  --teal: #2a8f8f;
+  --border: #e0dcd6;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-weight: 400; line-height: 1.7; max-width: 520px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Header ── */
+.header {
+  background: var(--white);
+  text-align: center;
+  padding: 40px 20px 28px;
+  border-bottom: 3px double var(--border);
+}
+.header-date { font-size: 12px; color: var(--muted); letter-spacing: 2px; margin-bottom: 4px; }
+.header h1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.header h1 i { margin-right: 6px; color: var(--blue); }
+.header-sub { font-size: 13px; color: var(--muted); }
+
+/* ── Members ── */
+.members {
+  background: var(--white);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.member-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 700;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+.member-name { font-size: 11px; font-weight: 500; }
+.member-name i { margin-left: 2px; font-size: 9px; color: var(--muted); }
+.m1 .member-icon { background: var(--blue); }
+.m2 .member-icon { background: var(--orange); }
+.m3 .member-icon { background: var(--green); }
+.m4 .member-icon { background: var(--teal); }
+.m5 .member-icon { background: var(--pink); }
+
+/* ── Timeline ── */
+.timeline { padding: 24px 16px 0; }
+.tl-item {
+  position: relative;
+  padding-left: 66px;
+  padding-bottom: 28px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 28px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item:last-child::before { display: none; }
+
+.tl-time {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 38px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.tl-dot {
+  position: absolute;
+  left: 45px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2.5px solid;
+  background: var(--bg);
+  z-index: 1;
+}
+.tl-drive .tl-dot { border-color: var(--muted); }
+.tl-eat .tl-dot { border-color: var(--orange); background: var(--orange); }
+.tl-view .tl-dot { border-color: var(--blue); background: var(--blue); }
+.tl-explore .tl-dot { border-color: var(--green); background: var(--green); }
+.tl-onsen .tl-dot { border-color: var(--pink); background: var(--pink); }
+.tl-tbd .tl-dot { border-color: var(--muted); border-style: dashed; }
+
+.tl-card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+.tl-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.tl-label { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; color: #fff; white-space: nowrap; flex-shrink: 0; }
+.tl-drive .tl-label { background: #999; }
+.tl-eat .tl-label { background: var(--orange); }
+.tl-view .tl-label { background: var(--blue); }
+.tl-explore .tl-label { background: var(--green); }
+.tl-onsen .tl-label { background: var(--pink); }
+.tl-tbd .tl-label { background: #bbb; }
+
+.tl-title {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.tl-title i { margin-right: 4px; }
+.tl-duration { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.tl-info { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+.tl-info span { display: inline-block; margin-right: 12px; white-space: nowrap; }
+.tl-info i { width: 14px; text-align: center; margin-right: 2px; }
+
+.tl-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 8px 0 10px;
+}
+
+.tl-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--blue);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background 0.15s;
+}
+.tl-map-link:hover { background: rgba(61,126,199,0.08); }
+
+.tl-tip {
+  background: #faf7f2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text);
+  border-left: 3px solid;
+}
+.tl-eat .tl-tip { border-color: var(--orange); }
+.tl-view .tl-tip { border-color: var(--blue); }
+.tl-explore .tl-tip { border-color: var(--green); }
+.tl-onsen .tl-tip { border-color: var(--pink); }
+.tl-drive .tl-tip { border-color: #ccc; }
+
+.tl-tip-title {
+  font-weight: 700;
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+.tl-tip-title i { margin-right: 4px; }
+
+/* ── Checklist ── */
+.checklist {
+  margin: 28px 16px 0;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+}
+.checklist h3 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.checklist h3 i { margin-right: 6px; }
+.checklist ul { list-style: none; }
+.checklist li {
+  font-size: 13px;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.checklist li:last-child { border-bottom: none; }
+.check-box {
+  width: 16px; height: 16px;
+  border: 2px solid var(--border);
+  border-radius: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.check-box.checked { background: var(--green); border-color: var(--green); }
+.check-box.checked::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: #fff; font-size: 9px; }
+
+/* ── Warikan ── */
+.warikan {
+  margin: 28px 16px 0;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 20px 16px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+.warikan h3 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.warikan h3 i { margin-right: 6px; color: var(--teal); }
+.warikan p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.warikan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: opacity 0.15s;
+  width: 100%;
+}
+.warikan-btn:hover { opacity: 0.85; }
+
+.footer {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 0 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-date">2026.03.28 SAT</div>
+  <h1><i class="fa-solid fa-mountain-sun"></i>河口湖ドライブ</h1>
+  <div class="header-sub">旅のしおり</div>
+</div>
+
+<div class="members">
+  <div class="member m1"><div class="member-icon">祐樹</div></div>
+  <div class="member m2"><div class="member-icon">翔伍</div></div>
+  <div class="member m3"><div class="member-icon">勇太</div></div>
+  <div class="member m4"><div class="member-icon">優輔</div></div>
+  <div class="member m5"><div class="member-icon">龍次</div></div>
+</div>
+
+<div class="timeline">
+
+  <!-- 出発 -->
+  <div class="tl-item tl-drive">
+    <div class="tl-time">9:30</div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title">祐樹 出発</div>
+        <div class="tl-label">移動</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 大井町IC -->
+  <div class="tl-item tl-drive">
+    <div class="tl-time">9:50<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title">大井町IC ピックアップ</div>
+        <div class="tl-label">合流</div>
+      </div>
+      <div class="tl-info"><span><i class="fa-solid fa-user-group"></i> 勇太・龍次</span></div>
+    </div>
+  </div>
+
+  <!-- 稲城IC -->
+  <div class="tl-item tl-drive">
+    <div class="tl-time">10:15<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title">稲城IC ピックアップ</div>
+        <div class="tl-label">合流</div>
+      </div>
+      <div class="tl-info"><span><i class="fa-solid fa-user-group"></i> 翔伍・優輔</span></div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-road"></i>ルート</div>
+        稲城IC → 中央道 → 河口湖IC（約1.5〜2h）<br>
+        土曜午前の下り方面は比較的スムーズ。大月JCT先の談合坂〜笹子トンネルで流れが悪くなることがある程度。
+      </div>
+    </div>
+  </div>
+
+  <!-- ほうとう蔵歩成 -->
+  <div class="tl-item tl-eat">
+    <div class="tl-time">12:00<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-utensils"></i>ほうとう蔵 歩成 河口湖店</div>
+        <div class="tl-label">昼食</div>
+      </div>
+      <img class="tl-img" src="https://image.co-trip.jp/content/14renewal_images_l/607343/main_image_20230306120428276.JPG" alt="ほうとう">
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約60分</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 船津6931</span>
+        <span><i class="fa-regular fa-clock"></i> 11:00〜21:00</span><br>
+        <span><i class="fa-solid fa-square-parking"></i> 130台 無料</span>
+        <span><i class="fa-solid fa-chair"></i> 200席</span>
+        <span><i class="fa-solid fa-coins"></i> 1,200円〜</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-trophy"></i>おすすめ</div>
+        ほうとう味比べ大会3連覇・殿堂入りの名店。看板メニュー「<b>黄金ほうとう</b>」（豚肉 or 鶏肉、各1,200円）はかぼちゃペーストを味噌に練り込んだ甘みのある特製味噌が絶品。<br>
+        余裕があれば「<b>鳥もつ煮</b>」（500円）もぜひ。甲府B級グルメの王道で、ビールとの相性が抜群（運転手以外）。<br>
+        奥の席はガラス張りで富士山が見えるので空いてたら狙いたい。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=ほうとう蔵+歩成+河口湖店" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- ロープウェイ -->
+  <div class="tl-item tl-view">
+    <div class="tl-time">13:15<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-cable-car"></i>富士山パノラマロープウェイ</div>
+        <div class="tl-label">絶景</div>
+      </div>
+      <img class="tl-img" src="https://static.gltjp.com/glt/data/directory/13000/12120/20210902_004551_0086c452_w1920.webp" alt="カチカチ山ロープウェイと河口湖">
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約50〜60分（並び時間含む）</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 浅川1163-1</span>
+        <span><i class="fa-regular fa-clock"></i> 8:30〜17:00</span><br>
+        <span><i class="fa-solid fa-coins"></i> 往復 大人1,000円</span>
+        <span><i class="fa-solid fa-square-parking"></i> 有料（県営駐車場 300円）</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-bullseye"></i>楽しみ方</div>
+        山頂（標高1,075m）まで約3分の空中散歩。<br>
+        「<b>カチカチ山絶景ブランコ</b>」は富士山に向かって漕ぎ出す爽快感がヤバい。「<b>天上の鐘</b>」も定番フォトスポット。たぬき茶屋の「<b>たぬき団子</b>」が地味にうまい。<br>
+        土曜は下りのロープウェイが混むので、山頂を満喫したら早めに並ぶのが吉。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=カチカチ山ロープウェイ" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- 大石公園 -->
+  <div class="tl-item tl-view">
+    <div class="tl-time">14:15<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-camera"></i>大石公園</div>
+        <div class="tl-label">絶景</div>
+      </div>
+      <img class="tl-img" src="https://tw.wamazing.com/media/wp-content/uploads/sites/4/2025/03/ooishipark_pixta_90606576_M.jpg.webp" alt="大石公園から見た河口湖と富士山">
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約25〜30分</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 河口湖北岸・大石</span>
+        <span><i class="fa-solid fa-coins"></i> 無料</span>
+        <span><i class="fa-solid fa-square-parking"></i> 無料 約50台</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-camera-retro"></i>楽しみ方</div>
+        河口湖越しの富士山を正面に望む王道ビュー。3月下旬は花がまだ少ないけど、冠雪した富士山は逆にこの時期が一番きれい。<br>
+        湖畔沿いの遊歩道を歩くと順光で写真映え◎。併設の「<b>河口湖自然生活館</b>」でブルーベリーソフトが買える。<br>
+        午後は雲が出やすいのでここまでが富士山撮影の勝負どころ。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=大石公園+河口湖" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- 鳴沢氷穴 -->
+  <div class="tl-item tl-explore">
+    <div class="tl-time">15:00<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-dungeon"></i>鳴沢氷穴</div>
+        <div class="tl-label">探検</div>
+      </div>
+      <img class="tl-img" src="https://satoyama-travel.jp/mediagallery/mediaobjects/orig/e/e35__.jpg" alt="溶岩洞窟内の氷柱">
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約30〜40分</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 鳴沢村8533</span>
+        <span><i class="fa-regular fa-clock"></i> 9:00〜17:00</span><br>
+        <span><i class="fa-solid fa-coins"></i> 大人350円</span>
+        <span><i class="fa-solid fa-temperature-low"></i> 洞内 0〜3℃</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-triangle-exclamation"></i>攻略ポイント</div>
+        地下21mまで降りる竪穴型の溶岩洞窟。3月下旬は<b>最大3mの氷柱</b>がライトアップされていて見頃。<br>
+        途中かなり狭い＆天井が低い箇所があるので頭に注意。洞内は0℃なので上着を車から持っていくこと。滑りやすいのでスニーカー推奨。<br>
+        所要15〜20分だが、入場待ちが出ることがあるので余裕を見ておく。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=鳴沢氷穴" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- ゆらり -->
+  <div class="tl-item tl-onsen">
+    <div class="tl-time">16:00<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-hot-tub-person"></i>富士眺望の湯 ゆらり</div>
+        <div class="tl-label">温泉</div>
+      </div>
+      <img class="tl-img" src="https://www.fuji-yurari.jp/yrrAdm/wp-content/uploads/2017/09/c7ec12a4fe0acbb985befa0e6be896f1-900x506.jpg.webp" alt="露天風呂イメージ">
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約90分</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 鳴沢村8532-5</span>
+        <span><i class="fa-regular fa-clock"></i> 10:00〜22:00</span><br>
+        <span><i class="fa-solid fa-coins"></i> 土日祝 1,700円（タオル付）</span>
+        <span><i class="fa-solid fa-square-parking"></i> 130台 無料</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-spa"></i>おすすめの過ごし方</div>
+        まず2Fの「<b>霊峰露天風呂</b>」へ直行。富士山を裾野まで一望できる最高のロケーション。<br>
+        全16種の風呂があるけど「<b>洞窟風呂</b>」と「<b>炭酸泉</b>」は外せない。風呂上がりは休憩スペースで瓶牛乳をキメるのが正解。<br>
+        隣接の道の駅なるさわで<b>100円割引券</b>が手に入るので、先に立ち寄れたらベスト（時間がなければ気にしなくてOK）。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=富士眺望の湯+ゆらり" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- 出発 -->
+  <div class="tl-item tl-drive">
+    <div class="tl-time">17:30<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-car-side"></i>河口湖エリア出発</div>
+        <div class="tl-label">移動</div>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-road"></i>帰りの渋滞情報</div>
+        土曜夕方の上り中央道は小仏トンネル付近で渋滞が発生しやすい。18時台出発だと30〜60分の渋滞にはまる可能性あり。早めに出ると楽。<br>
+        大月IC〜河口湖IC間の道志みちルート（国道413号→相模原方面）は渋滞回避の裏技だけど、夜は暗いので要相談。
+      </div>
+    </div>
+  </div>
+
+  <!-- 夕食 -->
+  <div class="tl-item tl-eat">
+    <div class="tl-time">18:30<br><span style="font-size:10px;font-weight:400">頃</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-utensils"></i>談合坂SA（上り）で夕食</div>
+        <div class="tl-label">夕食</div>
+      </div>
+      <div class="tl-duration"><i class="fa-solid fa-stopwatch"></i> 約30〜40分</div>
+      <div class="tl-info">
+        <span><i class="fa-solid fa-location-dot"></i> 中央道 談合坂SA（上り）</span>
+      </div>
+      <div class="tl-tip">
+        <div class="tl-tip-title"><i class="fa-solid fa-bowl-food"></i>フードコート</div>
+        吉田うどん・甲州名物など充実のラインナップ。帰り道の休憩がてらサクッと食べましょう。
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=談合坂SA+上り" class="tl-map-link" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot"></i> Google Mapで見る</a>
+    </div>
+  </div>
+
+  <!-- 帰着 -->
+  <div class="tl-item tl-drive">
+    <div class="tl-time">20:30<br><span style="font-size:10px;font-weight:400">〜21:00</span></div>
+    <div class="tl-dot"></div>
+    <div class="tl-card">
+      <div class="tl-card-head">
+        <div class="tl-title"><i class="fa-solid fa-house"></i>東京帰着（目安）</div>
+        <div class="tl-label">到着</div>
+      </div>
+      <div class="tl-info"><span>渋滞状況により前後します</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 持ち物チェックリスト -->
+<div class="checklist">
+  <h3><i class="fa-solid fa-clipboard-check" style="color:var(--green)"></i>持ち物チェックリスト</h3>
+  <ul>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>上着（日中7〜12℃ / 氷穴内0℃）</li>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>滑りにくいスニーカー</li>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>現金（温泉の券売機は現金のみ）</li>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>花粉対策（マスク・目薬）</li>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>折りたたみ傘（念のため）</li>
+    <li><div class="check-box" onclick="this.classList.toggle('checked')"></div>モバイルバッテリー</li>
+  </ul>
+</div>
+
+
+<!-- 割り勘 -->
+<div class="warikan">
+  <h3><i class="fa-solid fa-calculator"></i>割り勘メモ</h3>
+  <p>高速代・駐車場・食事など、立て替えたらここに記録！<br>最後にまとめて精算しましょう。</p>
+  <a href="https://walica.jp/group/01KMJDQY4HXA62N0AYQ11SBPGC" class="warikan-btn" target="_blank" rel="noopener"><i class="fa-solid fa-receipt"></i> Walicaで割り勘を記録する</a>
+</div>
+
+
+</body>
+</html>
