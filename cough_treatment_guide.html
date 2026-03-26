@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咳がなかなか治らない — 今の状況と、これからやること</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF9F6;
+    --bg-warm: #F5F0E8;
+    --bg-card: #FFFFFF;
+    --text: #2C2926;
+    --text-sub: #6B6560;
+    --text-hint: #9E9892;
+    --accent: #2B7A5F;
+    --accent-light: #E8F5EE;
+    --accent-dark: #1B5A43;
+    --orange: #D97706;
+    --orange-bg: #FFF8EB;
+    --orange-border: #FDE68A;
+    --red: #BE3B3B;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --blue: #2563EB;
+    --blue-bg: #EFF6FF;
+    --blue-border: #BFDBFE;
+    --border: #E6E2DC;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121110;
+      --bg-warm: #1A1816;
+      --bg-card: #1E1C1A;
+      --text: #E8E4DF;
+      --text-sub: #A8A29E;
+      --text-hint: #78716C;
+      --accent: #6EE7B7;
+      --accent-light: #14261E;
+      --accent-dark: #A7F3D0;
+      --orange: #FBBF24;
+      --orange-bg: #2A2010;
+      --orange-border: #4A3518;
+      --red: #F87171;
+      --red-bg: #2A1515;
+      --red-border: #4A2020;
+      --blue: #93C5FD;
+      --blue-bg: #151E30;
+      --blue-border: #1E3050;
+      --border: #2E2A26;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 680px; margin: 0 auto; padding: 40px 20px 100px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 40px;
+  }
+  .hero-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px; height: 56px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  .hero-icon svg { width: 28px; height: 28px; }
+  .hero h1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .hero p {
+    font-size: 14px;
+    color: var(--text-sub);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Status banner */
+  .status-banner {
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .status-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: var(--accent);
+    border-radius: 3px 0 0 3px;
+  }
+  .status-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .status-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .status-body {
+    font-size: 14px;
+    color: var(--text-sub);
+  }
+
+  /* Section */
+  .section { margin-bottom: 48px; }
+  .section-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .section-body {
+    font-size: 14.5px;
+    color: var(--text-sub);
+    line-height: 2;
+  }
+  .section-body p { margin-bottom: 14px; }
+  .em { color: var(--text); font-weight: 500; }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 20px 0 8px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--border);
+    border-radius: 1px;
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 22px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -29px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2.5px solid var(--accent);
+  }
+  .tl-dot.done { background: var(--accent); }
+  .tl-dot.current {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-light);
+  }
+  .tl-dot.future { border-color: var(--border); }
+  .tl-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-hint);
+    margin-bottom: 2px;
+  }
+  .tl-text {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+  .tl-text .em { color: var(--text); }
+
+  /* Cards */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 12px;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .card-body {
+    font-size: 13.5px;
+    color: var(--text-sub);
+    line-height: 1.85;
+  }
+
+  /* Action cards */
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 520px) {
+    .action-grid { grid-template-columns: 1fr; }
+  }
+  .action-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    transition: border-color 0.2s;
+  }
+  .action-card:hover { border-color: var(--accent); }
+  .action-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.5;
+  }
+  .action-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .action-body {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+
+  /* Alert */
+  .alert {
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .alert-orange { background: var(--orange-bg); border: 1px solid var(--orange-border); }
+  .alert-red { background: var(--red-bg); border: 1px solid var(--red-border); }
+  .alert-blue { background: var(--blue-bg); border: 1px solid var(--blue-border); }
+  .alert-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .alert-orange .alert-title { color: var(--orange); }
+  .alert-red .alert-title { color: var(--red); }
+  .alert-blue .alert-title { color: var(--blue); }
+  .alert-body {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.85;
+  }
+
+  /* Script section */
+  .script-box {
+    background: var(--bg-warm);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    margin: 16px 0;
+  }
+  .script-intro {
+    font-size: 13px;
+    color: var(--text-hint);
+    margin-bottom: 12px;
+  }
+  .script-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .script-item:last-child { margin-bottom: 0; }
+  .script-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .script-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+
+  /* Checklist */
+  .checklist { margin: 16px 0; }
+  .check-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    margin-top: 2px;
+  }
+  .check-text {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+  .check-text .em { color: var(--text); }
+
+  /* Divider */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-hint);
+    line-height: 1.7;
+  }
+
+  /* Subtle fade-in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section, .status-banner, .hero {
+    animation: fadeUp 0.5s ease both;
+  }
+  .section:nth-child(2) { animation-delay: 0.05s; }
+  .section:nth-child(3) { animation-delay: 0.1s; }
+  .section:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+        <path d="M12 8v4l3 3"/>
+      </svg>
+    </div>
+    <h1>薬を使い始めて1週間。<br>咳はまだ残ってるけど、<br>大丈夫？</h1>
+    <p>レルベア200エリプタで治療を始めてからの経過と、これから何をすればいいかをまとめました。</p>
+  </div>
+
+  <!-- Status -->
+  <div class="status-banner">
+    <div class="status-label">Current status</div>
+    <div class="status-title">結論：薬は効いています。まだ途中です。</div>
+    <div class="status-body">
+      息苦しさの改善、夜中に起きなくなったこと、咳の回数と強さが減ったこと — これらはすべて「薬がちゃんと効いている」証拠です。ただ、咳喘息の炎症を完全に抑えるには、通常4〜8週間かかります。1週間目はまだスタートライン付近です。
+    </div>
+  </div>
+
+  <!-- Section 1: 今の状態を理解する -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-title">いま体の中で何が起きているか</div>
+    <div class="section-body">
+      <p>
+        風邪のウイルスが「きっかけ」になって、気管支の中に<span class="em">アレルギー性の炎症</span>が起きています。これが「咳喘息」です。炎症で気管支の内側が腫れて敏感になっているので、冷たい空気や会話など、普段なら何ともないちょっとした刺激で咳が出てしまいます。
+      </p>
+      <p>
+        レルベアに入っている薬は2つの仕事をしています。<span class="em">1つ目</span>は、気管支を広げてくれる成分（ビランテロール）。これは吸入して15分くらいで効き始めるので、息苦しさが早く改善したのはこの成分のおかげです。<span class="em">2つ目</span>は、炎症を抑えるステロイド成分（フルチカゾン）。こちらは効果が出るのに時間がかかり、炎症がしっかり収まるまでに2〜4週間が必要です。
+      </p>
+      <p>
+        つまり、「息苦しさは治ったけど咳はまだ出る」という今の状態は、<span class="em">薬が段階的に効いている正常な経過</span>です。
+      </p>
+    </div>
+  </div>
+
+  <!-- Section 2: Timeline -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-title">これから咳はどう変わるか</div>
+    <div class="section-body">
+      <p>一般的な改善の流れは以下の通りです。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-label">1〜3日目</div>
+        <div class="tl-text"><span class="em">息苦しさが改善</span>。気管支拡張成分がすぐに効いた段階。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot done"></div>
+        <div class="tl-label">3〜7日目</div>
+        <div class="tl-text"><span class="em">咳の回数・強さが減る</span>。ステロイドの炎症抑制が少しずつ効き始めた段階。← いまここ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot current"></div>
+        <div class="tl-label">2〜4週目</div>
+        <div class="tl-text">多くの人がこの時期に<span class="em">「もう治った」と感じるくらいまで改善</span>。ただし気管支の炎症はまだ完全には消えていない。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-label">1〜3ヶ月</div>
+        <div class="tl-text">気道の過敏性（ちょっとした刺激で反応する状態）がゆっくり正常に戻っていく。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-label">3ヶ月〜1年</div>
+        <div class="tl-text">気道が安定し、<span class="em">再発しにくい状態</span>になる。ここまで治療を続けることが大切。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: 今すぐできること -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-title">今すぐ自分でできること</div>
+    <div class="section-body">
+      <p>薬の効果を最大限に引き出すために、<span class="em">寝室の環境を整える</span>ことが特に重要です。暖房なし・加湿器なしの寝室は、せっかくの薬の効果を打ち消してしまう可能性があります。</p>
+    </div>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="action-num">01</div>
+        <div class="action-title">寝室を暖める</div>
+        <div class="action-body">室温20〜22°Cが理想。オイルヒーターやパネルヒーターのタイマーが便利。リビングとの温度差を5°C以内に。</div>
+      </div>
+      <div class="action-card">
+        <div class="action-num">02</div>
+        <div class="action-title">加湿器を置く</div>
+        <div class="action-body">湿度40〜50%を目標に。暖房＋加湿はセット。乾燥した空気は気管支を直接刺激します。</div>
+      </div>
+      <div class="action-card">
+        <div class="action-num">03</div>
+        <div class="action-title">就寝時のマスク</div>
+        <div class="action-body">吸い込む空気を温め・加湿する効果があり、寒暖差による咳を抑えます。ネックウォーマーも有効。</div>
+      </div>
+      <div class="action-card">
+        <div class="action-num">04</div>
+        <div class="action-title">布団カバーの見直し</div>
+        <div class="action-body">防ダニカバーで布団・枕を覆う。シーツは週1回、55°C以上で洗濯。羽毛布団そのものはOK。</div>
+      </div>
+    </div>
+
+    <div class="alert alert-orange">
+      <div class="alert-title">なぜ寝室環境がそんなに大切？</div>
+      <div class="alert-body">
+        咳喘息の人が最も反応しやすい刺激は「冷たい空気」です。暖房のないで寝室で夜間に吸い込む冷たく乾燥した空気は、気管支の炎症を悪化させ、薬で抑えようとしている状態を毎晩リセットしてしまうようなものです。環境を整えるだけで、薬の効きが大きく変わることがあります。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: 次の受診で相談すること -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-title">次の受診で相談すべきこと</div>
+    <div class="section-body">
+      <p>あと1〜2週間（治療開始から2〜3週目）にフォローアップ受診が望ましいタイミングです。そのときに以下のことを相談してみてください。</p>
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <span class="em">モンテルカスト（飲み薬）の追加</span>を相談する。レルベアと違う仕組みで気管支の炎症を抑える薬で、追加すると改善率が約20%上がり、再発率が72%下がるという研究データがあります。寝る前に1錠飲むだけです。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <span class="em">FeNO検査</span>をお願いする。息を吐くだけの簡単な検査で、気管支の炎症がどれくらい残っているかを数値で見ることができます。治療がうまくいっているかを客観的に判断する材料になります。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <span class="em">呼吸機能検査（スパイロメトリー）</span>もお願いする。肺の働きを数値化する検査です。今の状態の「基準値」を記録しておくことで、今後の改善や悪化が客観的にわかるようになります。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <span class="em">アレルギー検査（血液検査）</span>を相談する。ダニ・カビ・花粉など、何が気管支を刺激しているかを特定できると、再発予防の対策が具体的になります。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">
+          <span class="em">治療期間の見通し</span>を確認する。咳が止まった＝治った、ではありません。最低でも数ヶ月、できれば1年間の治療継続が推奨されています（後述）。
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-intro">受診時、こんなふうに伝えると伝わりやすいです：</div>
+      <div class="script-item">
+        <div class="script-label">経過報告</div>
+        <div class="script-text">レルベアを1週間使い、息苦しさはかなり改善して夜中に起きることもなくなりました。ただ、日中も含めて1時間に数回くらい乾いた咳が出る状態がここ2〜3日横ばいです。寒い空気で咳が出やすい気がします。</div>
+      </div>
+      <div class="script-item">
+        <div class="script-label">相談したいこと</div>
+        <div class="script-text">半年前にも同じことがあったので、再発を防ぐためにモンテルカストなどの追加治療の可能性と、FeNO検査や呼吸機能検査で炎症の状態を数値で確認したいです。治療期間の見通しも教えてください。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: 一番大事なこと -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-title">これだけは覚えておいてほしいこと</div>
+
+    <div class="alert alert-red">
+      <div class="alert-title">咳が止まっても、薬はやめないでください</div>
+      <div class="alert-body">
+        咳喘息で最も多い失敗は、「咳が止まったから治った」と思って薬をやめてしまうことです。咳が止まっても、気管支の炎症はまだ残っています。ここで薬をやめると、また風邪をひいたときなどに再燃し、最終的に「本格的な喘息」に進行するリスクが高まります。薬をやめていい患者さんの約30〜40%が本格的な喘息になるのに対し、薬を続けた場合は5〜15%に抑えられるという研究があります。
+      </div>
+    </div>
+
+    <div class="alert alert-blue">
+      <div class="alert-title">半年で2回再発していることの意味</div>
+      <div class="alert-body">
+        半年前にも同じことが起きていたということは、気管支が常に少し敏感な状態にある可能性を示しています。今回の治療は、ただ咳を止めるだけでなく、この「敏感な状態」自体を正常に戻すことが目標です。そのためには、症状が消えた後も最低数ヶ月〜1年の吸入治療の継続が推奨されています。次回の受診で、医師と長期的な治療計画を立てることが大切です。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: すぐに受診すべきサイン -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <div class="section-title">こんなときは予定を待たずにすぐ受診</div>
+
+    <div class="card">
+      <div class="card-body">
+        以下のいずれかが起きた場合は、次の予約を待たずに早めに受診してください。
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">咳が今より明らかに<span class="em">悪化した</span></div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">息を吐くときに<span class="em">ゼーゼー・ヒューヒュー</span>と音がする</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">安静にしていても<span class="em">息苦しい</span>のが再び出てきた</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text"><span class="em">発熱</span>が出た、または黄色や緑の<span class="em">痰</span>が出るようになった</div>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <div class="check-text">2週間経っても咳がまったく<span class="em">変わらない・改善しない</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- まとめ -->
+  <div class="section">
+    <div class="section-title">まとめ：これからの3ステップ</div>
+
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <div class="card-title">ステップ1 — 今日から</div>
+      <div class="card-body">寝室に暖房と加湿器を導入する。レルベアの吸入は毎日同じ時間に継続する。</div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <div class="card-title">ステップ2 — あと1〜2週間後の受診で</div>
+      <div class="card-body">モンテルカストの追加・FeNO検査・スパイロメトリーを相談する。アレルギー検査も依頼する。</div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <div class="card-title">ステップ3 — 長期的に</div>
+      <div class="card-body">咳が止まっても薬をやめない。医師と相談しながら最低数ヶ月〜1年の吸入治療を継続する。再発しない体をつくる。</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    この内容はAIによる症状分析に基づく情報提供であり、<br>医師の診断に代わるものではありません。<br>必ず医療機関を受診し、専門医の判断を仰いでください。
+  </div>
+
+</div>
+
+</body>
+</html>
