@@ -81,26 +81,54 @@
     font-size: 13px;
     font-weight: normal;
   }
+  .replay-hint {
+    margin: 0 0 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
   ul.replays {
     list-style: none;
     margin: 0;
     padding: 0;
   }
   ul.replays li {
-    border-top: 1px solid #eceff1;
+    margin-bottom: 8px;
   }
-  ul.replays li:first-child { border-top: none; }
+  ul.replays li:last-child { margin-bottom: 0; }
   ul.replays a {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 12px 4px;
+    padding: 12px 14px;
     text-decoration: none;
     color: var(--text);
-    transition: background 0.15s;
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.15s;
   }
-  ul.replays a:hover { background: #f5f7fa; }
+  ul.replays a::after {
+    content: "▶ 再生";
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+  }
+  ul.replays a:hover {
+    background: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(63, 81, 181, 0.12);
+  }
+  ul.replays a:hover::after {
+    transform: translateX(2px);
+  }
   ul.replays .match {
     display: flex;
     align-items: center;
@@ -385,6 +413,7 @@
 
     <section class="win">
       <h2>勝ち試合 <span class="count">(7)</span></h2>
+      <p class="replay-hint">各カードをタップすると Pokémon Showdown のリプレイが開きます</p>
       <ul class="replays">
         <li><a href="win/win-1.html"><span class="match"><span class="team"><span class="poke">ルチャブル</span><span class="poke">ドドゲザン</span><span class="poke">ジュナイパー</span><span class="poke">エルレイド</span><span class="poke">ギルガルド</span><span class="poke">バクフーン</span></span></span><span class="result win">WIN</span></a></li>
         <li><a href="win/win-2.html"><span class="match"><span class="team"><span class="poke">カバルドン</span><span class="poke">クエスパトラ</span><span class="poke">キラフロル</span><span class="poke">メタモン</span><span class="poke">ピクシー</span><span class="poke">フォレトス</span></span></span><span class="result win">WIN</span></a></li>
@@ -398,10 +427,11 @@
 
     <section class="lose">
       <h2>負け試合 <span class="count">(3)</span></h2>
+      <p class="replay-hint">各カードをタップすると Pokémon Showdown のリプレイが開きます</p>
       <ul class="replays">
-        <li><a href="lose/lose-1.html"><span class="match"><span class="team"><span class="poke">オオニューラ</span><span class="poke">カイリュー</span><span class="poke">マスカーニャ</span><span class="poke">ブリジュラス</span><span class="poke">ウォッシュロトム</span><span class="poke">ミミッキュ</span></span><span class="reason">カイリューの炎技を考えずにハッサムで突っ張った</span></span><span class="result lose">LOSE</span></a></li>
-        <li><a href="lose/lose-2.html"><span class="match"><span class="team"><span class="poke">ドドゲザン</span><span class="poke">ギルガルド</span><span class="poke">サザンドラ</span><span class="poke">スコヴィラン</span><span class="poke">サーナイト</span><span class="poke">ガブリアス</span></span><span class="reason">急所に当たった</span></span><span class="result lose">LOSE</span></a></li>
-        <li><a href="lose/lose-3.html"><span class="match"><span class="team"><span class="poke">ピクシー</span><span class="poke">ボスゴドラ</span><span class="poke">ブラッキー</span><span class="poke">ドヒドイデ</span><span class="poke">ヒスイヌメルゴン</span><span class="poke">アーマーガア</span></span><span class="reason">ドラパの壁ターン枯らす動きされた</span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-1.html"><span class="match"><span class="team"><span class="poke">オオニューラ</span><span class="poke">カイリュー</span><span class="poke">マスカーニャ</span><span class="poke">ブリジュラス</span><span class="poke">ウォッシュロトム</span><span class="poke">ミミッキュ</span></span><span class="reason"><strong>敗因：</strong>カイリューの炎技を考えずにハッサムで突っ張った</span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-2.html"><span class="match"><span class="team"><span class="poke">ドドゲザン</span><span class="poke">ギルガルド</span><span class="poke">サザンドラ</span><span class="poke">スコヴィラン</span><span class="poke">サーナイト</span><span class="poke">ガブリアス</span></span><span class="reason"><strong>敗因：</strong>急所に当たった</span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-3.html"><span class="match"><span class="team"><span class="poke">ピクシー</span><span class="poke">ボスゴドラ</span><span class="poke">ブラッキー</span><span class="poke">ドヒドイデ</span><span class="poke">ヒスイヌメルゴン</span><span class="poke">アーマーガア</span></span><span class="reason"><strong>敗因：</strong>ドラパの壁ターン枯らす動きされた</span></span><span class="result lose">LOSE</span></a></li>
       </ul>
     </section>
 
