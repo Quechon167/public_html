@@ -245,6 +245,54 @@
     color: var(--text);
     line-height: 1.5;
   }
+  .patterns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 18px;
+  }
+  .pattern {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f0f3ff;
+    border: 1px solid #c5cae9;
+    border-radius: 8px;
+  }
+  .pattern-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pattern-flow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .pattern-flow .step {
+    padding: 4px 10px;
+    background: #fff;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pattern-flow .arrow {
+    color: var(--accent);
+    font-weight: 700;
+  }
   .notes {
     font-size: 14px;
   }
@@ -375,6 +423,38 @@
 
     <section class="notes">
       <h2>選出 / プレイング</h2>
+      <div class="patterns">
+        <div class="pattern">
+          <span class="pattern-num">1</span>
+          <div class="pattern-flow">
+            <span class="step">ハッサム</span>
+            <span class="arrow">→</span>
+            <span class="step">ドラパルト</span>
+            <span class="arrow">→</span>
+            <span class="step">メガ竜舞ポケ</span>
+          </div>
+        </div>
+        <div class="pattern">
+          <span class="pattern-num">2</span>
+          <div class="pattern-flow">
+            <span class="step">ハラバリー</span>
+            <span class="arrow">→</span>
+            <span class="step">ドラパルト</span>
+            <span class="arrow">→</span>
+            <span class="step">メガ竜舞ポケ</span>
+          </div>
+        </div>
+        <div class="pattern">
+          <span class="pattern-num">3</span>
+          <div class="pattern-flow">
+            <span class="step">ドラパルト</span>
+            <span class="arrow">→</span>
+            <span class="step">メガ竜舞ポケ</span>
+            <span class="arrow">→</span>
+            <span class="step">ハッサム</span>
+          </div>
+        </div>
+      </div>
       <ul>
         <li>ハッサムかハラバリーを先発に出す
           <ul>
