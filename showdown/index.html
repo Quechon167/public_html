@@ -134,6 +134,19 @@
   }
   .lose ul.replays .poke { background: #fce4ec; }
   .win  ul.replays .poke { background: #e8f5e9; }
+  .lose ul.replays .match {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  ul.replays .reason {
+    font-size: 12px;
+    color: var(--lose);
+    background: var(--lose-bg);
+    border-left: 3px solid var(--lose);
+    padding: 4px 10px;
+    border-radius: 0 4px 4px 0;
+  }
   ul.replays .result {
     font-size: 12px;
     font-weight: 700;
@@ -179,9 +192,9 @@
     <section class="lose">
       <h2>負け試合 <span class="count">(3)</span></h2>
       <ul class="replays">
-        <li><a href="lose/lose-1.html"><span class="match"><span class="team"><span class="poke">オオニューラ</span><span class="poke">カイリュー</span><span class="poke">マスカーニャ</span><span class="poke">ブリジュラス</span><span class="poke">ウォッシュロトム</span><span class="poke">ミミッキュ</span></span></span><span class="result lose">LOSE</span></a></li>
-        <li><a href="lose/lose-2.html"><span class="match"><span class="team"><span class="poke">ドドゲザン</span><span class="poke">ギルガルド</span><span class="poke">サザンドラ</span><span class="poke">スコヴィラン</span><span class="poke">サーナイト</span><span class="poke">ガブリアス</span></span></span><span class="result lose">LOSE</span></a></li>
-        <li><a href="lose/lose-3.html"><span class="match"><span class="team"><span class="poke">ピクシー</span><span class="poke">ボスゴドラ</span><span class="poke">ブラッキー</span><span class="poke">ドヒドイデ</span><span class="poke">ヒスイヌメルゴン</span><span class="poke">アーマーガア</span></span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-1.html"><span class="match"><span class="team"><span class="poke">オオニューラ</span><span class="poke">カイリュー</span><span class="poke">マスカーニャ</span><span class="poke">ブリジュラス</span><span class="poke">ウォッシュロトム</span><span class="poke">ミミッキュ</span></span><span class="reason">カイリューの炎技を考えずにハッサムで突っ張った</span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-2.html"><span class="match"><span class="team"><span class="poke">ドドゲザン</span><span class="poke">ギルガルド</span><span class="poke">サザンドラ</span><span class="poke">スコヴィラン</span><span class="poke">サーナイト</span><span class="poke">ガブリアス</span></span><span class="reason">急所に当たった</span></span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-3.html"><span class="match"><span class="team"><span class="poke">ピクシー</span><span class="poke">ボスゴドラ</span><span class="poke">ブラッキー</span><span class="poke">ドヒドイデ</span><span class="poke">ヒスイヌメルゴン</span><span class="poke">アーマーガア</span></span><span class="reason">ドラパの壁ターン枯らす動きされた</span></span><span class="result lose">LOSE</span></a></li>
       </ul>
     </section>
 
