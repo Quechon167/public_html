@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>quechon リプレイ集 — Gen 9 Champions BSS Reg M-A</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --border: #cfd8dc;
+    --text: #263238;
+    --muted: #607d8b;
+    --win: #2e7d32;
+    --win-bg: #e8f5e9;
+    --lose: #c62828;
+    --lose-bg: #ffebee;
+    --accent: #3f51b5;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .summary {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .badge.win  { background: var(--win-bg);  color: var(--win);  border: 1px solid #a5d6a7; }
+  .badge.lose { background: var(--lose-bg); color: var(--lose); border: 1px solid #ef9a9a; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  section h2 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  section h2 .count {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: normal;
+  }
+  ul.replays {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.replays li {
+    border-top: 1px solid #eceff1;
+  }
+  ul.replays li:first-child { border-top: none; }
+  ul.replays a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 4px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  ul.replays a:hover { background: #f5f7fa; }
+  ul.replays .match {
+    font-weight: 500;
+  }
+  ul.replays .match .me {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  ul.replays .vs {
+    color: var(--muted);
+    margin: 0 6px;
+    font-weight: normal;
+  }
+  ul.replays .result {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+  ul.replays .result.win  { background: var(--win-bg);  color: var(--win); }
+  ul.replays .result.lose { background: var(--lose-bg); color: var(--lose); }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>quechon リプレイ集</h1>
+      <p>[Gen 9 Champions] BSS Reg M-A</p>
+      <div class="summary">
+        <span class="badge win">WIN 7</span>
+        <span class="badge lose">LOSE 3</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>勝ち試合 <span class="count">(7)</span></h2>
+      <ul class="replays">
+        <li><a href="win/win-1.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>gabegabe12</span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-2.html"><span class="match">MyUserNamed<span class="vs">vs.</span><span class="me">quechon</span></span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-3.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>funmitan</span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-4.html"><span class="match">Dr.Tectonix<span class="vs">vs.</span><span class="me">quechon</span></span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-5.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>toytoyko</span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-6.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>skyla'shusband</span><span class="result win">WIN</span></a></li>
+        <li><a href="win/win-7.html"><span class="match">Kings_Uchiha<span class="vs">vs.</span><span class="me">quechon</span></span><span class="result win">WIN</span></a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>負け試合 <span class="count">(3)</span></h2>
+      <ul class="replays">
+        <li><a href="lose/lose-1.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>xandrep06</span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-2.html"><span class="match"><span class="me">quechon</span><span class="vs">vs.</span>kino73</span><span class="result lose">LOSE</span></a></li>
+        <li><a href="lose/lose-3.html"><span class="match">Pirouo<span class="vs">vs.</span><span class="me">quechon</span></span><span class="result lose">LOSE</span></a></li>
+      </ul>
+    </section>
+
+    <footer>Pokémon Showdown replays</footer>
+  </div>
+</body>
+</html>
