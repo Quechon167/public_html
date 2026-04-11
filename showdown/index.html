@@ -157,6 +157,75 @@
   }
   ul.replays .result.win  { background: var(--win-bg);  color: var(--win); }
   ul.replays .result.lose { background: var(--lose-bg); color: var(--lose); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .poke-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: #fafbfc;
+  }
+  .poke-card h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: var(--accent);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .poke-card h3 .item {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .poke-card dl {
+    margin: 0 0 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3px 10px;
+    font-size: 12px;
+  }
+  .poke-card dt {
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .poke-card dd { margin: 0; }
+  .poke-card ul.moves {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 6px;
+    font-size: 12px;
+  }
+  .poke-card ul.moves li {
+    padding: 3px 8px;
+    background: #eceff1;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .notes {
+    font-size: 14px;
+  }
+  .notes ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .notes > ul > li {
+    margin: 6px 0;
+  }
+  .notes ul ul {
+    margin-top: 4px;
+  }
+  .notes ul ul li {
+    margin: 2px 0;
+    color: var(--muted);
+  }
   footer {
     text-align: center;
     color: var(--muted);
@@ -175,6 +244,125 @@
         <span class="badge lose">LOSE 3</span>
       </div>
     </header>
+
+    <section>
+      <h2>パーティ</h2>
+      <div class="team-grid">
+        <div class="poke-card">
+          <h3>ハラバリー <span class="item">@ たべのこし</span></h3>
+          <dl>
+            <dt>特性</dt><dd>でんきにかえる</dd>
+            <dt>性格</dt><dd>なまいき</dd>
+            <dt>努力値</dt><dd>HP 32 / 防 2 / 特防 32</dd>
+          </dl>
+          <ul class="moves">
+            <li>ボルトチェンジ</li>
+            <li>アシッドボム</li>
+            <li>どくどく</li>
+            <li>なまける</li>
+          </ul>
+        </div>
+        <div class="poke-card">
+          <h3>ギャラドス <span class="item">@ ギャラドスナイト</span></h3>
+          <dl>
+            <dt>特性</dt><dd>いかく</dd>
+            <dt>性格</dt><dd>いじっぱり</dd>
+            <dt>努力値</dt><dd>HP 32 / 攻 32 / 素 2</dd>
+          </dl>
+          <ul class="moves">
+            <li>たきのぼり</li>
+            <li>じしん</li>
+            <li>りゅうのまい</li>
+            <li>みがわり</li>
+          </ul>
+        </div>
+        <div class="poke-card">
+          <h3>ハッサム <span class="item">@ メタルコート</span></h3>
+          <dl>
+            <dt>特性</dt><dd>テクニシャン</dd>
+            <dt>性格</dt><dd>ゆうかん</dd>
+            <dt>努力値</dt><dd>HP 32 / 攻 32 / 防 2</dd>
+          </dl>
+          <ul class="moves">
+            <li>バレットパンチ</li>
+            <li>とんぼがえり</li>
+            <li>はたきおとす</li>
+            <li>つるぎのまい</li>
+          </ul>
+        </div>
+        <div class="poke-card">
+          <h3>ドラパルト <span class="item">@ ハバンのみ</span></h3>
+          <dl>
+            <dt>特性</dt><dd>のろわれボディ</dd>
+            <dt>性格</dt><dd>おくびょう</dd>
+            <dt>個体値</dt><dd>HP 31 / 特攻 3 / 素 32</dd>
+          </dl>
+          <ul class="moves">
+            <li>シャドーボール</li>
+            <li>リフレクター</li>
+            <li>ひかりのかべ</li>
+            <li>のろい</li>
+          </ul>
+        </div>
+        <div class="poke-card">
+          <h3>クエスパトラ <span class="item">@ オボンのみ</span></h3>
+          <dl>
+            <dt>特性</dt><dd>びんじょう</dd>
+            <dt>性格</dt><dd>ずぶとい</dd>
+            <dt>努力値</dt><dd>HP 32 / 防 25 / 素 9</dd>
+          </dl>
+          <ul class="moves">
+            <li>アシストパワー</li>
+            <li>マジカルシャイン</li>
+            <li>めいそう</li>
+            <li>みがわり</li>
+          </ul>
+        </div>
+        <div class="poke-card">
+          <h3>リザードン <span class="item">@ リザードナイトX</span></h3>
+          <dl>
+            <dt>特性</dt><dd>もうか</dd>
+            <dt>性格</dt><dd>いじっぱり</dd>
+            <dt>努力値</dt><dd>HP 2 / 攻 32 / 素 32</dd>
+          </dl>
+          <ul class="moves">
+            <li>ニトロチャージ</li>
+            <li>かみなりパンチ</li>
+            <li>つるぎのまい</li>
+            <li>みがわり</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes">
+      <h2>選出 / プレイング</h2>
+      <ul>
+        <li>ハッサムかハラバリーを先発に出す
+          <ul>
+            <li>ほのおタイプがいなければ、大体ハッサムで良い（ドラパルトとの相性補完がいいので）</li>
+            <li>ハッサムは、相手がバレパンで倒せる相手だとしても、ワンパンされない相手なら蜻蛉を選択</li>
+          </ul>
+        </li>
+        <li>ドラパルトは絶対選出で、蜻蛉 / ボルチェン / 素の交代 からつなげる</li>
+        <li>メガ竜舞ポケの選出基準
+          <ul>
+            <li>舞ったときに全抜きできそうか（いたずらごころマンいたら、あくタイプになれるギャラが◎）</li>
+            <li>壁あったら身代わり残せそうか</li>
+            <li>上記を踏まえると基本的にギャラでいい。受け寄りのパーティだとリザXの方が崩しやすいとかはある</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="notes">
+      <h2>改善したいと思っている点</h2>
+      <ul>
+        <li>ほのおタイプがいたら先発ハラバリーだけど、こいつにパワーを感じない</li>
+        <li>クエスパトラ出したことない</li>
+        <li>ハッサムの剣舞と、ドドゲザンをぶちころす格闘技、どっち優先しようか迷う</li>
+      </ul>
+    </section>
 
     <section class="win">
       <h2>勝ち試合 <span class="count">(7)</span></h2>
