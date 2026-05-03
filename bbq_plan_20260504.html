@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5/4(月) BBQ計画 @ 稲城北緑地公園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF8E7;
+    --paper: #FFFFFF;
+    --text: #3D2817;
+    --text-muted: #8C7456;
+    --tomato: #E63946;
+    --tomato-soft: #FFE3E1;
+    --mustard: #FCBF49;
+    --mustard-soft: #FFF1C9;
+    --pickle: #6A994E;
+    --pickle-soft: #DDEBC9;
+    --border: #F2E0BC;
+    --done: #B8A88A;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(252, 191, 73, 0.18) 0, transparent 35%),
+      radial-gradient(circle at 88% 92%, rgba(106, 153, 78, 0.15) 0, transparent 38%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 36px 96px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 28px 18px 60px; }
+    body { font-size: 14px; line-height: 1.75; }
+  }
+
+  /* Title block */
+  .title-block {
+    background: var(--paper);
+    border: 3px solid var(--tomato);
+    border-radius: 24px;
+    padding: 28px 28px 24px;
+    margin-bottom: 28px;
+    box-shadow: 6px 6px 0 var(--mustard);
+    position: relative;
+  }
+
+  .title-block::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--tomato);
+    box-shadow:
+      -14px 7px 0 -1px var(--mustard),
+      -10px -9px 0 -2px var(--pickle);
+  }
+
+  .date-pill {
+    display: inline-block;
+    background: var(--tomato);
+    color: white;
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: 13px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: "Mochiy Pop One", "Zen Maru Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  h1 .at {
+    display: block;
+    color: var(--pickle);
+    font-size: 18px;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 22px; }
+    h1 .at { font-size: 15px; }
+    .title-block { padding: 22px 20px 18px; border-radius: 20px; }
+    .title-block::before {
+      width: 7px; height: 7px; top: 12px; right: 16px;
+      box-shadow:
+        -11px 6px 0 -1px var(--mustard),
+        -8px -7px 0 -2px var(--pickle);
+    }
+  }
+
+  /* Section heading */
+  h2 {
+    font-family: "Mochiy Pop One", "Zen Maru Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin: 44px 0 16px;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    position: relative;
+    padding-left: 22px;
+  }
+
+  h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 26px;
+    border-radius: 5px;
+    background: linear-gradient(
+      to bottom,
+      var(--tomato) 0%,
+      var(--tomato) 33.33%,
+      var(--mustard) 33.33%,
+      var(--mustard) 66.66%,
+      var(--pickle) 66.66%,
+      var(--pickle) 100%
+    );
+  }
+
+  h3 {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 24px 0 10px;
+    color: var(--tomato);
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    margin: 0 0 12px;
+  }
+
+  /* Plain bullet list */
+  ul.plain {
+    list-style: none;
+    padding-left: 4px;
+    margin: 8px 0;
+  }
+
+  ul.plain > li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+
+  ul.plain > li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 14px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--mustard);
+  }
+
+  /* Check list */
+  ul.check {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+  }
+
+  ul.check > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 6px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.18s ease;
+  }
+
+  ul.check > li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid var(--text-muted);
+    border-radius: 7px;
+    margin: 4px 0 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    background: var(--paper);
+    position: relative;
+    transition: all 0.18s ease;
+  }
+
+  ul.check > li input[type="checkbox"]:hover {
+    border-color: var(--tomato);
+    transform: scale(1.05);
+  }
+
+  ul.check > li input[type="checkbox"]:checked {
+    background: var(--tomato);
+    border-color: var(--tomato);
+  }
+
+  ul.check > li input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+  }
+
+  ul.check > li.checked {
+    color: var(--done);
+    text-decoration: line-through;
+  }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 14px 0;
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    background: var(--paper);
+    box-shadow: 4px 4px 0 var(--mustard-soft);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1.5px dashed var(--border);
+    vertical-align: top;
+  }
+
+  th {
+    background: var(--mustard-soft);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td.label {
+    font-weight: 700;
+    width: 28%;
+    color: var(--tomato);
+  }
+
+  /* Highlighted timeline row */
+  tr.highlight td {
+    background: var(--tomato-soft);
+    font-weight: 700;
+    color: var(--tomato);
+  }
+
+  /* Notes */
+  .note {
+    margin: 16px 0;
+    padding: 14px 18px;
+    background: var(--tomato-soft);
+    border: 2px solid var(--tomato);
+    border-radius: 14px;
+    font-size: 14px;
+    color: var(--text);
+    box-shadow: 3px 3px 0 var(--tomato);
+    position: relative;
+  }
+
+  .note-muted {
+    margin: 14px 0;
+    padding: 10px 16px;
+    background: var(--pickle-soft);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .nowrap { white-space: nowrap; }
+
+  /* Routes (各家の動き) */
+  ul.routes {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  ul.routes > li {
+    background: var(--paper);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 16px 14px;
+  }
+
+  .route-name {
+    display: inline-block;
+    background: var(--tomato);
+    color: #fff;
+    font-family: "Mochiy Pop One", sans-serif;
+    font-size: 12px;
+    padding: 3px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .route-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .route-arrow {
+    color: var(--mustard);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* Wavy divider for between sections (using only on h2 areas via decoration) */
+  .container > h2 {
+    position: relative;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="title-block">
+    <span class="date-pill">2026.05.04 MON</span>
+    <h1>BBQ計画<span class="at">＠ 稲城北緑地公園</span></h1>
+  </div>
+
+  <h2>現地受付情報</h2>
+  <p>利用当日の午前9:00〜11:00の間に現地受付を完了する必要あり。<br>午前11:00以降は受付番号札の配布が終了するため、受付時間内に手続きを済ませること。</p>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td class="label">受付時間</td><td>9:00〜11:00</td></tr>
+        <tr><td class="label">代表者名</td><td>酒井翔伍</td></tr>
+        <tr><td class="label">予約番号</td><td>17605</td></tr>
+        <tr><td class="label">予約人数</td><td>9名</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>参加者（9名）</h2>
+  <ul class="plain">
+    <li>なおちゃん</li>
+    <li>ゆうすけ</li>
+    <li>なぎくん（4歳）</li>
+    <li>かなちゃん</li>
+    <li>クエちょん</li>
+    <li>えりかちゃん</li>
+    <li>はなやん</li>
+    <li>あいなちゃん</li>
+    <li>みきちゃん</li>
+  </ul>
+
+  <h2>集合・移動</h2>
+
+  <h3>各家の動き</h3>
+  <ul class="routes">
+    <li>
+      <span class="route-name">高橋家</span>
+      <div class="route-flow">
+        <span>自家用車で酒井家へ</span>
+        <span class="route-arrow">→</span>
+        <span>酒井家保管の備品を積み込み</span>
+        <span class="route-arrow">→</span>
+        <span>現地</span>
+      </div>
+    </li>
+    <li>
+      <span class="route-name">あいなちゃん・みきちゃん</span>
+      <div class="route-flow">
+        <span>酒井家に集合</span>
+        <span class="route-arrow">→</span>
+        <span>酒井家メンバー＆荷物とタクシーで現地</span>
+      </div>
+    </li>
+    <li>
+      <span class="route-name">酒井家</span>
+      <div class="route-flow">
+        <span>自宅で食材を保冷バッグに積む</span>
+        <span class="route-arrow">→</span>
+        <span>あいなちゃん・みきちゃんと合流</span>
+        <span class="route-arrow">→</span>
+        <span>タクシーで現地</span>
+      </div>
+    </li>
+    <li>
+      <span class="route-name">藤田家</span>
+      <div class="route-flow">
+        <span>直接現地集合</span>
+      </div>
+    </li>
+  </ul>
+
+  <h3>集合時間</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>時刻</th><th>場所</th><th>対象</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nowrap"><strong>10:00</strong></td><td>酒井家</td><td>高橋家、あいなちゃん、みきちゃん、酒井家</td></tr>
+        <tr><td class="nowrap"><strong>〜11:00</strong></td><td>稲城北緑地公園</td><td>全員（藤田家現地合流）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">受付締切11:00のため、現地到着は遅くとも10:55まで（受付は藤田家が対応）</div>
+
+  <h2>タイムライン</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th style="width:30%">時刻</th><th>アクション</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nowrap">10:00</td><td>酒井家集合・荷物積み込み</td></tr>
+        <tr><td class="nowrap">10:30</td><td>酒井家出発（高橋家=車／酒井・あいなちゃん・みきちゃん=タクシー）</td></tr>
+        <tr><td class="nowrap">〜11:00</td><td>現地到着・藤田家合流</td></tr>
+        <tr class="highlight"><td class="nowrap">〜11:00</td><td>現地受付（藤田家が代表者として対応／予約番号17605）</td></tr>
+        <tr><td class="nowrap">11:00-11:30</td><td>設営（テント・テーブル・椅子）／火起こし開始</td></tr>
+        <tr><td class="nowrap">11:30-12:00</td><td>食事スタート</td></tr>
+        <tr><td class="nowrap">任意</td><td>集合写真（時間は決めず、自然なタイミングで）</td></tr>
+        <tr><td class="nowrap">14:00-14:30</td><td>マシュマロ焼き</td></tr>
+        <tr><td class="nowrap">14:30-15:30</td><td>片付け・炭処理・撤収</td></tr>
+        <tr><td class="nowrap">16:00</td><td>解散</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>食材リスト</h2>
+  <p>買い出しは酒井家が前日に実施し、当日まで自宅保管。</p>
+
+  <h3>肉（合計1,800gまで）</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>トントロ</span></li>
+    <li><input type="checkbox"><span>カイノミ</span></li>
+    <li><input type="checkbox"><span>ラムチョップ</span></li>
+    <li><input type="checkbox"><span>うなぎ</span></li>
+    <li><input type="checkbox"><span>牛タン（質の良いものがあれば）</span></li>
+  </ul>
+
+  <h3>野菜</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>じゃがいも × 9個（人数分）</span></li>
+    <li><input type="checkbox"><span>ナス</span></li>
+    <li><input type="checkbox"><span>タマネギ</span></li>
+    <li><input type="checkbox"><span>きゅうり（塩昆布で浅漬けにして持参）</span></li>
+    <li><input type="checkbox"><span>プチトマト</span></li>
+    <li><input type="checkbox"><span>キムチ</span></li>
+    <li><input type="checkbox"><span>サンチュ × 2パック</span></li>
+  </ul>
+
+  <h3>飲み物</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>500mlペットボトル × 18本（1人あたり2本を目安）</span></li>
+    <li><input type="checkbox"><span>ビール × 1ケース</span></li>
+    <li><input type="checkbox"><span>なぎくん用ジュース</span></li>
+    <li><input type="checkbox"><span>氷（クーラーボックス用）</span></li>
+  </ul>
+  <div class="note-muted">ビール以外のお酒を飲みたい人は各自持参</div>
+
+  <h3>調味料・その他</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>米5合（炊飯器の内釜にラップをかけて持参）</span></li>
+    <li><input type="checkbox"><span>バター</span></li>
+    <li><input type="checkbox"><span>塩胡椒</span></li>
+    <li><input type="checkbox"><span>焼肉のたれ</span></li>
+    <li><input type="checkbox"><span>レモン汁</span></li>
+    <li><input type="checkbox"><span>わさび（持参）</span></li>
+    <li><input type="checkbox"><span>マシュマロ（締め代わり）</span></li>
+  </ul>
+
+  <h2>道具リスト</h2>
+
+  <h3>酒井家保管（高橋家の車で運搬）</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>タープテント（サイドシート付き、3m×3m＋キャノピー）</span></li>
+    <li><input type="checkbox"><span>BBQコンロ（積み込み前に鉄板を除く／今回鉄板は使わない）</span></li>
+    <li><input type="checkbox"><span>炭＋炭用トング</span></li>
+    <li><input type="checkbox"><span>ガスバーナー</span></li>
+    <li><input type="checkbox"><span>ゴムハンマー</span></li>
+    <li><input type="checkbox"><span>炭処理用アルミホイル</span></li>
+    <li><input type="checkbox"><span>軍手</span></li>
+    <li><input type="checkbox"><span>屋外用イス × 2</span></li>
+    <li><input type="checkbox"><span>屋外用4人分イス付きテーブル</span></li>
+    <li><input type="checkbox"><span>屋外用テーブル × 2</span></li>
+    <li><input type="checkbox"><span>肉焼き用トング</span></li>
+    <li><input type="checkbox"><span>肉取る用トング</span></li>
+  </ul>
+
+  <h3>酒井家保管（タクシーで運搬）</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>ウーバーバッグ（クーラー代用／食材・飲み物・氷を収納）</span></li>
+    <li><input type="checkbox"><span>クーラーバッグ（食材・飲み物・氷を収納）</span></li>
+  </ul>
+
+  <h3>高橋家保管</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>レジャーシート × 1枚</span></li>
+  </ul>
+
+  <h3>買い出し（食材以外）</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>レジャーシート × 1枚（もう1枚は高橋家持参、計2枚使用）</span></li>
+    <li><input type="checkbox"><span>うちわ</span></li>
+    <li><input type="checkbox"><span>ペットボトルホルダー</span></li>
+    <li><input type="checkbox"><span>蚊取り線香</span></li>
+    <li><input type="checkbox"><span>着火剤</span></li>
+    <li><input type="checkbox"><span>バガス素材の皿 × 18個（深くて小さい片手で持てるもの／人数×2）</span></li>
+    <li><input type="checkbox"><span>箸 × 18膳（人数×2）</span></li>
+    <li><input type="checkbox"><span>ウエットティッシュ</span></li>
+    <li><input type="checkbox"><span>雑巾</span></li>
+    <li><input type="checkbox"><span>炭（追加分があれば）</span></li>
+  </ul>
+
+  <h3>持参（食材以外）</h3>
+  <ul class="check">
+    <li><input type="checkbox"><span>しゃもじ</span></li>
+    <li><input type="checkbox"><span>養生テープ</span></li>
+    <li><input type="checkbox"><span>ゴミ袋</span></li>
+    <li><input type="checkbox"><span>虫除けスプレー</span></li>
+    <li><input type="checkbox"><span>ムヒ</span></li>
+    <li><input type="checkbox"><span>公園遊びアイテム</span></li>
+  </ul>
+
+</div>
+
+<script>
+  document.querySelectorAll('ul.check > li').forEach(li => {
+    const cb = li.querySelector('input[type="checkbox"]');
+    li.addEventListener('click', (e) => {
+      if (e.target.tagName !== 'INPUT') {
+        cb.checked = !cb.checked;
+      }
+      li.classList.toggle('checked', cb.checked);
+    });
+  });
+</script>
+</body>
+</html>
