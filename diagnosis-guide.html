@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>手指の震え ― 考えられる病気の整理</title>
+<title>手指の震え ― 考えられる病気と受診のすすめ</title>
 <style>
   :root {
     --bg: #F7F8FA;
@@ -22,6 +22,14 @@
     --info-bg: #EBF8FF;
     --warn: #9B2C2C;
     --warn-bg: #FED7D7;
+    --summary-bg: #F0F5FF;
+    --summary-border: #3182CE;
+    --insight-bg: #FAF5FF;
+    --insight-border: #6B46C1;
+    --insight-text: #553C9A;
+    --caveat-bg: #FFFBEB;
+    --caveat-border: #D69E2E;
+    --caveat-text: #744210;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,6 +101,36 @@
     color: var(--accent);
     font-size: 10px;
     top: 8px;
+  }
+
+  /* ── Summary box ── */
+  .summary-box {
+    background: var(--summary-bg);
+    border-left: 5px solid var(--summary-border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+  }
+
+  .summary-box h2 {
+    font-size: 20px;
+    color: var(--summary-border);
+    margin-bottom: 16px;
+  }
+
+  .summary-box ol {
+    padding-left: 24px;
+    margin: 0;
+  }
+
+  .summary-box li {
+    padding: 6px 0;
+    font-size: 17px;
+    color: var(--text-sub);
+  }
+
+  .summary-box li strong {
+    color: var(--text);
   }
 
   /* ── Section titles ── */
@@ -187,6 +225,26 @@
     font-weight: 600;
   }
 
+  .drug-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0;
+  }
+
+  .drug-list li {
+    font-size: 16px;
+    color: var(--text-sub);
+    padding: 3px 0 3px 20px;
+    position: relative;
+  }
+
+  .drug-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 4px;
+    color: var(--mid);
+  }
+
   /* ── Integrated view ── */
   .integrated-box {
     background: var(--card);
@@ -206,6 +264,35 @@
   .integrated-box p {
     font-size: 18px;
     color: var(--text-sub);
+  }
+
+  /* ── Insight section ── */
+  .insight-box {
+    background: var(--insight-bg);
+    border-left: 5px solid var(--insight-border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .insight-box h3 {
+    font-size: 20px;
+    color: var(--insight-text);
+    margin-bottom: 14px;
+  }
+
+  .insight-box p {
+    font-size: 18px;
+    color: var(--text-sub);
+    margin-bottom: 12px;
+  }
+
+  .insight-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .insight-box strong {
+    color: var(--text);
   }
 
   /* ── Action section ── */
@@ -279,6 +366,40 @@
     padding: 4px 0;
   }
 
+  /* ── Caveat box ── */
+  .caveat-box {
+    background: var(--caveat-bg);
+    border-left: 5px solid var(--caveat-border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .caveat-box h3 {
+    font-size: 18px;
+    color: var(--caveat-text);
+    margin-bottom: 12px;
+  }
+
+  .caveat-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .caveat-box li {
+    font-size: 15px;
+    color: var(--caveat-text);
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+
+  .caveat-box li::before {
+    content: "※";
+    position: absolute;
+    left: 0;
+  }
+
   /* ── Footer ── */
   .footer-note {
     text-align: center;
@@ -292,34 +413,51 @@
   /* ── Legend ── */
   .legend {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     font-size: 15px;
   }
 
-  .legend-item {
-    display: flex;
+  .legend-tag {
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
   }
 
-  .legend-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
+  .legend-tag.high {
+    background: var(--high-bg);
+    color: var(--high);
+    border: 2px solid var(--high);
   }
 
-  .legend-dot.high { background: var(--high); }
-  .legend-dot.mid  { background: var(--mid); }
-  .legend-dot.low  { background: var(--low); }
+  .legend-tag.mid {
+    background: var(--mid-bg);
+    color: var(--mid);
+    border: 2px solid var(--mid);
+  }
+
+  .legend-tag.low {
+    background: var(--low-bg);
+    color: var(--low);
+    border: 2px solid var(--low);
+  }
+
+  .legend-tag .legend-icon {
+    font-size: 16px;
+  }
 
   @media (max-width: 600px) {
     body { font-size: 17px; padding: 14px; }
     .page-header h1 { font-size: 24px; }
     .section-title { font-size: 21px; }
     .card-header h3 { font-size: 20px; }
-    .disease-card, .action-card, .integrated-box, .warning-box { padding: 20px; }
+    .disease-card, .action-card, .integrated-box, .warning-box,
+    .insight-box, .summary-box, .caveat-box { padding: 20px; }
   }
 </style>
 </head>
@@ -328,198 +466,262 @@
 <div class="container">
 
   <div class="page-header">
-    <h1>🩺 手指の震え ― 考えられる病気の整理</h1>
+    <h1>手指の震え ― 考えられる病気と受診のすすめ</h1>
     <p class="subtitle">61歳男性・大量飲酒後に1か月以上続く手の震え</p>
   </div>
 
   <!-- Patient Summary -->
   <div class="patient-summary">
-    <h2>📋 現在わかっていること</h2>
+    <h2>現在わかっていること</h2>
     <ul>
       <li>61歳男性、身長178cm・体重60〜70kg</li>
       <li>高血圧で薬を服用中（薬の種類は不明）</li>
       <li>ふだんはビール1缶/日程度の飲酒習慣</li>
       <li>2025年5月に半日にわたる大量飲酒</li>
       <li>その後から<strong>1か月以上</strong>手指が震え続けている</li>
-      <li>震え方：<strong>手を少し上げるだけで震える（姿勢時振戦）</strong></li>
+      <li>震え方：<strong>手を持ち上げたり空中で保つと震える</strong></li>
       <li>過去に足裏のチクチク感あり（靴の買い替えで改善）</li>
     </ul>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="summary-box">
+    <h2>まず知っておいてほしい3つのこと</h2>
+    <ol>
+      <li><strong>一番考えられるのは「もともと持っていた震えやすい体質が、大量飲酒をきっかけに表に出た」というパターン。</strong>お酒が切れたときの一時的な反応（いわゆる離脱症状）は通常1週間以内に治まるため、1か月以上続いているなら別の原因があると考えるのが自然です。</li>
+      <li><strong>「検査で原因がわかり、治療すれば治る病気」を見逃さないことが最優先。</strong>甲状腺の異常、ビタミン不足、ミネラルの乱れ、薬の副作用、肝臓の問題は、いずれもふつうの血液検査で確認できます。</li>
+      <li><strong>受診先は脳神経内科。</strong>お薬手帳を持って行き、「5月の大量飲酒後に震えが始まった」ことと「足裏の症状があった」ことを伝えてください。</li>
+    </ol>
   </div>
 
   <!-- Disease ranking -->
   <h2 class="section-title">考えられる病気（可能性の高い順）</h2>
 
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot high"></div>可能性が高い・要検査</div>
-    <div class="legend-item"><div class="legend-dot mid"></div>否定しておきたい</div>
-    <div class="legend-item"><div class="legend-dot low"></div>可能性は低いが念のため</div>
+    <span class="legend-tag high"><span class="legend-icon">&#9632;</span> まず調べるべき</span>
+    <span class="legend-tag mid"><span class="legend-icon">&#9632;</span> あわせて確認したい</span>
+    <span class="legend-tag low"><span class="legend-icon">&#9632;</span> 可能性は低め</span>
   </div>
 
-  <!-- #1 -->
+  <!-- #1 本態性振戦 -->
   <div class="disease-card high">
     <div class="card-header">
-      <h3>① 本態性振戦（ほんたいせいしんせん）</h3>
-      <span class="probability-tag high">最有力</span>
+      <h3>① 本態性振戦（体質的な震え）</h3>
+      <span class="probability-tag high">一番考えられる</span>
     </div>
     <div class="card-body">
       <p>
-        もともと体質として持っていた「震えやすさ」が、大量飲酒をきっかけに表面化した可能性が最も高いです。
+        <strong>ひとことで言うと：</strong>
+        もともと「震えやすい体質」を持っていた人が、大量飲酒をきっかけにそれが表面化したパターンです。
       </p>
       <p>
-        お酒を飲むと一時的に震えが止まり、翌日にかえって悪化する（反跳効果）のがこの病気の特徴です。
-        61歳は発症しやすい年齢帯にあたり、<strong>手を上げると震える（姿勢時振戦）</strong>という症状もぴったり一致します。
+        お酒には震えを一時的に抑える作用があり、飲んでいる間は症状が隠れます。しかしお酒が抜けると、その反動でかえって震えが強く出る（リバウンド）ことが知られています。研究では、この体質を持つ人の約8割にお酒による抑制効果が確認されています。
+      </p>
+      <p>
+        61歳はこの病気が出やすい年齢帯（50〜70代に多い）で、<strong>65歳以上では約5〜8%の人が持っている</strong>と報告されている、ありふれた病気です。「手を持ち上げると震える」という症状も、この病気の典型的な特徴にぴったり一致します。約半数に家族歴があります。
       </p>
       <div class="reason">
         <strong>なぜ最有力か：</strong>
-        アルコール離脱なら通常1週間以内に治まります。1か月以上続くということは、一過性ではなく「持続する振戦の病気」が背景にあると考えるのが自然です。
+        お酒が切れた反応（離脱）なら通常1週間以内に治まります。1か月以上続いているのは、一時的な反応ではなく「もともとある病気」が背景にあることを強く示しています。
       </div>
     </div>
   </div>
 
-  <!-- #2 -->
+  <!-- #2 甲状腺 -->
   <div class="disease-card high">
     <div class="card-header">
-      <h3>② 甲状腺機能亢進症（バセドウ病など）</h3>
-      <span class="probability-tag high">要検査で除外</span>
+      <h3>② 甲状腺の働きすぎ（バセドウ病など）</h3>
+      <span class="probability-tag high">検査で確認を</span>
     </div>
     <div class="card-body">
       <p>
-        甲状腺ホルモンが過剰に出ると、手の細かい震え・動悸・体重減少・汗をかきやすいなどの症状が出ます。
-        手の震え方が本態性振戦と似ているため、<strong>血液検査（TSH・甲状腺ホルモン）で確認するのが大切</strong>です。
+        <strong>ひとことで言うと：</strong>
+        甲状腺ホルモンが過剰に分泌されると、手の細かい震え・動悸・体重減少・汗をかきやすいなどの症状が出ます。
+      </p>
+      <p>
+        震え方が①の本態性振戦と非常に似ているため、見た目だけでは区別しにくい病気です。しかし<strong>血液検査（TSH・FT4 という2項目）で簡単に判定できる</strong>ため、最初にチェックしておくべきです。
       </p>
       <div class="reason">
         <strong>なぜ重要か：</strong>
-        治療すれば震えが治る可能性がある病気です。簡単な血液検査でわかるため、最初に除外しておくべきです。
+        治療すれば震えが治る可能性がある病気です。見逃すと心臓への負担も増えるため、高血圧がある方はなおさら確認しておく価値があります。
       </div>
     </div>
   </div>
 
-  <!-- #3 -->
+  <!-- #3 ビタミン不足 -->
   <div class="disease-card high">
     <div class="card-header">
-      <h3>③ 栄養不足（ビタミンB1・B12）</h3>
-      <span class="probability-tag high">要検査で除外</span>
+      <h3>③ ビタミン不足（B1・B12）</h3>
+      <span class="probability-tag high">検査で確認を</span>
     </div>
     <div class="card-body">
       <p>
-        日常的な飲酒に加え大量飲酒をすると、ビタミンB1（チアミン）やB12が不足しやすくなります。
-        B1が極端に不足すると<strong>ウェルニッケ脳症</strong>という緊急性の高い病態にもなりえます。
+        <strong>ひとことで言うと：</strong>
+        日常的な飲酒に加えて大量飲酒をすると、体内のビタミンB1やB12が不足しやすくなります。
       </p>
-      <p>足裏のチクチク感も、ビタミン不足による末梢神経障害で説明できる可能性があります。</p>
+      <p>
+        ビタミンB1がひどく不足すると、<strong>ウェルニッケ脳症</strong>という深刻な状態になることがあります。教科書には「意識がぼんやりする・目の動きがおかしい・ふらつく」の3つが揃うと書かれていますが、実際に3つ全部が揃うのは<strong>わずか10〜16%</strong>で、はっきりしない症状だけのことも多いです。
+      </p>
+      <p>
+        足裏のチクチク感も、ビタミン不足で手足の神経がダメージを受けることで説明できます。<strong>手の震えと足の症状を同時に説明しうる原因</strong>として要チェックです。
+      </p>
       <div class="reason">
         <strong>なぜ重要か：</strong>
-        ビタミン補充で改善できる、治療可能な原因です。足のしびれと手の震えを統合的に説明しうる点でも要チェックです。
+        ビタミンを補充すれば改善が期待できる、治療可能な原因です。血液検査で確認できます。
       </div>
     </div>
   </div>
 
-  <!-- #4 -->
+  <!-- #4 電解質 -->
   <div class="disease-card mid">
     <div class="card-header">
-      <h3>④ 電解質の異常（マグネシウム不足など）</h3>
-      <span class="probability-tag mid">否定しておきたい</span>
+      <h3>④ ミネラルバランスの乱れ（マグネシウム不足など）</h3>
+      <span class="probability-tag mid">あわせて確認</span>
     </div>
     <div class="card-body">
       <p>
-        大量飲酒後にマグネシウムやカリウムなどのミネラルバランスが崩れ、震え・筋肉のけいれんが起きることがあります。
-        これも血液検査で確認可能です。
+        <strong>ひとことで言うと：</strong>
+        大量飲酒の後は、マグネシウム・カリウム・ナトリウムなどのミネラルバランスが崩れやすく、震え・筋肉のけいれんが起きることがあります。
+      </p>
+      <p>
+        お酒を多く飲む人ではマグネシウム不足の頻度が高いという報告があります。血液検査で数値を確認できるので、他の項目と一緒にまとめて調べてもらうのが効率的です。
       </p>
     </div>
   </div>
 
-  <!-- #5 -->
+  <!-- #5 薬の副作用 -->
   <div class="disease-card mid">
     <div class="card-header">
-      <h3>⑤ 薬の副作用（降圧薬など）</h3>
-      <span class="probability-tag mid">否定しておきたい</span>
+      <h3>⑤ 高血圧の薬の副作用</h3>
+      <span class="probability-tag mid">あわせて確認</span>
     </div>
     <div class="card-body">
       <p>
-        高血圧の薬の中には、震えを引き起こしたり悪化させたりする種類があります。
-        特に<strong>カルシウム拮抗薬（ニフェジピンなど）</strong>や、一部のβ遮断薬が該当します。
+        <strong>ひとことで言うと：</strong>
+        高血圧の薬の中には、震えを引き起こしたり悪化させたりするものがあります。
       </p>
+      <p>特に注意が必要な薬：</p>
+      <ul class="drug-list">
+        <li><strong>ニフェジピン</strong>（アダラートなど）― 研究では、震えの体質がある人の約7割で症状が悪化したという報告あり</li>
+        <li><strong>ピンドロール・ラベタロール</strong>など一部のβ遮断薬 ― 心臓を刺激する作用を持つタイプは、かえって震えを引き起こすことがある</li>
+      </ul>
       <div class="reason">
         <strong>確認方法：</strong>
-        服用中のお薬の名前を調べて、受診時に必ず伝えてください。お薬手帳を持参するのがベストです。
+        服用中の薬の名前を調べて、受診時に必ず伝えてください。<strong>お薬手帳の持参がベスト</strong>です。薬が原因であれば、別の薬に替えるだけで改善する可能性があります。
       </div>
     </div>
   </div>
 
-  <!-- #6 -->
+  <!-- #6 糖尿病 -->
   <div class="disease-card mid">
     <div class="card-header">
-      <h3>⑥ 糖尿病（隠れ糖尿病）</h3>
-      <span class="probability-tag mid">否定しておきたい</span>
+      <h3>⑥ 隠れ糖尿病</h3>
+      <span class="probability-tag mid">あわせて確認</span>
     </div>
     <div class="card-body">
       <p>
-        高血圧と糖尿病はセットで持っている方が多い病気です。
-        糖尿病自体は手の震えの直接原因にはなりにくいですが、足裏のチクチク感（糖尿病性末梢神経障害）の原因となりえます。
-        HbA1cという血液検査で確認できます。
+        <strong>ひとことで言うと：</strong>
+        高血圧と糖尿病はセットで持っている方が多い病気です（高血圧の人の約6〜8割が糖尿病も持つというデータもあります）。
+      </p>
+      <p>
+        糖尿病自体は手の震えの直接原因にはなりにくいですが、<strong>足裏のチクチク感の原因</strong>になりえます。糖尿病の患者さんの約半数が手足の神経に影響が出るとされ、つま先・足裏から始まる症状が典型的です。HbA1cという血液検査で簡単に確認できます。
       </p>
     </div>
   </div>
 
-  <!-- #7 -->
+  <!-- #7 パーキンソン病 -->
   <div class="disease-card low">
     <div class="card-header">
       <h3>⑦ パーキンソン病</h3>
-      <span class="probability-tag low">可能性は低い</span>
+      <span class="probability-tag low">可能性は低め</span>
     </div>
     <div class="card-body">
       <p>
-        パーキンソン病の震えは通常「じっとしている時に震える（安静時振戦）」タイプで、今回の「手を上げると震える」とはパターンが異なります。
-        ただし、動作の遅さ・筋肉のこわばり・左右差があるかどうかは、念のため診察で確認してもらう価値があります。
+        <strong>ひとことで言うと：</strong>
+        パーキンソン病の震えは通常「じっとしている時に震える」タイプで、今回の「手を持ち上げると震える」とはパターンが異なります。
+      </p>
+      <p>
+        ただし、手を持ち上げた状態で数秒経ってから震え始めるタイプ（再出現振戦）を示すパーキンソン病もあるため、完全には否定できません。<strong>動作が遅くなった・体がこわばる・左右で差がある</strong>といった症状があるかどうか、念のため診察で確認してもらう価値があります。
       </p>
     </div>
   </div>
 
-  <!-- #8 -->
+  <!-- #8 アルコール離脱 -->
   <div class="disease-card low">
     <div class="card-header">
-      <h3>⑧ アルコール離脱による震え</h3>
-      <span class="probability-tag low">可能性は低い</span>
+      <h3>⑧ お酒が切れたことによる震え（アルコール離脱）</h3>
+      <span class="probability-tag low">可能性は低め</span>
     </div>
     <div class="card-body">
       <p>
-        いわゆる「お酒が切れて手が震える」状態です。
-        しかし離脱症状は通常<strong>数日〜1週間で治まる</strong>もので、1か月以上は続きません。
-        また、ビール1缶/日程度では離脱を起こすほどの身体依存は生じにくいです。
+        <strong>ひとことで言うと：</strong>
+        いわゆる「お酒が切れて手が震える」状態です。しかし今回は可能性が低いと考えられます。
+      </p>
+      <p><strong>理由は2つ：</strong></p>
+      <p>
+        <strong>1. 時間が合わない。</strong>離脱症状は最後にお酒を飲んでから6〜24時間後に出始め、1〜3日目がピークで、通常<strong>1週間以内に治まります</strong>。1か月以上続くことは、離脱では説明がつきません。
+      </p>
+      <p>
+        <strong>2. 体がお酒に依存していない。</strong>離脱症状が起きるには、体が「お酒がある状態」に慣れきっている（身体依存）ことが前提です。少なくとも2週間以上の大量飲酒が必要とされます。ビール1缶/日程度の習慣的な飲酒で、たとえ半日大量に飲んだとしても、身体依存にはまず至りません。
       </p>
     </div>
   </div>
 
-  <!-- #9 -->
+  <!-- #9 肝臓 -->
   <div class="disease-card low">
     <div class="card-header">
-      <h3>⑨ 肝臓の障害（肝性脳症）</h3>
-      <span class="probability-tag low">可能性は低い</span>
+      <h3>⑨ 肝臓の問題（肝性脳症）</h3>
+      <span class="probability-tag low">可能性は低め</span>
     </div>
     <div class="card-body">
       <p>
-        肝臓の機能が低下すると「羽ばたき振戦」という独特の震え方をすることがあります。
-        通常の律動的な震えとは異なり、手首がバタバタと落ちるような動きです。
-        診察で区別でき、肝機能の血液検査でも評価できます。
+        <strong>ひとことで言うと：</strong>
+        肝臓の機能がかなり低下すると「羽ばたき振戦」という独特の動きが出ることがあります。これは規則的にブルブル震えるのではなく、<strong>手首がバタバタと落ちるような動き</strong>です。
+      </p>
+      <p>
+        見た目が違うため診察で区別できます。肝機能の血液検査でも評価可能です。
       </p>
     </div>
   </div>
 
-  <!-- Integrated view -->
+  <!-- Integrated view: foot tingling -->
   <h2 class="section-title">足裏のチクチク感との関連</h2>
 
   <div class="integrated-box">
-    <h3>🔗 手の震えと足の症状は別々の原因かもしれない</h3>
+    <h3>手の震えと足の症状は別々の原因かもしれない</h3>
     <p>
-      靴を替えて治ったことから、単純に靴による圧迫だった可能性もあります。
-      しかし、以下の病態であれば手の震えと足のしびれを同時に説明できます。
+      靴を替えて治ったことから、単純に靴の圧迫が原因だった可能性もあります。
+    </p>
+    <p style="margin-top: 12px;">
+      しかし、以下の原因であれば<strong>手の震えと足のしびれを同時に説明</strong>できます。
     </p>
     <p style="margin-top: 12px;">
       <span class="keyword">ビタミンB群の不足</span>
-      <span class="keyword">アルコール性の末梢神経障害</span>
-      <span class="keyword">糖尿病性の末梢神経障害</span>
+      <span class="keyword">お酒による神経のダメージ</span>
+      <span class="keyword">糖尿病による神経のダメージ</span>
     </p>
     <p style="margin-top: 12px;">
-      いずれも血液検査で手がかりが得られるため、受診時にまとめて確認するのが効率的です。
+      手足の神経のダメージは、つま先・足裏など体の末端から始まるのが特徴です。いずれも血液検査で手がかりが得られるため、受診時にまとめて確認するのが効率的です。もし足のチクチク感が再発した場合は、神経の通り具合を調べる検査（神経伝導検査）も検討できます。
+    </p>
+  </div>
+
+  <!-- Why see a doctor even for ET -->
+  <h2 class="section-title">「体質的な震え」でも受診すべき3つの理由</h2>
+
+  <div class="insight-box">
+    <h3>命に関わらない = 放っておいていい ではありません</h3>
+
+    <p>
+      <strong>1. ゆっくり進む可能性がある。</strong>
+      この病気は年齢とともにゆっくり悪化する傾向があります。今は「手を上げると少し震える」程度でも、数年後にはコップの水をこぼす、箸がうまく使えない、字が書けないといった日常生活への支障が出ることがあります。
+    </p>
+    <p>
+      <strong>2. 薬で楽になれる。</strong>
+      日本ではアロチノロール（アルマール）という薬が第一選択で、震えの強さを抑える効果があります。効果が不十分なら別の薬もあります。「治す」というより「コントロールする」病気です。
+    </p>
+    <p>
+      <strong>3. 診断のプロセス自体に価値がある。</strong>
+      「体質的な震え」と診断するには、先に挙げた②〜⑥の「治療すれば治る原因」を検査で除外する必要があります。つまり受診すること自体が、他の見逃してはいけない病気を発見するプロセスになっています。
     </p>
   </div>
 
@@ -527,42 +729,54 @@
   <h2 class="section-title">受診のすすめ方</h2>
 
   <div class="action-card">
-    <span class="step-label">STEP 1 ― まず受診</span>
-    <h3>🏥 脳神経内科（神経内科）を受診する</h3>
+    <span class="step-label">STEP 1 ― まず受診（数週間以内に）</span>
+    <h3>脳神経内科（神経内科）を受診する</h3>
     <p>手の震えの専門は脳神経内科です。「ふるえ外来」を設けている病院もあります。</p>
     <ul>
-      <li><strong>持っていくもの：</strong>お薬手帳（降圧薬の種類を確認するため）</li>
-      <li><strong>伝えること：</strong>5月の大量飲酒後に震えが始まったこと、足裏の症状の既往</li>
+      <li><strong>持っていくもの：</strong>お薬手帳（降圧薬の種類が薬の副作用の評価に必須）</li>
+      <li><strong>伝えること：</strong>5月の大量飲酒後に震えが始まったこと、足裏の症状があったこと、お酒を飲んで震えが楽になったことがあるか</li>
     </ul>
+    <p style="margin-top: 14px;">あわせて、お酒を控える（少なくとも当面）、カフェインの取りすぎ・睡眠不足など震えを強くする要因を減らすことも大切です。</p>
   </div>
 
   <div class="action-card">
-    <span class="step-label">STEP 2 ― 血液検査</span>
-    <h3>🩸 以下の項目を調べてもらう</h3>
+    <span class="step-label">STEP 2 ― 血液検査で「治る原因」を探す</span>
+    <h3>以下の項目をまとめて調べてもらう</h3>
     <ul>
-      <li><strong>甲状腺機能</strong>（TSH, FT4）→ 甲状腺の異常を除外</li>
+      <li><strong>甲状腺機能</strong>（TSH, FT4） → 甲状腺の異常を除外</li>
       <li><strong>血糖値・HbA1c</strong> → 糖尿病の有無を確認</li>
-      <li><strong>ビタミンB1・B12</strong> → 栄養不足を確認</li>
-      <li><strong>電解質</strong>（マグネシウム, カリウム等）→ ミネラル異常を確認</li>
+      <li><strong>ビタミンB1・B12</strong> → ビタミン不足を確認</li>
+      <li><strong>電解質</strong>（マグネシウム, カリウム等） → ミネラルの乱れを確認</li>
       <li><strong>肝機能・腎機能</strong> → 肝臓や腎臓の状態を確認</li>
     </ul>
-    <p style="margin-top: 12px;">これらは一般的な採血で一度にまとめて調べられます。</p>
+    <p style="margin-top: 12px;">これらはふつうの採血で一度にまとめて調べられます。</p>
   </div>
 
   <div class="action-card">
-    <span class="step-label">STEP 3 ― 結果に応じて</span>
-    <h3>📋 原因がわかれば治療へ</h3>
+    <span class="step-label">STEP 3 ― 結果に応じた対応</span>
+    <h3>原因がわかれば治療へ</h3>
     <ul>
       <li><strong>甲状腺やビタミン不足が原因</strong>なら → 治療・補充で震えが改善する可能性大</li>
       <li><strong>薬の副作用が原因</strong>なら → 薬の変更で改善する可能性あり</li>
-      <li><strong>本態性振戦と診断</strong>されたら → 症状を抑える薬で対応可能</li>
-      <li><strong>足のしびれが再発</strong>する場合 → 神経伝導検査で末梢神経を精査</li>
+      <li><strong>体質的な震え（本態性振戦）と診断</strong>されたら → 症状を抑える薬で対応可能</li>
+      <li><strong>足のしびれが再発</strong>した場合 → 神経の通り具合を調べる検査を検討</li>
+      <li><strong>震えが治まった</strong>場合 → 一時的なもの（お酒の反動や体調の影響）だったと判断</li>
+    </ul>
+  </div>
+
+  <div class="action-card">
+    <span class="step-label">その後 ― 経過を見るポイント</span>
+    <h3>こんな変化があったら再受診を</h3>
+    <ul>
+      <li>震えが悪化する・日常生活に支障が出てきた</li>
+      <li>動作が遅くなった・体がこわばる・歩き方が変わった（パーキンソン病の可能性）</li>
+      <li>足のチクチク感・しびれが再発した・広がってきた</li>
     </ul>
   </div>
 
   <!-- Warning Signs -->
   <div class="warning-box">
-    <h3>⚠️ こんな症状が出たらすぐに受診</h3>
+    <h3>こんな症状が出たらすぐに受診</h3>
     <ul>
       <li>震えがどんどん強くなっている</li>
       <li>歩き方がおかしい・ふらつく</li>
@@ -571,14 +785,25 @@
       <li>手足のしびれが広がっている</li>
     </ul>
     <p style="margin-top: 12px;">
-      特に意識障害＋眼の異常＋ふらつきが揃ったら、<strong>ウェルニッケ脳症</strong>の可能性があり緊急です。
+      特に<strong>意識がぼんやり + 目の異常 + ふらつき</strong>が揃ったら、ビタミンB1の極端な不足による<strong>ウェルニッケ脳症</strong>の可能性があり、緊急です。
     </p>
+  </div>
+
+  <!-- Caveats -->
+  <div class="caveat-box">
+    <h3>この資料の限界について</h3>
+    <ul>
+      <li>この資料は一般的な医学情報の整理であり、診断・治療ではありません。確定診断には実際の診察と検査が必要です。</li>
+      <li>「手を上げると震える」が規則的なブルブルした震えなのか、肝臓の問題による手首がバタバタ落ちる動きなのかは、対面の診察でなければ区別できません。</li>
+      <li>足裏の症状が「靴を替えて治った」点は局所的な原因を示しますが、神経のダメージの初期症状の可能性も完全には否定できないため、再発した場合は評価を受けてください。</li>
+      <li>飲酒歴の詳細（実際にどのくらいの量をどのくらいの期間飲んでいたか）によっては、各病気の可能性の重みづけが変わります。</li>
+    </ul>
   </div>
 
   <div class="footer-note">
     ※ この資料は一般的な医学情報の整理であり、診断・治療ではありません。<br>
     確定診断には実際の診察と検査が必要です。<br>
-    2025年6月 作成
+    2025年6月 作成 ／ 2026年6月 更新
   </div>
 
 </div>
