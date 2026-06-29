@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手指の震え ― 考えられる病気の整理</title>
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --card: #FFFFFF;
+    --text: #1A2332;
+    --text-sub: #4A5568;
+    --accent: #2B6CB0;
+    --border: #E2E8F0;
+    --high: #C53030;
+    --high-bg: #FFF5F5;
+    --mid: #C05621;
+    --mid-bg: #FFFAF0;
+    --low: #2F855A;
+    --low-bg: #F0FFF4;
+    --info: #2B6CB0;
+    --info-bg: #EBF8FF;
+    --warn: #9B2C2C;
+    --warn-bg: #FED7D7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 18px;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    text-align: center;
+    padding: 40px 20px 30px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+
+  .page-header .subtitle {
+    font-size: 16px;
+    color: var(--text-sub);
+  }
+
+  /* ── Patient Summary ── */
+  .patient-summary {
+    background: var(--info-bg);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    font-size: 17px;
+  }
+
+  .patient-summary h2 {
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .patient-summary ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .patient-summary li {
+    padding: 4px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .patient-summary li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 10px;
+    top: 8px;
+  }
+
+  /* ── Section titles ── */
+  .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  /* ── Disease Cards ── */
+  .disease-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-left: 6px solid transparent;
+  }
+
+  .disease-card.high  { border-left-color: var(--high); }
+  .disease-card.mid   { border-left-color: var(--mid); }
+  .disease-card.low   { border-left-color: var(--low); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .card-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .probability-tag {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .probability-tag.high {
+    background: var(--high-bg);
+    color: var(--high);
+  }
+
+  .probability-tag.mid {
+    background: var(--mid-bg);
+    color: var(--mid);
+  }
+
+  .probability-tag.low {
+    background: var(--low-bg);
+    color: var(--low);
+  }
+
+  .card-body p {
+    font-size: 18px;
+    color: var(--text-sub);
+    margin-bottom: 12px;
+  }
+
+  .card-body .reason {
+    font-size: 16px;
+    color: var(--text-sub);
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 8px;
+  }
+
+  .card-body .reason strong {
+    color: var(--text);
+  }
+
+  .keyword {
+    display: inline-block;
+    background: #EDF2F7;
+    color: var(--text);
+    font-size: 14px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin: 2px 4px 2px 0;
+    font-weight: 600;
+  }
+
+  /* ── Integrated view ── */
+  .integrated-box {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 2px dashed var(--border);
+  }
+
+  .integrated-box h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--accent);
+  }
+
+  .integrated-box p {
+    font-size: 18px;
+    color: var(--text-sub);
+  }
+
+  /* ── Action section ── */
+  .action-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .action-card h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--accent);
+  }
+
+  .action-card p,
+  .action-card li {
+    font-size: 18px;
+    color: var(--text-sub);
+  }
+
+  .action-card ul {
+    padding-left: 24px;
+    margin: 10px 0;
+  }
+
+  .action-card li {
+    padding: 6px 0;
+  }
+
+  .step-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Warning box ── */
+  .warning-box {
+    background: var(--warn-bg);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 32px 0;
+    border: 2px solid var(--warn);
+  }
+
+  .warning-box h3 {
+    font-size: 22px;
+    color: var(--warn);
+    margin-bottom: 12px;
+  }
+
+  .warning-box p,
+  .warning-box li {
+    font-size: 18px;
+    color: #742A2A;
+  }
+
+  .warning-box ul {
+    padding-left: 24px;
+    margin: 10px 0;
+  }
+
+  .warning-box li {
+    padding: 4px 0;
+  }
+
+  /* ── Footer ── */
+  .footer-note {
+    text-align: center;
+    font-size: 14px;
+    color: #A0AEC0;
+    padding: 30px 0 20px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.high { background: var(--high); }
+  .legend-dot.mid  { background: var(--mid); }
+  .legend-dot.low  { background: var(--low); }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; padding: 14px; }
+    .page-header h1 { font-size: 24px; }
+    .section-title { font-size: 21px; }
+    .card-header h3 { font-size: 20px; }
+    .disease-card, .action-card, .integrated-box, .warning-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>🩺 手指の震え ― 考えられる病気の整理</h1>
+    <p class="subtitle">61歳男性・大量飲酒後に1か月以上続く手の震え</p>
+  </div>
+
+  <!-- Patient Summary -->
+  <div class="patient-summary">
+    <h2>📋 現在わかっていること</h2>
+    <ul>
+      <li>61歳男性、身長178cm・体重60〜70kg</li>
+      <li>高血圧で薬を服用中（薬の種類は不明）</li>
+      <li>ふだんはビール1缶/日程度の飲酒習慣</li>
+      <li>2025年5月に半日にわたる大量飲酒</li>
+      <li>その後から<strong>1か月以上</strong>手指が震え続けている</li>
+      <li>震え方：<strong>手を少し上げるだけで震える（姿勢時振戦）</strong></li>
+      <li>過去に足裏のチクチク感あり（靴の買い替えで改善）</li>
+    </ul>
+  </div>
+
+  <!-- Disease ranking -->
+  <h2 class="section-title">考えられる病気（可能性の高い順）</h2>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot high"></div>可能性が高い・要検査</div>
+    <div class="legend-item"><div class="legend-dot mid"></div>否定しておきたい</div>
+    <div class="legend-item"><div class="legend-dot low"></div>可能性は低いが念のため</div>
+  </div>
+
+  <!-- #1 -->
+  <div class="disease-card high">
+    <div class="card-header">
+      <h3>① 本態性振戦（ほんたいせいしんせん）</h3>
+      <span class="probability-tag high">最有力</span>
+    </div>
+    <div class="card-body">
+      <p>
+        もともと体質として持っていた「震えやすさ」が、大量飲酒をきっかけに表面化した可能性が最も高いです。
+      </p>
+      <p>
+        お酒を飲むと一時的に震えが止まり、翌日にかえって悪化する（反跳効果）のがこの病気の特徴です。
+        61歳は発症しやすい年齢帯にあたり、<strong>手を上げると震える（姿勢時振戦）</strong>という症状もぴったり一致します。
+      </p>
+      <div class="reason">
+        <strong>なぜ最有力か：</strong>
+        アルコール離脱なら通常1週間以内に治まります。1か月以上続くということは、一過性ではなく「持続する振戦の病気」が背景にあると考えるのが自然です。
+      </div>
+    </div>
+  </div>
+
+  <!-- #2 -->
+  <div class="disease-card high">
+    <div class="card-header">
+      <h3>② 甲状腺機能亢進症（バセドウ病など）</h3>
+      <span class="probability-tag high">要検査で除外</span>
+    </div>
+    <div class="card-body">
+      <p>
+        甲状腺ホルモンが過剰に出ると、手の細かい震え・動悸・体重減少・汗をかきやすいなどの症状が出ます。
+        手の震え方が本態性振戦と似ているため、<strong>血液検査（TSH・甲状腺ホルモン）で確認するのが大切</strong>です。
+      </p>
+      <div class="reason">
+        <strong>なぜ重要か：</strong>
+        治療すれば震えが治る可能性がある病気です。簡単な血液検査でわかるため、最初に除外しておくべきです。
+      </div>
+    </div>
+  </div>
+
+  <!-- #3 -->
+  <div class="disease-card high">
+    <div class="card-header">
+      <h3>③ 栄養不足（ビタミンB1・B12）</h3>
+      <span class="probability-tag high">要検査で除外</span>
+    </div>
+    <div class="card-body">
+      <p>
+        日常的な飲酒に加え大量飲酒をすると、ビタミンB1（チアミン）やB12が不足しやすくなります。
+        B1が極端に不足すると<strong>ウェルニッケ脳症</strong>という緊急性の高い病態にもなりえます。
+      </p>
+      <p>足裏のチクチク感も、ビタミン不足による末梢神経障害で説明できる可能性があります。</p>
+      <div class="reason">
+        <strong>なぜ重要か：</strong>
+        ビタミン補充で改善できる、治療可能な原因です。足のしびれと手の震えを統合的に説明しうる点でも要チェックです。
+      </div>
+    </div>
+  </div>
+
+  <!-- #4 -->
+  <div class="disease-card mid">
+    <div class="card-header">
+      <h3>④ 電解質の異常（マグネシウム不足など）</h3>
+      <span class="probability-tag mid">否定しておきたい</span>
+    </div>
+    <div class="card-body">
+      <p>
+        大量飲酒後にマグネシウムやカリウムなどのミネラルバランスが崩れ、震え・筋肉のけいれんが起きることがあります。
+        これも血液検査で確認可能です。
+      </p>
+    </div>
+  </div>
+
+  <!-- #5 -->
+  <div class="disease-card mid">
+    <div class="card-header">
+      <h3>⑤ 薬の副作用（降圧薬など）</h3>
+      <span class="probability-tag mid">否定しておきたい</span>
+    </div>
+    <div class="card-body">
+      <p>
+        高血圧の薬の中には、震えを引き起こしたり悪化させたりする種類があります。
+        特に<strong>カルシウム拮抗薬（ニフェジピンなど）</strong>や、一部のβ遮断薬が該当します。
+      </p>
+      <div class="reason">
+        <strong>確認方法：</strong>
+        服用中のお薬の名前を調べて、受診時に必ず伝えてください。お薬手帳を持参するのがベストです。
+      </div>
+    </div>
+  </div>
+
+  <!-- #6 -->
+  <div class="disease-card mid">
+    <div class="card-header">
+      <h3>⑥ 糖尿病（隠れ糖尿病）</h3>
+      <span class="probability-tag mid">否定しておきたい</span>
+    </div>
+    <div class="card-body">
+      <p>
+        高血圧と糖尿病はセットで持っている方が多い病気です。
+        糖尿病自体は手の震えの直接原因にはなりにくいですが、足裏のチクチク感（糖尿病性末梢神経障害）の原因となりえます。
+        HbA1cという血液検査で確認できます。
+      </p>
+    </div>
+  </div>
+
+  <!-- #7 -->
+  <div class="disease-card low">
+    <div class="card-header">
+      <h3>⑦ パーキンソン病</h3>
+      <span class="probability-tag low">可能性は低い</span>
+    </div>
+    <div class="card-body">
+      <p>
+        パーキンソン病の震えは通常「じっとしている時に震える（安静時振戦）」タイプで、今回の「手を上げると震える」とはパターンが異なります。
+        ただし、動作の遅さ・筋肉のこわばり・左右差があるかどうかは、念のため診察で確認してもらう価値があります。
+      </p>
+    </div>
+  </div>
+
+  <!-- #8 -->
+  <div class="disease-card low">
+    <div class="card-header">
+      <h3>⑧ アルコール離脱による震え</h3>
+      <span class="probability-tag low">可能性は低い</span>
+    </div>
+    <div class="card-body">
+      <p>
+        いわゆる「お酒が切れて手が震える」状態です。
+        しかし離脱症状は通常<strong>数日〜1週間で治まる</strong>もので、1か月以上は続きません。
+        また、ビール1缶/日程度では離脱を起こすほどの身体依存は生じにくいです。
+      </p>
+    </div>
+  </div>
+
+  <!-- #9 -->
+  <div class="disease-card low">
+    <div class="card-header">
+      <h3>⑨ 肝臓の障害（肝性脳症）</h3>
+      <span class="probability-tag low">可能性は低い</span>
+    </div>
+    <div class="card-body">
+      <p>
+        肝臓の機能が低下すると「羽ばたき振戦」という独特の震え方をすることがあります。
+        通常の律動的な震えとは異なり、手首がバタバタと落ちるような動きです。
+        診察で区別でき、肝機能の血液検査でも評価できます。
+      </p>
+    </div>
+  </div>
+
+  <!-- Integrated view -->
+  <h2 class="section-title">足裏のチクチク感との関連</h2>
+
+  <div class="integrated-box">
+    <h3>🔗 手の震えと足の症状は別々の原因かもしれない</h3>
+    <p>
+      靴を替えて治ったことから、単純に靴による圧迫だった可能性もあります。
+      しかし、以下の病態であれば手の震えと足のしびれを同時に説明できます。
+    </p>
+    <p style="margin-top: 12px;">
+      <span class="keyword">ビタミンB群の不足</span>
+      <span class="keyword">アルコール性の末梢神経障害</span>
+      <span class="keyword">糖尿病性の末梢神経障害</span>
+    </p>
+    <p style="margin-top: 12px;">
+      いずれも血液検査で手がかりが得られるため、受診時にまとめて確認するのが効率的です。
+    </p>
+  </div>
+
+  <!-- Action Plan -->
+  <h2 class="section-title">受診のすすめ方</h2>
+
+  <div class="action-card">
+    <span class="step-label">STEP 1 ― まず受診</span>
+    <h3>🏥 脳神経内科（神経内科）を受診する</h3>
+    <p>手の震えの専門は脳神経内科です。「ふるえ外来」を設けている病院もあります。</p>
+    <ul>
+      <li><strong>持っていくもの：</strong>お薬手帳（降圧薬の種類を確認するため）</li>
+      <li><strong>伝えること：</strong>5月の大量飲酒後に震えが始まったこと、足裏の症状の既往</li>
+    </ul>
+  </div>
+
+  <div class="action-card">
+    <span class="step-label">STEP 2 ― 血液検査</span>
+    <h3>🩸 以下の項目を調べてもらう</h3>
+    <ul>
+      <li><strong>甲状腺機能</strong>（TSH, FT4）→ 甲状腺の異常を除外</li>
+      <li><strong>血糖値・HbA1c</strong> → 糖尿病の有無を確認</li>
+      <li><strong>ビタミンB1・B12</strong> → 栄養不足を確認</li>
+      <li><strong>電解質</strong>（マグネシウム, カリウム等）→ ミネラル異常を確認</li>
+      <li><strong>肝機能・腎機能</strong> → 肝臓や腎臓の状態を確認</li>
+    </ul>
+    <p style="margin-top: 12px;">これらは一般的な採血で一度にまとめて調べられます。</p>
+  </div>
+
+  <div class="action-card">
+    <span class="step-label">STEP 3 ― 結果に応じて</span>
+    <h3>📋 原因がわかれば治療へ</h3>
+    <ul>
+      <li><strong>甲状腺やビタミン不足が原因</strong>なら → 治療・補充で震えが改善する可能性大</li>
+      <li><strong>薬の副作用が原因</strong>なら → 薬の変更で改善する可能性あり</li>
+      <li><strong>本態性振戦と診断</strong>されたら → 症状を抑える薬で対応可能</li>
+      <li><strong>足のしびれが再発</strong>する場合 → 神経伝導検査で末梢神経を精査</li>
+    </ul>
+  </div>
+
+  <!-- Warning Signs -->
+  <div class="warning-box">
+    <h3>⚠️ こんな症状が出たらすぐに受診</h3>
+    <ul>
+      <li>震えがどんどん強くなっている</li>
+      <li>歩き方がおかしい・ふらつく</li>
+      <li>ぼんやりする・受け答えがおかしい（意識の変化）</li>
+      <li>目の動きがおかしい・ものが二重に見える</li>
+      <li>手足のしびれが広がっている</li>
+    </ul>
+    <p style="margin-top: 12px;">
+      特に意識障害＋眼の異常＋ふらつきが揃ったら、<strong>ウェルニッケ脳症</strong>の可能性があり緊急です。
+    </p>
+  </div>
+
+  <div class="footer-note">
+    ※ この資料は一般的な医学情報の整理であり、診断・治療ではありません。<br>
+    確定診断には実際の診察と検査が必要です。<br>
+    2025年6月 作成
+  </div>
+
+</div>
+</body>
+</html>
