@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥多摩1泊2日ドライブ旅行 2026/9/7–8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --river:#16404d;        /* 渓谷の深い青緑 */
+  --river-deep:#0d2b34;
+  --mist:#7fa8a0;         /* 山霧の緑 */
+  --paper:#f6f4ec;        /* 和紙 */
+  --card:#ffffff;
+  --dolphin:#5aa7c7;      /* イルカの淡い青 */
+  --sun:#d9a441;          /* 夕餉の灯 */
+  --ink:#22303a;
+  --line:#dcd8ca;
+  --danger:#b0563f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Zen Kaku Gothic New",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:15px;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- ヘッダー ---------- */
+header{
+  background:linear-gradient(160deg,var(--river-deep) 0%,var(--river) 55%,#1e5563 100%);
+  color:#f2f0e6;
+  padding:52px 20px 64px;
+  position:relative;
+  overflow:hidden;
+}
+header .inner{max-width:880px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{
+  font-size:12px;letter-spacing:.28em;color:var(--dolphin);
+  text-transform:uppercase;margin-bottom:14px;font-weight:700;
+}
+h1{
+  font-family:"Shippori Mincho",serif;
+  font-size:clamp(26px,4.6vw,40px);
+  font-weight:800;letter-spacing:.04em;line-height:1.35;
+}
+.subtitle{margin-top:14px;font-size:14px;color:#c9d8d6;max-width:560px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.meta span{
+  border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  padding:5px 14px;font-size:12.5px;letter-spacing:.05em;
+}
+/* 波のライン */
+header svg.wave{position:absolute;bottom:-1px;left:0;width:100%;height:34px;display:block}
+
+/* ---------- ルート概要 ---------- */
+.route{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  margin-top:-30px;position:relative;z-index:2;
+  padding:22px 24px;box-shadow:0 8px 24px rgba(13,43,52,.08);
+}
+.route h2{font-family:"Shippori Mincho",serif;font-size:16px;margin-bottom:12px;color:var(--river)}
+.routeline{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13.5px;font-weight:500}
+.routeline .stop{background:#eef4f2;border-radius:8px;padding:4px 10px;white-space:nowrap}
+.routeline .stop.hotel{background:var(--river);color:#fff}
+.routeline .arrow{color:var(--mist);font-weight:700}
+.route .day-label{
+  font-size:11px;letter-spacing:.2em;color:var(--mist);font-weight:700;
+  margin:10px 0 6px;
+}
+.route .day-label:first-of-type{margin-top:0}
+
+/* ---------- セクション ---------- */
+section{margin-top:48px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;border-bottom:2px solid var(--river);padding-bottom:10px}
+.sec-head .day{
+  font-family:"Shippori Mincho",serif;font-size:26px;font-weight:800;color:var(--river);
+  white-space:nowrap;
+}
+.sec-head .date{font-size:13px;color:#6a7680;letter-spacing:.08em}
+
+/* ---------- タイムライン ---------- */
+.timeline{position:relative;padding-left:118px}
+.timeline::before{
+  content:"";position:absolute;left:96px;top:6px;bottom:6px;width:3px;
+  background:linear-gradient(var(--dolphin),var(--mist));border-radius:2px;
+}
+.tl-item{position:relative;padding:0 0 26px 22px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-27.5px;top:8px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--mist);
+}
+.tl-item.key::before{background:var(--dolphin);border-color:var(--river);width:14px;height:14px;left:-28.5px;top:7px}
+.tl-time{
+  position:absolute;left:-118px;top:4px;width:88px;text-align:right;
+  font-size:13px;font-weight:700;color:var(--river);letter-spacing:.02em;line-height:1.4;
+}
+.tl-title{font-weight:700;font-size:15.5px}
+.tl-item.key .tl-title{color:var(--river)}
+.tl-note{font-size:13.5px;color:#4c5a63;margin-top:3px}
+.tag{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  border-radius:4px;padding:1.5px 7px;margin-left:8px;vertical-align:2px;
+}
+.tag.meal{background:#f4e6cc;color:#8a6414}
+.tag.photo{background:#dcebf3;color:#2e6b8a}
+.tag.onsen{background:#e6ddf0;color:#5f4b82}
+.tag.drive{background:#e2ece7;color:#3e6b56}
+.tag.limit{background:#f3ded7;color:var(--danger)}
+
+/* ---------- カード ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.timeline{padding-left:100px}.tl-time{left:-100px;width:72px;font-size:12px}.timeline::before{left:80px}}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;
+}
+.card h3{
+  font-family:"Shippori Mincho",serif;font-size:15.5px;color:var(--river);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.card h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dolphin);flex-shrink:0}
+.card ul{list-style:none}
+.card li{
+  font-size:13.5px;padding:5px 0 5px 18px;position:relative;color:#3c4a54;
+}
+.card li::before{content:"—";position:absolute;left:0;color:var(--mist)}
+.card.warn h3::before{background:var(--danger)}
+.card p.small{font-size:13px;color:#4c5a63}
+
+/* ---------- 判断ルール表 ---------- */
+table.rules{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.rules th,table.rules td{padding:10px 14px;text-align:left;vertical-align:top}
+table.rules thead th{
+  background:var(--river);color:#fff;font-size:12px;letter-spacing:.12em;font-weight:700;
+}
+table.rules tbody tr:nth-child(even){background:#f2f1e9}
+table.rules td:first-child{font-weight:500;width:46%}
+table.rules .strong{font-weight:700;color:var(--danger)}
+.table-scroll{overflow-x:auto;border-radius:12px}
+
+/* ---------- 宿ハイライト ---------- */
+.hotel-band{
+  background:var(--river);color:#eef2ec;border-radius:14px;
+  padding:26px 26px;margin-top:26px;
+}
+.hotel-band h3{font-family:"Shippori Mincho",serif;font-size:18px;margin-bottom:6px}
+.hotel-band .sub{font-size:12.5px;color:var(--dolphin);letter-spacing:.15em;font-weight:700;margin-bottom:14px}
+.hotel-band ol{list-style:none;counter-reset:n}
+.hotel-band li{
+  counter-increment:n;position:relative;padding:7px 0 7px 40px;font-size:13.5px;
+  border-bottom:1px dashed rgba(255,255,255,.18);
+}
+.hotel-band li:last-child{border-bottom:none}
+.hotel-band li::before{
+  content:counter(n,decimal-leading-zero);
+  position:absolute;left:0;top:8px;font-family:"Shippori Mincho",serif;
+  font-size:13px;color:var(--sun);font-weight:700;
+}
+.hotel-band .time{font-weight:700;color:#fff;margin-right:8px}
+
+/* ---------- チェックリスト ---------- */
+.check{list-style:none}
+.check li{
+  font-size:13.5px;padding:6px 0 6px 26px;position:relative;color:#3c4a54;
+}
+.check li::before{
+  content:"";position:absolute;left:0;top:9px;width:13px;height:13px;
+  border:2px solid var(--mist);border-radius:3px;background:#fff;
+}
+.links{margin-top:14px;font-size:12.5px}
+.links a{color:var(--river);text-decoration:underline;text-underline-offset:3px;margin-right:14px}
+
+/* ---------- サマリー ---------- */
+.summary{
+  margin-top:52px;border-top:2px solid var(--river);padding-top:24px;
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+}
+@media(max-width:640px){.summary{grid-template-columns:1fr}}
+.summary .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.summary .box h4{font-family:"Shippori Mincho",serif;color:var(--river);font-size:14.5px;margin-bottom:8px}
+.summary .box p{font-size:13.5px;color:#3c4a54}
+.summary .box b{color:var(--river)}
+footer{margin-top:40px;font-size:12px;color:#8a9299;text-align:center;letter-spacing:.06em}
+
+@media print{
+  header{padding:30px 20px 40px}
+  .hotel-band,.route,table.rules thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{margin-top:30px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="eyebrow">Okutama · Hatonosu-so · 2026</div>
+    <h1>奥多摩1泊2日ドライブ旅行<br>大雨予報を受けた見直し</h1>
+    <p class="subtitle">
+      大雨予報のため、延期を優先して検討。<br>
+      宿に日程変更・取消を相談し、移動と滞在の安全を優先する。<br>
+      以下の行程は、天候・道路状況が改善して実施を再検討する場合の参考。
+    </p>
+    <div class="meta">
+      <span>2026年9月7日（月）〜 9月8日（火）</span>
+      <span>発着：稲城市若葉台</span>
+      <span>宿泊：はとのす荘（2食付）</span>
+      <span>移動：車（運転交代あり）</span>
+      <span>出発判断：延期を優先して検討</span>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,20 C240,42 480,-2 720,18 C960,38 1200,2 1440,22 L1440,40 L0,40 Z" fill="#f6f4ec"/></svg>
+</header>
+
+<div class="wrap">
+
+  <!-- ルート概要 -->
+  <div class="route">
+    <h2>実施を再検討する場合のルート</h2>
+    <div class="day-label">DAY 1 ─ 9/7（月）・雨天</div>
+    <div class="routeline">
+      <span class="stop">若葉台</span><span class="arrow">→</span>
+      <span class="stop">中央道・圏央道</span><span class="arrow">→</span>
+      <span class="stop">吉野街道</span><span class="arrow">→</span>
+      <span class="stop">丹三郎（12:30予約済み）</span><span class="arrow">→</span>
+      <span class="stop hotel">はとのす荘</span>
+    </div>
+    <div class="day-label">DAY 2 ─ 9/8（火）</div>
+    <div class="routeline">
+      <span class="stop hotel">はとのす荘</span><span class="arrow">→</span>
+      <span class="stop">玉川屋（予約なし）</span><span class="arrow">→</span>
+      <span class="stop">直売所（状況次第）</span><span class="arrow">→</span>
+      <span class="stop">若葉台</span>
+    </div>
+    <p class="small" style="margin-top:12px;font-size:12.5px;color:#6a7680">
+      ナビ登録順：<br>
+      <b>1日目</b> ①丹三郎 ②はとのす荘<br>
+      <b>2日目</b> ①玉川屋 ②秋川ファーマーズセンター ③自宅。<br>
+      丹三郎は12:30予約済み。<br>
+      奥多摩湖方面への往復と、両日の渓谷・橋の散歩は中止。<br>
+      宿へ直接向かう場合も、山間部の道路と宿周辺の状況を確認する。<br>
+      2日目の玉川屋は予約せず、帰路の状況に問題がない場合のみ来店。
+    </p>
+  </div>
+
+  <div class="card warn" style="margin-top:26px">
+    <h3>天気を再確認：雨のピークは6日夜〜7日早朝</h3>
+    <p class="small">
+      2026年9月6日14時台に確認。<br>
+      奥多摩町の時間帯別予報では、7日の昼から雨が弱まる見通し。<br>
+      日別の予報雨量には、出発前の未明に降る雨も含まれる。
+    </p>
+    <div class="table-scroll" style="margin-top:12px">
+      <table class="rules">
+        <thead><tr><th>時間帯</th><th>1時間ごとの予報雨量</th></tr></thead>
+        <tbody>
+          <tr><td>9/6（日）<br>20〜24時</td><td>10〜17mm/h</td></tr>
+          <tr><td>9/7（月）<br>1〜5時</td><td class="strong">10〜25mm/h</td></tr>
+          <tr><td>9/7（月）<br>10〜12時</td><td>1〜3mm/h</td></tr>
+          <tr><td>9/7（月）<br>13〜15時</td><td>0〜0.2mm/h</td></tr>
+          <tr><td>9/8（火）<br>9〜15時</td><td>0〜1mm/h</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:12px">
+      出典：<a href="https://tenki.jp/forecast/3/16/4410/13308/1hour.html" target="_blank" rel="noopener noreferrer">tenki.jp・奥多摩町の1時間天気（9/6 14:00発表）</a>。<br>
+      町の地点予報のため、宿や経路上では降り方が異なる場合がある。
+    </p>
+    <p class="small" style="margin-top:12px">
+      気象庁の奥多摩町の発表は、確認時点では雷注意報のみ（9/6 10:19更新）。<br>
+      一方、東京地方では、7日夕方までの期間内に、<br>
+      大雨・土砂災害の警報を発表する可能性が高いとの見通し（9/6 11:00発表）。<br>
+      <a href="https://www.jma.go.jp/bosai/warning/#area_type=class20s&amp;area_code=1330800&amp;lang=ja" target="_blank" rel="noopener noreferrer">気象庁・奥多摩町の警報と東京地方の見通し</a>
+    </p>
+    <p class="small" style="margin-top:12px">
+      雨が弱まっても、それまでの雨による土砂災害の危険が続く場合がある。<br>
+      屋内で過ごす場合も、山間部の移動や宿へのアクセスは必要。<br>
+      <b>危険を避ける方針なら、今回は延期を第一候補に宿へ相談する。</b><br>
+      判断の参考：<a href="https://www.jma.go.jp/jma/kishou/know/yougo_hp/kasen.html" target="_blank" rel="noopener noreferrer">気象庁・先行降雨と土砂災害</a>。<br>
+      避難情報と実際の通行規制は、別途最新情報を確認する。
+    </p>
+  </div>
+
+  <div class="card warn" style="margin-top:18px">
+    <h3>はとのす荘へ、今日9/6のうちに相談</h3>
+    <p class="small">
+      公式FAQの通常規定：3・2日前30％、前日50％、当日100％。<br>
+      9/7宿泊の場合、今日9/6は前日のため通常50％。<br>
+      悪天候時の無料取消条件は、確認できた公開情報には明記がない。<br>
+      <b>無料取消・減免、日程変更時の費用を、取消操作の前に宿へ確認する。</b><br>
+      電話：<a href="tel:0428847123">0428-84-7123</a>。<br>
+      予約確認メールに別の条件がある場合は、その内容も宿に伝える。
+    </p>
+    <p class="small" style="margin-top:12px">
+      <a href="https://www.okutamas.co.jp/hatonosu/qa.html" target="_blank" rel="noopener noreferrer">はとのす荘・公式キャンセル規定</a> ／
+      <a href="https://www.okutamas.co.jp/hatonosu/access.html" target="_blank" rel="noopener noreferrer">公式連絡先</a>
+    </p>
+  </div>
+
+  <!-- DAY 1 -->
+  <section>
+    <div class="sec-head">
+      <div class="day">1日目</div>
+      <div class="date">9月7日（月）｜天候・道路状況が改善した場合の参考</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">9:35–9:55</div>
+        <div class="tl-title">出発の可否を再確認</div>
+        <div class="tl-note">
+          警報・避難情報・キキクル・道路規制を、宿周辺と往復経路で確認。<br>
+          大雨の見通しや移動の不安が残る場合は出発しない。<br>
+          雨具を用意することで、出発可能と判断しない。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">10:00</div>
+        <div class="tl-title">若葉台出発 <span class="tag drive">運転A</span></div>
+        <div class="tl-note">
+          実施できる見通しが立った場合のみ出発。<br>
+          公式の通行情報と宿への確認を踏まえ、経路を決める。<br>
+          12:30の予約に間に合わせるために無理な運転をしない。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:10–12:25</div>
+        <div class="tl-title">丹三郎到着（古里）</div>
+        <div class="tl-note">
+          駐車・傘の準備を済ませ、12:30の予約に合わせて入店。<br>
+          早着時は店の案内に従い、屋外で長く待たない。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">12:30–13:30</div>
+        <div class="tl-title">昼食：そば処 丹三郎 <span class="tag meal">予約済み</span></div>
+        <div class="tl-note">
+          <b>12:30予約済み。</b><br>
+          古民家の室内で蕎麦と天ぷらをゆっくり楽しむ。<br>
+          食事終了は13:30頃が目安。<br>
+          食後は寄り道せず宿へ向かう。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30頃</div>
+        <div class="tl-title">丹三郎出発 <span class="tag drive">運転B</span></div>
+        <div class="tl-note">
+          宿までの通行状況を再確認して移動。<br>
+          到着が15時より早くなるため、館内で待てるか出発前に宿と相談。<br>
+          雨が強まった場合は進まず、安全な場所で宿・道路管理者の案内を確認。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">到着後<br>15:00まで</div>
+        <div class="tl-title">宿と相談した場所で休憩</div>
+        <div class="tl-note">
+          早着時の荷物預かり・館内待機は、宿の了承が得られた場合のみ。<br>
+          待機できない場合は、出発前に行程を見直す。<br>
+          空き時間を埋めるためのドライブや散歩はしない。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">15:00〜</div>
+        <div class="tl-title">はとのす荘チェックイン</div>
+        <div class="tl-note">
+          チェックインは15時から。<br>
+          宿の案内に従い、客室・館内で過ごす。<br>
+          滞在中の大雨対応と、翌日の帰路の確認方法を聞いておく。
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:26px">
+      <div class="card">
+        <h3>丹三郎 予約済み</h3>
+        <ul>
+          <li><b>9月7日（月）12:30、大人2名</b></li>
+          <li>
+            到着目標は12:10〜12:15。<br>
+            駐車・雨具の片付けに余裕を持つ
+          </li>
+          <li>予約名と予約内容をすぐ確認できるようにしておく</li>
+          <li>遅れそうな場合の連絡先：0428-84-7777</li>
+        </ul>
+        <p class="small" style="margin-top:8px">旅行を見送る場合は、丹三郎にも早めに取消を連絡する。</p>
+      </div>
+      <div class="card">
+        <h3>今回、予定から外す場所</h3>
+        <ul>
+          <li>奥多摩湖・水と緑のふれあい館への往復</li>
+          <li>鳩ノ巣小橋・渓谷・河原・遊歩道の散歩</li>
+          <li>川や崖に近づいての撮影</li>
+          <li>2日目に雨が弱まっても、散歩は再開しない</li>
+        </ul>
+        <p class="small" style="margin-top:8px">屋内見学を外す理由は、湖方面までの山間部の移動を増やさないため。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:22px" class="table-scroll">
+      <table class="rules">
+        <thead><tr><th>今回の旅行での判断方針</th><th>対応</th></tr></thead>
+        <tbody>
+          <tr><td>前夜〜早朝に大雨、その後は弱まる予報</td><td class="strong">先に降る雨の影響も考え、延期を第一候補に宿へ相談</td></tr>
+          <tr><td>宿周辺・経路に大雨や土砂災害等の警報、避難情報、通行止めがある</td><td>観光目的の出発を見送る</td></tr>
+          <tr><td>警報がなくても、大雨の見通しや移動への不安が残る</td><td>出発しない。<br>「規制なし」だけで判断しない</td></tr>
+          <tr><td>宿が営業している</td><td>往復経路・宿周辺の状況も確認。<br>営業状況だけで出発を決めない</td></tr>
+          <tr><td>既に移動中・宿泊中に悪化</td><td>自治体・宿の案内に従う。<br>危険な道を通って帰宅を急がない</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 宿での過ごし方 -->
+    <div class="hotel-band">
+      <div class="sub">HATONOSU-SO ─ 鳩ノ巣渓谷の宿で</div>
+      <h3>はとのす荘での過ごし方</h3>
+      <ol>
+        <li>
+          <span class="time">15:00–15:45</span>チェックイン・荷物整理。<br>
+          夕食・朝食時刻、朝風呂の利用時間を確認
+        </li>
+        <li><span class="time">15:45–16:15</span>客室の窓辺で雨の渓谷を眺め、イルカのぬいぐるみと写真撮影</li>
+        <li>
+          <span class="time">16:15–17:10</span>1回目の温泉。<br>
+          雨が吹き込む場合は内湯でゆっくり
+        </li>
+        <li><span class="time">17:10–夕食前</span>客室でお茶・写真整理・渓谷を眺めて休憩</li>
+        <li><span class="time">夕食</span>宿から案内された時刻に合わせる</li>
+        <li>
+          <span class="time">夕食後</span>館内で静かに過ごす。<br>
+          余裕があれば2回目の温泉
+        </li>
+        <li>
+          <span class="time">就寝前</span>濡れた靴や雨具を乾かし、翌朝の天気を確認。<br>
+          翌日の帰路に関する情報を確認
+        </li>
+      </ol>
+      <p style="font-size:12.5px;margin-top:12px;color:#c9d8d6">
+        夕食時刻はチェックイン時に確認し、入浴・休憩を調整。<br>
+        客室での時間を長めに取り、屋外には散策に出ない。
+      </p>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section>
+    <div class="sec-head">
+      <div class="day">2日目</div>
+      <div class="date">9月8日（火）｜散歩中止・帰路の状況を優先</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">6:30–7:30</div>
+        <div class="tl-title">起床・朝の景色</div>
+        <div class="tl-note">客室内で過ごし、最新の防災・道路情報を確認。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7:30–8:30</div>
+        <div class="tl-title">朝食 <span class="tag meal">朝食</span></div>
+        <div class="tl-note">宿指定の時間に合わせ、前後の予定を調整。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30–9:15</div>
+        <div class="tl-title">朝風呂または客室休憩 <span class="tag onsen">温泉</span></div>
+        <div class="tl-note">入浴終了時刻を事前確認。</div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">9:20–9:55</div>
+        <div class="tl-title">客室で休憩・帰路の確認</div>
+        <div class="tl-note">
+          小橋・渓谷への散歩は中止。<br>
+          雨が弱まっても、前日の雨の影響を考えて屋内で過ごす。<br>
+          宿に帰路の状況を聞き、出発できるか確認。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:55–10:25</div>
+        <div class="tl-title">客室で休憩・荷造り</div>
+        <div class="tl-note">冷蔵庫・充電器・ぬいぐるみの小物を確認。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:25–10:50</div>
+        <div class="tl-title">荷物を車へ・精算</div>
+        <div class="tl-note">
+          同乗者が荷物、運転者が車内を整理。<br>
+          混雑する前に精算。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">10:50–10:55</div>
+        <div class="tl-title">はとのす荘出発 <span class="tag drive">運転A</span></div>
+        <div class="tl-note">
+          帰路に問題がない場合の出発目安。<br>
+          道路規制などで移動できない場合は、宿に対応を相談する。<br>
+          玉川屋へ寄れる状況なら、11:15頃に予約なしで来店。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">11:15–12:15<br>目安</div>
+        <div class="tl-title">昼食：元祖手打ちそば 玉川屋 <span class="tag meal">予約なし</span></div>
+        <div class="tl-note">
+          <b>予約せず、そのまま来店。</b><br>
+          入店・食事終了は待ち時間次第。<br>
+          蕎麦を中心に注文し、川魚料理の追加は提供時間を確認。<br>
+          道路・天候への懸念があれば昼食の立ち寄りを省略。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:15–13:05</div>
+        <div class="tl-title">秋川ファーマーズセンターへ <span class="tag drive">運転B</span></div>
+        <div class="tl-note">
+          帰路の状況に問題がなく、余裕がある場合のみ直売所へ。<br>
+          移動は約50分の目安。<br>
+          昼食が延びた分は以降の時刻を後ろへずらす。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">13:05–13:30</div>
+        <div class="tl-title">お土産購入</div>
+        <div class="tl-note">
+          地場野菜・パン・ジャム・加工品など。<br>
+          冷蔵・冷凍品はクーラーバッグへ。
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30目安</div>
+        <div class="tl-title">若葉台へ <span class="tag drive">帰路</span></div>
+        <div class="tl-note">
+          運転を交代して帰路へ。<br>
+          帰宅時刻より、移動できる道路状況かどうかを優先する。
+        </div>
+      </div>
+      <div class="tl-item key">
+        <div class="tl-time">14:35–15:05</div>
+        <div class="tl-title">若葉台帰着</div>
+        <div class="tl-note">
+          昼食待ちがなければ15時前後の帰着見込み。<br>
+          状況次第で時刻を変更。<br>
+          16時前の帰着を優先して無理に移動しない。
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:26px">
+      <div class="card">
+        <h3>両日とも、渓谷の散歩は中止</h3>
+        <ul>
+          <li>橋・河原・遊歩道に近づかない</li>
+          <li>雨がやんだことだけで散歩を再開しない</li>
+          <li>景色や写真は客室内の窓辺から</li>
+        </ul>
+        <p class="small" style="margin-top:8px">
+          2日目の予報雨量が少なくても、前日までの雨の影響は別に確認する。
+        </p>
+      </div>
+      <div class="card">
+        <h3>玉川屋・予約なしで来店</h3>
+        <ul>
+          <li>
+            <b>予約なし。<br>
+            立ち寄れる状況なら11:15頃に来店</b>
+          </li>
+          <li>
+            公式案内では月曜・第3火曜休み。<br>
+            9/8は第2火曜で通常の営業日
+          </li>
+          <li>出発前に公式サイトで9/8の営業時間・臨時休業を確認</li>
+          <li>混雑時は待ち時間の目安を聞き、昼食後の移動・買い物で調整</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:22px" class="table-scroll">
+      <table class="rules">
+        <thead><tr><th>2日目：帰路の判断</th><th>対応</th></tr></thead>
+        <tbody>
+          <tr><td>玉川屋に11:20までに入店できた</td><td>12:15頃の食事終了を目安に、そのまま直売所へ</td></tr>
+          <tr><td>入店待ちが15分以内</td><td>
+            待って入店。<br>
+            以降の時刻を待ち時間分ずらす
+          </td></tr>
+          <tr><td>入店待ちが15分を超える</td><td>
+            店に待ち時間を聞き、12時頃までの入店を目安に判断。<br>
+            難しければ帰路沿いの食事施設へ
+          </td></tr>
+          <tr><td>昼食終了が12:30〜13:00頃</td><td>直売所へ向かい、買い物は20〜25分を目安に調整</td></tr>
+          <tr><td>昼食終了が13:00を過ぎる</td><td>直売所の到着予想を確認し、買い物を短縮または省略</td></tr>
+          <tr><td>直売所到着が14:05〜14:15</td><td>
+            買い物を5〜10分に短縮。<br>
+            14:15を過ぎる見込みなら省略
+          </td></tr>
+          <tr><td>道路・天候への懸念がある</td><td class="strong">昼食・買い物を省略。<br>移動の可否を宿・公式情報で確認</td></tr>
+          <tr><td>帰路が通行止めになった</td><td>無理な迂回や出発をせず、宿・道路管理者に相談</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 予備案・雨天・規制 -->
+  <section>
+    <div class="sec-head">
+      <div class="day" style="font-size:20px">予備案と当日判断</div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>1日目：予約に遅れそうな場合</h3>
+        <ul>
+          <li>
+            <b>12:30予約済み</b>のため、遅れる見込みが出たら丹三郎へ連絡<br>
+            （0428-84-7777）
+          </li>
+          <li>旅行を見送る場合は、丹三郎にも取消を連絡する</li>
+          <li>
+            店が休業の場合は寄り道で代替店を探さず、<br>
+            旅行の実施自体を含めて見直す
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>2日目：玉川屋が休業の場合</h3>
+        <ul>
+          <li>
+            玉川屋は当日来店の予定。<br>
+            休業なら、営業確認できた帰路沿いの蕎麦店や食事施設へ
+          </li>
+          <li>
+            代替の昼食が長引いた場合は、<br>
+            直売所の買い物を短縮・省略し、帰路の状況を優先する
+          </li>
+          <li>当日の店探しで山間部を往復しない</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>天候が悪化した場合</h3>
+        <ul>
+          <li>
+            <b>出発前</b>：出発を見送り、宿と丹三郎へ連絡する
+          </li>
+          <li>
+            <b>移動中</b>：危険な区間へ進まず、<br>
+            安全な場所で公式情報と宿への連絡で状況を確認する
+          </li>
+          <li>
+            <b>宿泊中</b>：自治体の避難情報と宿の案内に従う。<br>
+            川の様子を見に外へ出たり、帰宅を急いだりしない
+          </li>
+        </ul>
+      </div>
+      <div class="card warn">
+        <h3>道路規制時の対応（国道411号）</h3>
+        <p class="small" style="margin-bottom:10px">
+          小丹波〜都県境の規制対象区間は、連続降雨量140mmが通行止めの基準。<br>
+          危険と判断されれば、基準未満でも規制される。<br>
+          日別の予報雨量から、現在の通行止めを判定することはできない。<br>
+          <a href="https://www.kensetsu.metro.tokyo.lg.jp/jimusho/nishiken/hosyuu-ka" target="_blank" rel="noopener noreferrer">東京都・西多摩建設事務所の雨量規制</a>
+        </p>
+        <ul>
+          <li>
+            「411号が止まったら吉野街道」と一律に判断せず、<br>
+            必ず<b>規制区間</b>を確認
+          </li>
+          <li>青梅市街周辺：吉野街道側で回避できる場合あり</li>
+          <li>御岳・川井周辺：規制地点により回避可否が異なる</li>
+          <li>鳩ノ巣・白丸・奥多摩駅以西：代替路が限られる</li>
+          <li>湖方面は今回の行程から除外</li>
+          <li>宿へのアクセス自体に影響：はとのす荘へ電話し推奨ルートを確認</li>
+          <li>ナビが提示しても、安全未確認の狭い林道・生活道路には入らない</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 出発前チェック -->
+  <section>
+    <div class="sec-head">
+      <div class="day" style="font-size:20px">出発前の最終確認</div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>予約内容・営業情報</h3>
+        <ul class="check">
+          <li>
+            丹三郎：<b>9/7（月）12:30予約済み</b>。<br>
+            予約名・内容・連絡先を手元に控える
+          </li>
+          <li>
+            玉川屋：<b>予約なしで来店</b>。<br>
+            9/8の営業時間・臨時休業のみ確認
+          </li>
+          <li>
+            はとのす荘：悪天候時の無料取消・減免、日程変更、<br>
+            往復経路・宿周辺の状況、早着時の館内待機
+          </li>
+          <li>秋川ファーマーズセンター：9/8の営業</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>9/6（日）夕方 〜 9/7（月）出発前</h3>
+        <ul class="check">
+          <li>奥多摩町・青梅市・あきる野市の天気</li>
+          <li>宿周辺・往復経路の警報・避難情報・キキクル</li>
+          <li>国道411号／吉野街道の工事・通行規制</li>
+          <li>台風・大雨・落石・雨量規制の可能性</li>
+          <li>JARTICで事故・渋滞を確認</li>
+          <li>東京都の道路情報から、通行規制と道路管理者の案内を確認</li>
+          <li>
+            ナビで丹三郎に12:10〜12:15頃到着できるか確認。<br>
+            12:30予約に遅れる見込みなら店へ連絡
+          </li>
+          <li>傘・タオル・替えの靴下・滑りにくい靴・ぬいぐるみ用の防水袋</li>
+          <li>山間部に入る前の給油量</li>
+        </ul>
+      </div>
+    </div>
+    <div class="links">
+      <a href="https://tabelog.com/tokyo/A1330/A133004/13016476/" target="_blank">丹三郎</a>
+      <a href="https://tamagawa-ya.com/store" target="_blank">玉川屋</a>
+      <a href="https://www.okutamas.co.jp/hatonosu/" target="_blank">はとのす荘</a>
+      <a href="https://www.jma.go.jp/bosai/" target="_blank" rel="noopener noreferrer">気象庁 防災情報</a>
+      <a href="https://www.jma.go.jp/bosai/risk/" target="_blank" rel="noopener noreferrer">キキクル</a>
+      <a href="https://www.town.okutama.tokyo.jp/" target="_blank" rel="noopener noreferrer">奥多摩町</a>
+      <a href="https://www.bousai.metro.tokyo.lg.jp/mobile/link/1000045/1000587.html" target="_blank" rel="noopener noreferrer">東京都 道路情報</a>
+      <a href="https://www.jartic.or.jp/" target="_blank">JARTIC</a>
+      <a href="https://www.city.akiruno.tokyo.jp/0000003556.html" target="_blank">秋川ファーマーズセンター</a>
+    </div>
+  </section>
+
+  <!-- サマリー -->
+  <div class="summary">
+    <div class="box">
+      <h4>9月7日（月）要約・実施判断は保留</h4>
+      <p>
+        <b>大雨予報が続く場合は出発を見送り、延期を相談。</b><br>
+        天候・道路状況が改善した場合の参考：<br>
+        <b>10:00</b> 若葉台発<br>
+        → <b>12:30</b> 丹三郎で昼食（予約済み）<br>
+        → はとのす荘へ直接移動・館内待機は事前相談<br>
+        → <b>15:00〜</b> チェックイン<br>
+        → 客室で写真・温泉・夕食。<br>
+        湖方面の往復・渓谷の散歩は中止
+      </p>
+    </div>
+    <div class="box">
+      <h4>9月8日（火）要約</h4>
+      <p>
+        朝食・朝風呂<br>
+        → <b>9:20</b> 客室休憩・帰路確認<br>
+        → <b>10:55</b> はとのす荘発<br>
+        → <b>11:15頃</b> 玉川屋（予約なし・状況次第）<br>
+        → <b>13:05頃</b> 直売所（状況次第）<br>
+        → <b>14:35–15:05</b> 若葉台帰着。<br>
+        散歩は中止。<br>
+        帰着時刻よりも、道路・天候の状況を優先する
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    今回は延期を第一候補に、宿へ今日中に相談する。<br>
+    予約や帰宅予定時刻よりも、移動・滞在の安全を優先する。
+  </footer>
+</div>
+</body>
+</html>
