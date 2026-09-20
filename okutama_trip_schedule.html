@@ -100,8 +100,9 @@ section{margin-top:36px;scroll-margin-top:24px}
 .tag.buy{background:#dfeaf0;color:#2b5d75}
 .section-note{font-size:12.5px;color:#4c5a63;margin-top:20px}
 
-/* 天気で分かれる午後 */
-.branch{margin:28px 0}
+/* 天気で分かれる午後（スマホでは切り替え表示） */
+.branch{margin:28px 0;position:relative}
+.wx-input,.wx-tabs{display:none}
 .branch-lead{font-size:13.5px;font-weight:700;color:var(--river);margin-bottom:12px}
 .branch-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .branch-card{
@@ -142,7 +143,6 @@ section{margin-top:36px;scroll-margin-top:24px}
 .steps h3{font-family:"Shippori Mincho",serif;font-size:17px;color:var(--river);margin-bottom:8px}
 .steps ol,.steps ul{padding-left:20px;font-size:13px}
 .steps li+li{margin-top:7px}
-.steps .lead{font-size:13px;color:#4c5a63;margin-bottom:10px}
 .dinner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .dinner-grid .steps{margin-top:0}
 .menu-line{font-family:"Shippori Mincho",serif;font-size:18px;font-weight:700;color:var(--river);margin-bottom:16px}
@@ -153,7 +153,6 @@ section{margin-top:36px;scroll-margin-top:24px}
 .contact-list>div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .contact-list dt{font-weight:700;font-size:14px;color:var(--river)}
 .contact-list dd{font-size:13px}
-.rating{display:block;font-size:12px;color:#5d6c75;margin-top:2px}
 .contact-links{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:5px}
 .prep{margin-top:32px;border:1px solid var(--line);border-radius:10px;background:var(--card);scroll-margin-top:24px}
 .prep summary{padding:14px 18px;cursor:pointer;font-weight:700;font-size:14px;color:var(--river)}
@@ -179,6 +178,21 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
   .tl-item::before{left:-24px}
   .tl-item.key::before{left:-25px}
   .branch-grid,.dinner-grid{grid-template-columns:1fr}
+  .wx-input{display:block;position:absolute;width:1px;height:1px;opacity:0}
+  .wx-tabs{
+    display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px;
+    border:1px solid var(--river);border-radius:10px;overflow:hidden;
+  }
+  .wx-tabs label{
+    display:flex;align-items:center;justify-content:center;min-height:44px;
+    font-size:13.5px;font-weight:700;color:var(--river);background:var(--card);cursor:pointer;
+  }
+  #wx-fine:checked~.wx-tabs label[for="wx-fine"],
+  #wx-rain:checked~.wx-tabs label[for="wx-rain"]{background:var(--river);color:#fff}
+  .wx-input:focus-visible~.wx-tabs{outline:3px solid var(--dolphin);outline-offset:3px}
+  #wx-fine:checked~.branch-grid .branch-card.rain,
+  #wx-rain:checked~.branch-grid .branch-card.fine{display:none}
+  .branch-card .cond{display:none}
   .branch-card{padding:16px}
   .plan>div{grid-template-columns:86px 1fr}
   .hotel-band{padding:18px}
@@ -188,7 +202,9 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
 }
 @media print{
   header{padding:24px 20px 44px}
-  .page-nav,.map-links,.map-note{display:none}
+  .page-nav,.map-links,.map-note,.wx-tabs{display:none}
+  #wx-fine:checked~.branch-grid .branch-card.rain,
+  #wx-rain:checked~.branch-grid .branch-card.fine{display:block}
   .hotel-band,.route{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{margin-top:26px}
   .tl-item,.stay-schedule>div,.contact-list>div,.branch-card,.steps{break-inside:avoid}
@@ -244,7 +260,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       </div>
       </div>
     </div>
-    <p class="map-note">地図のリンクは立ち寄り先を経由地に入れてある。スマホではGoogleマップのアプリで開く（ブラウザ版は経由地が3つまで）。</p>
+    <p class="map-note">スマホではGoogleマップのアプリで開く（ブラウザ版は経由地が3つまで）。</p>
   </div>
   <nav class="page-nav" aria-label="ページ内メニュー">
     <a href="#day1">1日目</a>
@@ -263,54 +279,57 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <li class="tl-item key">
         <div class="tl-time">10:00</div>
         <div class="tl-title">若葉台を出発 <span class="tag drive">移動</span></div>
-        <p class="tl-note">稲城大橋 → 中央道 国立府中IC → 圏央道 日の出IC → 吉野街道 → 川井 → 大丹波。渋滞なしで約1時間20分、日曜午前の混雑を見込んで早めに出発。</p>
-        <p class="tl-note">中央道の稲城ICは都心方面専用のため、八王子方面へは国立府中ICから。</p>
+        <p class="tl-note">中央道 国立府中IC → 圏央道 日の出IC → 吉野街道。約1時間20分、日曜の混雑を見込んで早めに。</p>
       </li>
       <li class="tl-item">
         <div class="tl-time">12:10–12:25</div>
         <div class="tl-title">ちわきに到着</div>
-        <p class="tl-note">川井から大丹波川沿いを約4km上流へ。駐車場15台（無料）。</p>
+        <p class="tl-note">駐車場15台（無料）。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">12:30–13:40</div>
         <div class="tl-title">昼食：古民家 食事処ちわき <span class="tag meal">12:30 席のみ予約済み</span></div>
-        <p class="tl-note">大人2名。調理は注文を受けてから始まるため、提供まで時間がかかる前提でゆっくり。</p>
+        <p class="tl-note">注文を受けてから調理するため、提供まで時間がかかる。</p>
       </li>
     </ol>
 
     <div class="branch">
-      <p class="branch-lead">13:40頃　昼食を終えた時点の空模様で、午後の過ごし方を選ぶ。</p>
+      <p class="branch-lead">13:40頃　空模様を見て午後を選ぶ。</p>
+      <input class="wx-input" type="radio" name="wx" id="wx-fine" checked>
+      <input class="wx-input" type="radio" name="wx" id="wx-rain">
+      <div class="wx-tabs">
+        <label for="wx-fine">雨でなければ</label>
+        <label for="wx-rain">雨なら</label>
+      </div>
       <div class="branch-grid">
-        <article class="branch-card">
+        <article class="branch-card fine">
           <h3><span class="cond">雨でなければ</span>奥多摩湖ドライブ</h3>
           <dl class="plan">
             <div><dt>13:45</dt><dd>ちわきを出発。国道411号を西へ約35分</dd></div>
-            <div><dt>14:20–15:00</dt><dd>小河内ダム<small>堤体の上を歩き、展望塔（10:00–16:00・無料）から湖を一望。水と緑のふれあい館（無料）も隣接。駐車は隣接Pか大麦代園地P（無料）。</small></dd></div>
-            <div><dt>15:00–15:20</dt><dd>湖畔ドライブ<small>国道411号で赤い峰谷橋を渡り、深山橋・留浦方面へ。</small></dd></div>
-            <div><dt>15:20–15:35</dt><dd>深山橋・留浦あたりで小休憩と写真<small>浮橋（ドラム缶橋）は水位低下による通行止めが続いているため、渡れない前提で。</small></dd></div>
-            <div><dt>15:35–16:15</dt><dd>はとのす荘へ。国道411号を戻って約40分</dd></div>
+            <div><dt>14:20–15:00</dt><dd>小河内ダム<small>堤体を歩き、展望塔（16:00まで・無料）へ。隣に水と緑のふれあい館（無料）。</small></dd></div>
+            <div><dt>15:00–15:20</dt><dd>湖畔ドライブ<small>赤い峰谷橋を渡り、深山橋方面へ。</small></dd></div>
+            <div><dt>15:20–15:35</dt><dd>深山橋・留浦で小休憩と写真<small>浮橋は通行止め中。</small></dd></div>
+            <div><dt>15:35–16:15</dt><dd>はとのす荘へ。約40分</dd></div>
             <div><dt>16:15–16:30</dt><dd>はとのす荘に到着</dd></div>
           </dl>
           <div class="map-links"><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;destination=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;waypoints=%E5%8F%A4%E6%B0%91%E5%AE%B6%20%E9%A3%9F%E4%BA%8B%E5%87%A6%E3%81%A1%E3%82%8F%E3%81%8D%7C%E5%B0%8F%E6%B2%B3%E5%86%85%E3%83%80%E3%83%A0%E5%B1%95%E6%9C%9B%E5%A1%94%7C%E6%B7%B1%E5%B1%B1%E6%A9%8B%20%E5%A5%A5%E5%A4%9A%E6%91%A9%E7%94%BA&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：晴れルート</a></div>
           <ul class="branch-memo">
-            <li>曇り・雨上がりで湖が霞むときや時間が押したときは、小河内ダムで折り返し（15:00発 → 15:25頃 宿着）。</li>
-            <li>奥多摩周遊道路の月夜見第一駐車場まで上ると＋45分ほど。10月からゲートは18:00閉鎖、夕食付きは18:00までに宿へ。</li>
-            <li>日曜の15時以降は、奥多摩湖から青梅方面への道が混みやすい。日の入りは17:20頃で、谷あいは早く暗くなる。</li>
+            <li>時間が押したら小河内ダムで折り返す（15:00発 → 15:25頃 宿着）。</li>
+            <li>夕食付きは18:00までに宿へ。日の入りは17:20頃。</li>
           </ul>
         </article>
         <article class="branch-card rain">
           <h3><span class="cond">雨なら</span>御岳で美術館、早めに宿へ</h3>
           <dl class="plan">
             <div><dt>13:45</dt><dd>ちわきを出発。御岳へ約15分</dd></div>
-            <div><dt>14:00–14:50</dt><dd>玉堂美術館<small>10:00–17:00（入館16:30まで）・大人600円。展示は屋内。小さな美術館なので30〜45分ほど。駐車場は入館者2時間無料。</small></dd></div>
+            <div><dt>14:00–14:50</dt><dd>玉堂美術館<small>入館16:30まで・大人600円。駐車場は入館者2時間無料。</small></dd></div>
             <div><dt>14:50–15:05</dt><dd>はとのす荘へ。約15分</dd></div>
-            <div><dt>15:05頃</dt><dd>はとのす荘に到着。チェックインして早めの温泉でゆっくり</dd></div>
+            <div><dt>15:05頃</dt><dd>はとのす荘に到着。早めの温泉でゆっくり</dd></div>
           </dl>
           <div class="map-links"><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;destination=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;waypoints=%E5%8F%A4%E6%B0%91%E5%AE%B6%20%E9%A3%9F%E4%BA%8B%E5%87%A6%E3%81%A1%E3%82%8F%E3%81%8D%7C%E7%8E%89%E5%A0%82%E7%BE%8E%E8%A1%93%E9%A4%A8&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：雨ルート</a></div>
           <ul class="branch-memo">
-            <li>お土産を見たいなら、御岳から車で約5分の澤乃井園の売店へ（＋30分）。月曜定休なので寄るならこの日。庭園は屋外のため、雨の日は売店が中心。運転する人は試飲不可。</li>
-            <li>小雨で湖を見たいときは、水と緑のふれあい館（屋内・無料）までの短縮ドライブも可。</li>
-            <li>本降りのときは無理をしない。国道411号や奥多摩周遊道路は雨量により通行規制がかかる。</li>
+            <li>お土産なら澤乃井園の売店へ（御岳から約5分・＋30分）。運転する人は試飲不可。</li>
+            <li>小雨なら、水と緑のふれあい館（屋内・無料）までの短縮ドライブも可。</li>
           </ul>
         </article>
       </div>
@@ -319,12 +338,11 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
     <div class="hotel-band">
       <h3>はとのす荘での過ごし方</h3>
       <dl class="stay-schedule">
-        <div><dt>到着時</dt><dd>チェックイン（15:00–21:00）。駐車場は急な下り坂に注意。夕食と朝食の時刻を決め、保冷剤の冷凍を相談</dd></div>
+        <div><dt>到着時</dt><dd>チェックイン。駐車場は急な下り坂。夕食と朝食の時刻を決め、保冷剤の冷凍を相談</dd></div>
         <div><dt>チェックイン後</dt><dd>客室で景色を眺め、イルカのぬいぐるみと写真撮影</dd></div>
         <div><dt>夕食前</dt><dd>1回目の温泉（15:00–23:30）</dd></div>
-        <div><dt>17:30以降</dt><dd>夕食。17:30から15分刻みで選ぶ。奥多摩湖を回った日は18:00以降の枠が安心</dd></div>
+        <div><dt>17:30以降</dt><dd>夕食（15分刻みで選ぶ）。奥多摩湖を回った日は18:00以降の枠に</dd></div>
         <div><dt>夕食後</dt><dd>館内でくつろぐ。余裕があれば2回目の温泉</dd></div>
-        <div><dt>就寝前</dt><dd>翌朝の準備</dd></div>
       </dl>
     </div>
   </section>
@@ -343,79 +361,56 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <li class="tl-item">
         <div class="tl-time">7:30–8:30</div>
         <div class="tl-title">朝食</div>
-        <p class="tl-note">開始時刻は7:30〜8:45の間。早めの枠にしておくと朝風呂に余裕ができる。</p>
       </li>
       <li class="tl-item">
         <div class="tl-time">8:30–9:15</div>
-        <div class="tl-title">朝風呂・客室で休憩 <span class="tag onsen">温泉</span></div>
-        <p class="tl-note">朝の温泉は6:00–9:30。</p>
+        <div class="tl-title">朝風呂 <span class="tag onsen">温泉</span></div>
+        <p class="tl-note">朝の温泉は9:30まで。</p>
       </li>
       <li class="tl-item">
         <div class="tl-time">9:15–10:25</div>
         <div class="tl-title">客室でのんびり・荷造り・精算</div>
-        <p class="tl-note">充電器や、客室の冷蔵庫に入れたもの、預けた保冷剤の忘れ物を確認。</p>
+        <p class="tl-note">冷蔵庫の中と、預けた保冷剤を忘れずに。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">10:30</div>
         <div class="tl-title">はとのす荘を出発 <span class="tag drive">移動</span></div>
-        <p class="tl-note">チェックアウトは11:00まで。まず西の奥多摩駅前へ、約10分。</p>
+        <p class="tl-note">チェックアウトは11:00まで。奥多摩駅前へ約10分。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">10:40–11:00</div>
-        <div class="tl-title">本わさびを買う：奥多摩わさび本舗 山城屋 <span class="tag buy">買い物</span></div>
-        <p class="tl-note">奥多摩産の生わさびは1本1,000〜1,800円前後。サイズと値段は日によって変わる。試食して選べると評判。駐車場12台。</p>
-        <p class="tl-note">週明けは品薄のことがあると店が案内している。無ければ無理に探さない。</p>
-        <p class="tl-note">乾かないようキッチンペーパーで包んでポリ袋に入れ、保冷バッグへ。</p>
-      </li>
-      <li class="tl-item">
-        <div class="tl-time">11:00–11:15</div>
-        <div class="tl-title">古里へ <span class="tag drive">移動</span></div>
-        <p class="tl-note">国道411号を東へ戻り、約15分。</p>
+        <div class="tl-title">本わさびを買う：山城屋 <span class="tag buy">買い物</span></div>
+        <p class="tl-note">1本1,000〜1,800円前後。駐車場12台。無ければ無理に探さない。</p>
+        <p class="tl-note">キッチンペーパーで包んでポリ袋に入れ、保冷バッグへ。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">11:30–12:30</div>
-        <div class="tl-title">昼食：そば・うどん 丹三郎 <span class="tag meal">11:30開店・予約可</span></div>
-        <p class="tl-note">茅葺きの古民家で手打ちそば、そばがき、天ぷら。味と接客の評判がよく、口コミの不満は待ち時間にほぼ限られる。平日でも待つことがあるため、11:30で予約しておくと安心。駐車場10台。</p>
-        <p class="tl-note">定休は毎月1・11・21・31日で、10/5は営業日。予約が取れないときは、釜めし なかい（大丹波・ネット予約のみ）か、アースガーデン（白丸・ハンバーグ）。</p>
-      </li>
-      <li class="tl-item">
-        <div class="tl-time">12:30–13:15</div>
-        <div class="tl-title">あきる野へ <span class="tag drive">移動</span></div>
-        <p class="tl-note">吉野街道から秋川方面へ約45分。</p>
+        <div class="tl-title">昼食：そば・うどん 丹三郎 <span class="tag meal">11:30開店</span></div>
+        <p class="tl-note">山城屋から約15分。駐車場10台。</p>
+        <p class="tl-note">入れないときは、釜めし なかい（大丹波）かアースガーデン（白丸）。</p>
       </li>
       <li class="tl-item">
         <div class="tl-time">13:15–13:30</div>
-        <div class="tl-title">冷奴の豆腐を買う：たかさん豆腐店 <span class="tag buy">買い物</span></div>
-        <p class="tl-note">秋川駅近く・10:00–18:00・日曜定休。看板は絹とよせ豆腐で、全国豆腐品評会の受賞歴がある。駐車場は3台と狭い。</p>
+        <div class="tl-title">豆腐を買う：たかさん豆腐店 <span class="tag buy">買い物</span></div>
+        <p class="tl-note">丹三郎から約45分。絹かよせ豆腐。駐車場3台。</p>
       </li>
       <li class="tl-item">
         <div class="tl-time">13:45–14:05</div>
         <div class="tl-title">薬味を買う：道の駅 八王子滝山 <span class="tag optional">立ち寄り候補</span></div>
-        <p class="tl-note">豆腐店から約15分、日野へ向かう滝山街道沿い。8:00–19:00・年中無休。ねぎ・みょうが・大葉など。午後は品数が減るので、無ければ自宅近くのスーパーで。</p>
-      </li>
-      <li class="tl-item">
-        <div class="tl-time">14:05–14:30</div>
-        <div class="tl-title">日野へ <span class="tag drive">移動</span></div>
-        <p class="tl-note">国道16号から国道20号 日野バイパスへ、約25分。</p>
+        <p class="tl-note">豆腐店から約15分。ねぎ・みょうが・大葉。無ければ自宅近くのスーパーで。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">14:30–15:05</div>
         <div class="tl-title">刺身を買う：角上魚類 日野店 <span class="tag buy">買い物</span></div>
-        <p class="tl-note">平日は10:00–19:00。鮮度と品ぞろえの評判が高く、混雑の不満は土日と年末に集中している。対面売場でその日のおすすめを聞き、サクで買って食べる直前に家で切る。</p>
-        <p class="tl-note">自宅まで30分以上かかるため、保冷バッグと保冷剤に入れて持ち帰る。持ち帰り用の氷をもらえたという口コミもある。</p>
-      </li>
-      <li class="tl-item">
-        <div class="tl-time">15:05–15:40</div>
-        <div class="tl-title">若葉台へ <span class="tag drive">移動</span></div>
-        <p class="tl-note">川崎街道などを経由して約35分。</p>
+        <p class="tl-note">道の駅から約25分。対面売場でおすすめを聞き、サクで買う。保冷バッグと保冷剤で持ち帰る。</p>
       </li>
       <li class="tl-item key">
         <div class="tl-time">15:40頃</div>
         <div class="tl-title">若葉台に帰着</div>
-        <p class="tl-note">道が混んだ場合は16:00頃。刺身・豆腐・わさびを冷蔵庫へ入れ、夕飯の支度へ。</p>
+        <p class="tl-note">角上魚類から約35分。混んだ場合は16:00頃。</p>
       </li>
     </ol>
-    <p class="section-note">晴れていて朝に余裕があれば、出発前に宿の周りで鳩ノ巣渓谷を眺める。遊歩道の通行状況は宿で確認。</p>
+    <p class="section-note">晴れて余裕があれば、出発前に宿の周りで鳩ノ巣渓谷を眺める。</p>
   </section>
 
   <section id="dinner" aria-labelledby="dinner-title">
@@ -428,22 +423,21 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div class="steps">
         <h3>そろえるもの</h3>
         <ul>
-          <li><strong>本わさび</strong>（山城屋）。「2人分のわさび丼と刺身・冷奴に使う」と店頭で伝え、大きさと本数を選ぶ。</li>
-          <li><strong>刺身</strong>（角上魚類）。秋は戻りガツオ、カンパチ、アジ、ホタテなど。脂ののった魚ほど本わさびが合う。</li>
+          <li><strong>本わさび</strong>。2人分のわさび丼と刺身・冷奴に使うと伝えて選ぶ。</li>
+          <li><strong>刺身</strong>。秋は戻りガツオ、カンパチ、アジ、ホタテなど。</li>
           <li><strong>豆腐</strong>と薬味（ねぎ・みょうが・大葉）。</li>
           <li><strong>かつお節</strong>・刻み海苔・醤油・炊きたてのご飯。</li>
-          <li>目の細かい<strong>おろし金</strong>（鮫皮おろしがあれば理想）。家にあるか出発前に確認。</li>
+          <li>目の細かい<strong>おろし金</strong>。</li>
         </ul>
       </div>
       <div class="steps">
         <h3>おいしく食べるコツ</h3>
         <ul>
-          <li>わさびは<strong>食べる直前に</strong>おろす。香りと辛味はおろして3〜5分でピーク、おいしいのはその後30分ほど。</li>
-          <li>茎の側から、おろし金に垂直に当て、力を入れず「の」の字を描くようにゆっくり。</li>
-          <li>わさび丼は、ご飯 → かつお節 → 海苔 → わさびの順にのせ、醤油を回しかける。わさびは1人大さじ1ほどから好みで加減。最初のひと口は醤油なしで香りを楽しむ。</li>
-          <li>刺身は、わさびを醤油に溶かさず身の上に直接のせる。白身や冷奴には少なめに。</li>
-          <li>段取りは、ご飯を炊く → 刺身を切る → 冷奴を盛る → 最後にわさびをおろす。</li>
-          <li>残ったわさびは乾かないよう包んで密閉し、冷蔵庫へ。</li>
+          <li>わさびは<strong>食べる直前に</strong>おろす。香りのピークはおろして3〜5分後、おいしいのは30分ほど。</li>
+          <li>茎の側から、力を入れず「の」の字を描くように。</li>
+          <li>わさび丼は、ご飯 → かつお節 → 海苔 → わさびの順にのせ、醤油を回しかける。最初のひと口は醤油なしで。</li>
+          <li>刺身は、わさびを醤油に溶かさず身にのせる。白身や冷奴には少なめに。</li>
+          <li>残ったわさびは包んで密閉し、冷蔵庫へ。</li>
         </ul>
       </div>
     </div>
@@ -456,8 +450,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
         <dt>古民家 食事処ちわき</dt>
         <dd>
           <strong>10/4（日）12:30・大人2名で席のみ予約済み</strong><br>
-          奥多摩町大丹波618-1／11:00–17:00／水曜・第2火曜定休／駐車場15台（無料）。支払い方法は公式サイトに記載がないため現金も用意。
-          <span class="rating">評判：Google 4.5（268件）</span>
+          奥多摩町大丹波618-1／11:00–17:00／駐車場15台。現金も用意。
           <div class="contact-links">
             <a href="tel:0428851735">0428-85-1735</a>
             <a href="https://okutama-chiwaki.com/" target="_blank" rel="noopener noreferrer">公式サイト</a>
@@ -467,8 +460,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>はとのす荘</dt>
         <dd>
-          10/4（日）宿泊・2食付／チェックイン15:00–21:00（夕食付きは18:00まで）／チェックアウト11:00／温泉15:00–23:30・6:00–9:30。客室に冷蔵庫あり。
-          <span class="rating">評判：Google 4.4（400件）</span>
+          10/4（日）宿泊・2食付／チェックイン15:00から（夕食付きは18:00まで）／チェックアウト11:00／温泉15:00–23:30・6:00–9:30
           <div class="contact-links">
             <a href="tel:0428847123">0428-84-7123</a>
             <a href="https://www.okutamas.co.jp/hatonosu/" target="_blank" rel="noopener noreferrer">公式サイト</a>
@@ -476,13 +468,11 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
         </dd>
       </div>
       <div>
-        <dt>小河内ダム・奥多摩 水と緑のふれあい館</dt>
+        <dt>小河内ダム・水と緑のふれあい館</dt>
         <dd>
-          晴れの日の目的地。ふれあい館は9:30–17:00・水曜休館・入館無料。展望塔は10:00–16:00。ダム堤体は落石の応急対応を経て9/11に通行再開、天候により予告なく再び通行止めになることがある。駐車場は工事のため一部利用制限中。
-          <span class="rating">評判：ふれあい館 Google 3.9（3,627件）／小河内ダム じゃらん 4.0（96件）。無料で展示が充実、展望塔からの眺めが好評。</span>
+          展望塔10:00–16:00／ふれあい館9:30–17:00。堤体は天候により通行止めになることがある。
           <div class="contact-links">
             <a href="tel:0428862731">ふれあい館 0428-86-2731</a>
-            <a href="tel:0428862211">小河内貯水池管理事務所 0428-86-2211</a>
             <a href="https://www.waterworks.metro.tokyo.lg.jp/kouhou/pr/okutama" target="_blank" rel="noopener noreferrer">施設案内</a>
           </div>
         </dd>
@@ -490,8 +480,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>玉堂美術館</dt>
         <dd>
-          雨の日の行き先。青梅市御岳1-75／10:00–17:00（入館16:30まで）／月曜休館
-          <span class="rating">評判：Google 4.3（231件）。落ち着いた雰囲気が好評、規模は小さめ。</span>
+          青梅市御岳1-75／10:00–17:00（入館16:30まで）
           <div class="contact-links">
             <a href="tel:0428788335">0428-78-8335</a>
             <a href="https://www.gyokudo.jp/guide.html" target="_blank" rel="noopener noreferrer">ご利用案内</a>
@@ -501,8 +490,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>奥多摩わさび本舗 山城屋</dt>
         <dd>
-          本わさびの購入先。奥多摩町氷川717-3（奥多摩駅徒歩3分）／9:00–17:00／年末年始のみ休み／駐車場12台。電話受付は日曜・祝日を除く9:00–16:30。店頭の在庫はXやInstagramでも発信。
-          <span class="rating">評判：Google 4.2（365件）。試食して選べる点が好評。</span>
+          奥多摩町氷川717-3（奥多摩駅前）／9:00–17:00／駐車場12台
           <div class="contact-links">
             <a href="tel:0428832368">0428-83-2368</a>
             <a href="https://www.yamasiroya.co.jp/shop.html" target="_blank" rel="noopener noreferrer">直売店の案内</a>
@@ -512,8 +500,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>そば・うどん 丹三郎</dt>
         <dd>
-          10/5（月）の昼食。11:30の予約がおすすめ。奥多摩町丹三郎260／11:30–15:00（売り切れ次第終了）／毎月1・11・21・31日定休／駐車場10台／カード可
-          <span class="rating">評判：Google 4.3（497件）・食べログ 3.45（241件）。そば・天ぷら・接客とも好評で、不満は待ち時間にほぼ限られる。</span>
+          奥多摩町丹三郎260／11:30–15:00（売り切れ次第終了）／駐車場10台
           <div class="contact-links">
             <a href="tel:0428847777">0428-84-7777</a>
             <a href="https://tabelog.com/tokyo/A1330/A133004/13016476/" target="_blank" rel="noopener noreferrer">店舗情報</a>
@@ -523,10 +510,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>昼食の予備</dt>
         <dd>
-          釜めし なかい（奥多摩町大丹波175／木曜・第2水曜定休／予約はネットのみ）
-          <span class="rating">評判：Google 4.3（1,382件）・食べログ 3.49。不満は待ち時間に集中。</span>
-          アースガーデン（奥多摩町白丸361-1／11:00–16:00／火曜定休）
-          <span class="rating">評判：Google 4.0（950件）・食べログ 3.46。ハンバーグが好評、駐車場は有料。</span>
+          釜めし なかい（奥多摩町大丹波175・予約はネットのみ）／アースガーデン（奥多摩町白丸361-1・11:00–16:00）
           <div class="contact-links">
             <a href="https://otaba-nakai.com/" target="_blank" rel="noopener noreferrer">なかい 公式</a>
             <a href="https://okutama-earthgarden-yoyaku.com/" target="_blank" rel="noopener noreferrer">アースガーデン 公式</a>
@@ -536,8 +520,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>たかさん豆腐店</dt>
         <dd>
-          あきる野市油平214-10（秋川駅徒歩約10分）／10:00–18:00／日曜定休。売り切れや臨時休業に備え、向かう前に電話。
-          <span class="rating">評判：Google 4.7（30件）。口コミの数は少なめ。2022年度の全国豆腐品評会 絹ごし部門で受賞。</span>
+          あきる野市油平214-10（秋川駅近く）／10:00–18:00
           <div class="contact-links">
             <a href="tel:0425955483">042-595-5483</a>
             <a href="https://tabelog.com/tokyo/A1330/A133001/13258728/" target="_blank" rel="noopener noreferrer">店舗情報</a>
@@ -547,8 +530,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>道の駅 八王子滝山</dt>
         <dd>
-          薬味と野菜（任意）。八王子市滝山町1-592-2／8:00–19:00／年中無休
-          <span class="rating">評判：Google 3.7（9,139件）。評価は並で、午後は品数が減るとの声。帰り道沿いで寄りやすいため選定。</span>
+          八王子市滝山町1-592-2／8:00–19:00
           <div class="contact-links">
             <a href="tel:0426961201">042-696-1201</a>
             <a href="https://www.michinoeki-hachioji.net/" target="_blank" rel="noopener noreferrer">公式サイト</a>
@@ -558,8 +540,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>角上魚類 日野店</dt>
         <dd>
-          刺身の購入先。日野市川辺堀之内271-1（国道20号 日野バイパス沿い）／平日10:00–19:00。間に合わないときは自宅近くのスーパーで。
-          <span class="rating">評判：Google 4.2（6,263件）・Yahoo!マップ 4.31（351件）。鮮度と品ぞろえが好評、混雑の不満は土日と年末に集中。</span>
+          日野市川辺堀之内271-1（国道20号 日野バイパス沿い）／平日10:00–19:00
           <div class="contact-links">
             <a href="tel:0425838611">042-583-8611</a>
             <a href="https://www.kakujoe.co.jp/shop/hino.php" target="_blank" rel="noopener noreferrer">店舗案内</a>
@@ -576,18 +557,17 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <ul>
         <li>丹三郎を10/5（月）11:30で予約（0428-84-7777）。</li>
         <li>日程変更・中止の場合は、はとのす荘・ちわき・丹三郎へ連絡。</li>
-        <li>家のおろし金を確認。目の細かいものがなければ用意。</li>
+        <li>家のおろし金を確認。</li>
       </ul>
       <h3>当日の朝に</h3>
       <ul>
-        <li>天気予報と雨雲レーダー。晴れ・雨どちらのルートも行けるよう、時刻は上の表のとおり。</li>
-        <li>国道411号の鳩ノ巣駅前〜将門交差点は、土砂崩れの復旧で8/26から片側交互通行。解除されたか確認。</li>
-        <li>小河内ダム堤体の通行可否、浮橋の通行可否、奥多摩周遊道路の通行止めの有無。</li>
+        <li>天気予報と雨雲レーダー。</li>
+        <li>国道411号（鳩ノ巣駅前〜将門交差点の片側交互通行）、小河内ダム堤体、奥多摩周遊道路の通行状況。</li>
       </ul>
       <h3>持ち物</h3>
       <ul>
-        <li>クーラーバッグ（できればクーラーボックス）と保冷剤。わさび・豆腐・刺身を入れる。保冷剤を宿で凍らせられなければ、2日目にコンビニで氷を買う。</li>
-        <li>折りたたみ傘と、湖畔用の羽織りもの。ぬいぐるみ用の防水袋。</li>
+        <li>クーラーバッグと保冷剤（わさび・豆腐・刺身用）。宿で凍らせられなければ、2日目にコンビニで氷を買う。</li>
+        <li>折りたたみ傘、湖畔用の羽織りもの、ぬいぐるみ用の防水袋。</li>
         <li>現金。給油量も確認。</li>
       </ul>
       <div class="links">
@@ -596,11 +576,10 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
         <a href="https://www.jartic.or.jp/" target="_blank" rel="noopener noreferrer">JARTIC</a>
         <a href="https://www.waterworks.metro.tokyo.lg.jp/suigen/antei/ogochi" target="_blank" rel="noopener noreferrer">小河内ダム</a>
         <a href="https://www.kensetsu.metro.tokyo.lg.jp/jimusho/nishiken/okutama-hp" target="_blank" rel="noopener noreferrer">奥多摩周遊道路</a>
-        <a href="https://okutamavc.ces-net.jp/" target="_blank" rel="noopener noreferrer">奥多摩ビジターセンター</a>
       </div>
     </div>
   </details>
-  <footer>移動・食事の時刻は目安です。営業情報と口コミの評価は2026年9月19日時点の調べ。出発前に各店の案内で再確認を。</footer>
+  <footer>時刻は目安です。営業情報は2026年9月19日時点の調べ。</footer>
 </main>
 <script>
 // 印刷時は確認メモを開いた状態にする
