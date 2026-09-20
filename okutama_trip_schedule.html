@@ -28,7 +28,7 @@ a{color:var(--river);text-underline-offset:4px}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--dolphin);outline-offset:5px}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px 48px}
 
-/* タイトルとルート */
+/* タイトル */
 header{
   background:linear-gradient(160deg,var(--river-deep),var(--river) 65%,#1e5563);
   color:#f2f0e6;padding:36px 20px 56px;position:relative;
@@ -41,17 +41,6 @@ h1{
 .subtitle{margin-top:10px;font-size:14px;color:#c9d8d6}
 .meta{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:12.5px;color:#e0e9e5}
 header svg.wave{position:absolute;bottom:-1px;left:0;width:100%;height:26px;display:block}
-.route{
-  background:var(--card);border:1px solid var(--line);border-radius:14px;
-  margin-top:-24px;position:relative;padding:18px 22px;
-}
-.route h2{font-family:"Shippori Mincho",serif;font-size:16px;margin-bottom:10px;color:var(--river)}
-.route-day{display:flex;align-items:baseline;gap:12px;margin-top:8px}
-.day-label{flex:0 0 64px;font-size:12px;font-weight:700;color:var(--river)}
-.routeline{display:flex;flex-wrap:wrap;align-items:center;gap:5px;font-size:13px}
-.routeline .stop{background:#eef4f2;border-radius:6px;padding:3px 8px}
-.routeline .stop.hotel{background:var(--river);color:#fff}
-.routeline .arrow{color:#587970}
 .map-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .map-link{
   display:inline-flex;align-items:center;min-height:32px;padding:2px 13px;
@@ -59,7 +48,7 @@ header svg.wave{position:absolute;bottom:-1px;left:0;width:100%;height:26px;disp
   font-size:12.5px;font-weight:700;text-decoration:none;
 }
 .sec-head .map-links{margin-top:0}
-.map-note{font-size:12px;color:#4c5a63;margin-top:12px}
+.map-note{font-size:12px;color:#4c5a63;margin:-12px 0 18px}
 .page-nav{display:flex;flex-wrap:wrap;gap:8px 24px;padding:18px 0 0;font-size:13px}
 .page-nav a{display:inline-flex;align-items:center;min-height:36px}
 
@@ -127,25 +116,21 @@ section{margin-top:36px;scroll-margin-top:24px}
 .branch-memo li{margin-left:18px}
 .branch-memo li+li{margin-top:4px}
 
-/* 宿での時間 */
-.hotel-band{background:var(--river);color:#eef2ec;border-radius:14px;padding:22px 24px;margin-top:26px}
-.hotel-band h3{font-family:"Shippori Mincho",serif;font-size:18px;margin-bottom:12px}
-.stay-schedule>div{display:grid;grid-template-columns:122px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.16)}
-.stay-schedule>div:last-child{border-bottom:0}
-.stay-schedule dt{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;color:#d7e6e0}
-.stay-schedule dd{font-size:13px}
-
-/* 本わさびの段取り・夕飯 */
-.steps{
-  background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:18px 22px;margin-top:26px;
+/* 持ち物チェックリスト */
+.checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 32px}
+.check-group h3{font-size:13px;color:var(--river);margin:12px 0 2px}
+.checklist{list-style:none}
+.checklist label{
+  display:flex;align-items:center;gap:10px;min-height:42px;padding:4px 0;
+  border-bottom:1px solid var(--line);font-size:14px;cursor:pointer;
 }
-.steps h3{font-family:"Shippori Mincho",serif;font-size:17px;color:var(--river);margin-bottom:8px}
-.steps ol,.steps ul{padding-left:20px;font-size:13px}
-.steps li+li{margin-top:7px}
-.dinner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
-.dinner-grid .steps{margin-top:0}
-.menu-line{font-family:"Shippori Mincho",serif;font-size:18px;font-weight:700;color:var(--river);margin-bottom:16px}
+.checklist input{flex:none;width:20px;height:20px;accent-color:var(--river)}
+.checklist input:focus-visible{outline:3px solid var(--dolphin);outline-offset:2px}
+.checklist input:checked+span{color:#7b878e;text-decoration:line-through}
+.check-reset{
+  margin-top:16px;min-height:36px;padding:4px 16px;border:1px solid var(--river);border-radius:999px;
+  background:var(--card);color:var(--river);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+}
 
 /* 予約情報と補足 */
 .info-heading{font-family:"Shippori Mincho",serif;font-size:20px;color:var(--river);margin-bottom:12px}
@@ -167,17 +152,14 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
 @media(max-width:640px){
   header{padding:28px 18px 48px}
   .wrap{padding-right:18px;padding-left:18px}
-  .route{padding:16px}
-  .route-day{display:block;margin-top:12px}
-  .day-label{display:block;margin-bottom:5px}
   .page-nav{gap:4px 18px;font-size:12.5px}
   .timeline{padding-left:100px}
   .timeline::before{left:80px}
-  .tl-time{left:-100px;width:76px;font-size:12px}
+  .tl-time{left:-100px;width:72px;font-size:12px}
   .tl-item{padding-left:16px}
   .tl-item::before{left:-24px}
   .tl-item.key::before{left:-25px}
-  .branch-grid,.dinner-grid{grid-template-columns:1fr}
+  .branch-grid,.checklist-grid{grid-template-columns:1fr}
   .wx-input{display:block;position:absolute;width:1px;height:1px;opacity:0}
   .wx-tabs{
     display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px;
@@ -195,19 +177,15 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
   .branch-card .cond{display:none}
   .branch-card{padding:16px}
   .plan>div{grid-template-columns:86px 1fr}
-  .hotel-band{padding:18px}
-  .steps{padding:16px}
-  .stay-schedule>div{grid-template-columns:104px 1fr;gap:10px}
   .contact-list>div{grid-template-columns:1fr;gap:4px}
 }
 @media print{
   header{padding:24px 20px 44px}
-  .page-nav,.map-links,.map-note,.wx-tabs{display:none}
+  .page-nav,.map-links,.map-note,.wx-tabs,.check-reset{display:none}
   #wx-fine:checked~.branch-grid .branch-card.rain,
   #wx-rain:checked~.branch-grid .branch-card.fine{display:block}
-  .hotel-band,.route{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{margin-top:26px}
-  .tl-item,.stay-schedule>div,.contact-list>div,.branch-card,.steps{break-inside:avoid}
+  .tl-item,.contact-list>div,.branch-card,.checklist li{break-inside:avoid}
 }
 </style>
 </head>
@@ -215,7 +193,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
 <header>
   <div class="inner">
     <h1>奥多摩1泊2日ドライブ旅行</h1>
-    <p class="subtitle">奥多摩湖を走り、はとのす荘でゆっくり。本わさびを買って帰り、夕飯はわさび丼。</p>
+    <p class="subtitle">奥多摩湖を走り、はとのす荘でゆっくり。本わさびと刺身を買って帰る。</p>
     <div class="meta">
       <span>2026年10月4日（日）〜 10月5日（月）</span>
       <span>発着：稲城市若葉台</span>
@@ -227,45 +205,10 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
 </header>
 
 <main class="wrap">
-  <div class="route">
-    <h2>2日間のルート</h2>
-    <div class="route-day">
-      <span class="day-label">10/4（日）</span>
-      <div>
-      <div class="routeline">
-        <span class="stop">若葉台</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">ちわきで昼食</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">奥多摩湖ドライブ（雨なら御岳の美術館）</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop hotel">はとのす荘</span>
-      </div>
-      <div class="map-links">
-        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;destination=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;waypoints=%E5%8F%A4%E6%B0%91%E5%AE%B6%20%E9%A3%9F%E4%BA%8B%E5%87%A6%E3%81%A1%E3%82%8F%E3%81%8D%7C%E5%B0%8F%E6%B2%B3%E5%86%85%E3%83%80%E3%83%A0%E5%B1%95%E6%9C%9B%E5%A1%94%7C%E6%B7%B1%E5%B1%B1%E6%A9%8B%20%E5%A5%A5%E5%A4%9A%E6%91%A9%E7%94%BA&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：晴れルート</a>
-        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;destination=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;waypoints=%E5%8F%A4%E6%B0%91%E5%AE%B6%20%E9%A3%9F%E4%BA%8B%E5%87%A6%E3%81%A1%E3%82%8F%E3%81%8D%7C%E7%8E%89%E5%A0%82%E7%BE%8E%E8%A1%93%E9%A4%A8&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：雨ルート</a>
-      </div>
-      </div>
-    </div>
-    <div class="route-day">
-      <span class="day-label">10/5（月）</span>
-      <div>
-      <div class="routeline">
-        <span class="stop hotel">はとのす荘</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">山城屋で本わさび</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">丹三郎で昼食</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">豆腐・薬味</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">角上魚類で刺身</span><span class="arrow" aria-hidden="true">→</span>
-        <span class="stop">若葉台</span>
-      </div>
-      <div class="map-links">
-        <a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;destination=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;waypoints=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%82%8F%E3%81%95%E3%81%B3%E6%9C%AC%E8%88%97%20%E5%B1%B1%E5%9F%8E%E5%B1%8B%7C%E3%81%9D%E3%81%B0%E3%83%BB%E3%81%86%E3%81%A9%E3%82%93%20%E4%B8%B9%E4%B8%89%E9%83%8E%20%E5%A5%A5%E5%A4%9A%E6%91%A9%E7%94%BA%7C%E3%81%9F%E3%81%8B%E3%81%95%E3%82%93%E8%B1%86%E8%85%90%E5%BA%97%20%E3%81%82%E3%81%8D%E3%82%8B%E9%87%8E%E5%B8%82%7C%E9%81%93%E3%81%AE%E9%A7%85%20%E5%85%AB%E7%8E%8B%E5%AD%90%E6%BB%9D%E5%B1%B1%7C%E8%A7%92%E4%B8%8A%E9%AD%9A%E9%A1%9E%20%E6%97%A5%E9%87%8E%E5%BA%97&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：2日目ルート</a>
-      </div>
-      </div>
-    </div>
-    <p class="map-note">スマホではGoogleマップのアプリで開く（ブラウザ版は経由地が3つまで）。</p>
-  </div>
   <nav class="page-nav" aria-label="ページ内メニュー">
     <a href="#day1">1日目</a>
     <a href="#day2">2日目</a>
-    <a href="#dinner">帰宅後の夕飯</a>
+    <a href="#packing">持ち物</a>
     <a href="#contacts">予約・連絡先</a>
     <a href="#prep">確認メモ</a>
   </nav>
@@ -298,12 +241,12 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <input class="wx-input" type="radio" name="wx" id="wx-fine" checked>
       <input class="wx-input" type="radio" name="wx" id="wx-rain">
       <div class="wx-tabs">
-        <label for="wx-fine">雨でなければ</label>
-        <label for="wx-rain">雨なら</label>
+        <label for="wx-fine">晴れ</label>
+        <label for="wx-rain">雨</label>
       </div>
       <div class="branch-grid">
         <article class="branch-card fine">
-          <h3><span class="cond">雨でなければ</span>奥多摩湖ドライブ</h3>
+          <h3><span class="cond">晴れ</span>奥多摩湖ドライブ</h3>
           <dl class="plan">
             <div><dt>13:45</dt><dd>ちわきを出発。国道411号を西へ約35分</dd></div>
             <div><dt>14:20–15:00</dt><dd>小河内ダム<small>堤体を歩き、展望塔（16:00まで・無料）へ。隣に水と緑のふれあい館（無料）。</small></dd></div>
@@ -319,7 +262,7 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
           </ul>
         </article>
         <article class="branch-card rain">
-          <h3><span class="cond">雨なら</span>御岳で美術館、早めに宿へ</h3>
+          <h3><span class="cond">雨</span>御岳で美術館、早めに宿へ</h3>
           <dl class="plan">
             <div><dt>13:45</dt><dd>ちわきを出発。御岳へ約15分</dd></div>
             <div><dt>14:00–14:50</dt><dd>玉堂美術館<small>入館16:30まで・大人600円。駐車場は入館者2時間無料。</small></dd></div>
@@ -335,16 +278,6 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       </div>
     </div>
 
-    <div class="hotel-band">
-      <h3>はとのす荘での過ごし方</h3>
-      <dl class="stay-schedule">
-        <div><dt>到着時</dt><dd>チェックイン。駐車場は急な下り坂。夕食と朝食の時刻を決め、保冷剤の冷凍を相談</dd></div>
-        <div><dt>チェックイン後</dt><dd>客室で景色を眺め、イルカのぬいぐるみと写真撮影</dd></div>
-        <div><dt>夕食前</dt><dd>1回目の温泉（15:00–23:30）</dd></div>
-        <div><dt>17:30以降</dt><dd>夕食（15分刻みで選ぶ）。奥多摩湖を回った日は18:00以降の枠に</dd></div>
-        <div><dt>夕食後</dt><dd>館内でくつろぐ。余裕があれば2回目の温泉</dd></div>
-      </dl>
-    </div>
   </section>
 
   <section id="day2" aria-labelledby="day2-title">
@@ -353,13 +286,14 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <p class="date">10月5日（月）</p>
       <div class="map-links"><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%81%AE%E9%A2%A8%20%E3%81%AF%E3%81%A8%E3%81%AE%E3%81%99%E8%8D%98&amp;destination=%E7%A8%B2%E5%9F%8E%E5%B8%82%E8%8B%A5%E8%91%89%E5%8F%B0&amp;waypoints=%E5%A5%A5%E5%A4%9A%E6%91%A9%E3%82%8F%E3%81%95%E3%81%B3%E6%9C%AC%E8%88%97%20%E5%B1%B1%E5%9F%8E%E5%B1%8B%7C%E3%81%9D%E3%81%B0%E3%83%BB%E3%81%86%E3%81%A9%E3%82%93%20%E4%B8%B9%E4%B8%89%E9%83%8E%20%E5%A5%A5%E5%A4%9A%E6%91%A9%E7%94%BA%7C%E3%81%9F%E3%81%8B%E3%81%95%E3%82%93%E8%B1%86%E8%85%90%E5%BA%97%20%E3%81%82%E3%81%8D%E3%82%8B%E9%87%8E%E5%B8%82%7C%E9%81%93%E3%81%AE%E9%A7%85%20%E5%85%AB%E7%8E%8B%E5%AD%90%E6%BB%9D%E5%B1%B1%7C%E8%A7%92%E4%B8%8A%E9%AD%9A%E9%A1%9E%20%E6%97%A5%E9%87%8E%E5%BA%97&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Googleマップ：2日目ルート</a></div>
     </div>
+    <p class="map-note">スマホではGoogleマップのアプリで開く（ブラウザ版は経由地が3つまで）。</p>
     <ol class="timeline">
       <li class="tl-item">
-        <div class="tl-time">6:30–7:30</div>
-        <div class="tl-title">起床・客室から朝の景色を楽しむ</div>
+        <div class="tl-time">7:30頃</div>
+        <div class="tl-title">起床</div>
       </li>
       <li class="tl-item">
-        <div class="tl-time">7:30–8:30</div>
+        <div class="tl-time">7:45–8:30</div>
         <div class="tl-title">朝食</div>
       </li>
       <li class="tl-item">
@@ -368,79 +302,92 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
         <p class="tl-note">朝の温泉は9:30まで。</p>
       </li>
       <li class="tl-item">
-        <div class="tl-time">9:15–10:25</div>
+        <div class="tl-time">9:15–10:40</div>
         <div class="tl-title">客室でのんびり・荷造り・精算</div>
         <p class="tl-note">冷蔵庫の中と、預けた保冷剤を忘れずに。</p>
       </li>
       <li class="tl-item key">
-        <div class="tl-time">10:30</div>
+        <div class="tl-time">10:45</div>
         <div class="tl-title">はとのす荘を出発 <span class="tag drive">移動</span></div>
         <p class="tl-note">チェックアウトは11:00まで。奥多摩駅前へ約10分。</p>
       </li>
       <li class="tl-item key">
-        <div class="tl-time">10:40–11:00</div>
+        <div class="tl-time">10:55–11:35</div>
         <div class="tl-title">本わさびを買う：山城屋 <span class="tag buy">買い物</span></div>
         <p class="tl-note">1本1,000〜1,800円前後。駐車場12台。無ければ無理に探さない。</p>
-        <p class="tl-note">キッチンペーパーで包んでポリ袋に入れ、保冷バッグへ。</p>
+        <p class="tl-note">キッチンペーパーで包んでポリ袋に入れ、保冷バッグへ。11:35頃に出れば昼食の予約に間に合う。</p>
       </li>
       <li class="tl-item key">
-        <div class="tl-time">11:30–12:30</div>
-        <div class="tl-title">昼食：そば・うどん 丹三郎 <span class="tag meal">11:30開店</span></div>
+        <div class="tl-time">12:00–13:00</div>
+        <div class="tl-title">昼食：そば・うどん 丹三郎 <span class="tag meal">12:00 予約済み</span></div>
         <p class="tl-note">山城屋から約15分。駐車場10台。</p>
-        <p class="tl-note">入れないときは、釜めし なかい（大丹波）かアースガーデン（白丸）。</p>
       </li>
       <li class="tl-item">
-        <div class="tl-time">13:15–13:30</div>
+        <div class="tl-time">13:45–14:00</div>
         <div class="tl-title">豆腐を買う：たかさん豆腐店 <span class="tag buy">買い物</span></div>
         <p class="tl-note">丹三郎から約45分。絹かよせ豆腐。駐車場3台。</p>
       </li>
       <li class="tl-item">
-        <div class="tl-time">13:45–14:05</div>
+        <div class="tl-time">14:15–14:35</div>
         <div class="tl-title">薬味を買う：道の駅 八王子滝山 <span class="tag optional">立ち寄り候補</span></div>
         <p class="tl-note">豆腐店から約15分。ねぎ・みょうが・大葉。無ければ自宅近くのスーパーで。</p>
       </li>
       <li class="tl-item key">
-        <div class="tl-time">14:30–15:05</div>
+        <div class="tl-time">15:00–15:35</div>
         <div class="tl-title">刺身を買う：角上魚類 日野店 <span class="tag buy">買い物</span></div>
-        <p class="tl-note">道の駅から約25分。対面売場でおすすめを聞き、サクで買う。保冷バッグと保冷剤で持ち帰る。</p>
+        <p class="tl-note">道の駅から約25分。19:00まで。対面売場でおすすめを聞き、サクで買う。保冷バッグと保冷剤で持ち帰る。</p>
       </li>
       <li class="tl-item key">
-        <div class="tl-time">15:40頃</div>
+        <div class="tl-time">16:10頃</div>
         <div class="tl-title">若葉台に帰着</div>
-        <p class="tl-note">角上魚類から約35分。混んだ場合は16:00頃。</p>
+        <p class="tl-note">角上魚類から約35分。混んだ場合は16:30頃。</p>
       </li>
     </ol>
-    <p class="section-note">晴れて余裕があれば、出発前に宿の周りで鳩ノ巣渓谷を眺める。</p>
   </section>
 
-  <section id="dinner" aria-labelledby="dinner-title">
-    <div class="sec-head">
-      <h2 id="dinner-title">帰宅後の夕飯</h2>
-      <p class="date">10月5日（月）夜</p>
-    </div>
-    <p class="menu-line">わさび丼・刺身・冷奴</p>
-    <div class="dinner-grid">
-      <div class="steps">
-        <h3>そろえるもの</h3>
-        <ul>
-          <li><strong>本わさび</strong>。2人分のわさび丼と刺身・冷奴に使うと伝えて選ぶ。</li>
-          <li><strong>刺身</strong>。秋は戻りガツオ、カンパチ、アジ、ホタテなど。</li>
-          <li><strong>豆腐</strong>と薬味（ねぎ・みょうが・大葉）。</li>
-          <li><strong>かつお節</strong>・刻み海苔・醤油・炊きたてのご飯。</li>
-          <li>目の細かい<strong>おろし金</strong>。</li>
+  <section id="packing" aria-labelledby="packing-title">
+    <h2 class="info-heading" id="packing-title">持ち物チェックリスト</h2>
+    <div class="checklist-grid">
+      <div class="check-group">
+        <h3>貴重品・車まわり</h3>
+        <ul class="checklist">
+          <li><label><input type="checkbox" id="pk-wallet"><span>財布・現金</span></label></li>
+          <li><label><input type="checkbox" id="pk-license"><span>運転免許証</span></label></li>
+          <li><label><input type="checkbox" id="pk-etc"><span>ETCカード</span></label></li>
+          <li><label><input type="checkbox" id="pk-insurance"><span>保険証</span></label></li>
+          <li><label><input type="checkbox" id="pk-phone"><span>スマホ・充電器（車内用ケーブルも）</span></label></li>
         </ul>
       </div>
-      <div class="steps">
-        <h3>おいしく食べるコツ</h3>
-        <ul>
-          <li>わさびは<strong>食べる直前に</strong>おろす。香りのピークはおろして3〜5分後、おいしいのは30分ほど。</li>
-          <li>茎の側から、力を入れず「の」の字を描くように。</li>
-          <li>わさび丼は、ご飯 → かつお節 → 海苔 → わさびの順にのせ、醤油を回しかける。最初のひと口は醤油なしで。</li>
-          <li>刺身は、わさびを醤油に溶かさず身にのせる。白身や冷奴には少なめに。</li>
-          <li>残ったわさびは包んで密閉し、冷蔵庫へ。</li>
+      <div class="check-group">
+        <h3>泊まりの用意</h3>
+        <ul class="checklist">
+          <li><label><input type="checkbox" id="pk-clothes"><span>着替え・下着</span></label></li>
+          <li><label><input type="checkbox" id="pk-toiletry"><span>洗面用具・化粧品</span></label></li>
+          <li><label><input type="checkbox" id="pk-medicine"><span>常備薬</span></label></li>
+          <li><label><input type="checkbox" id="pk-jacket"><span>羽織りもの（湖畔と朝晩用）</span></label></li>
+          <li><label><input type="checkbox" id="pk-shoes"><span>歩きやすい靴</span></label></li>
+          <li><label><input type="checkbox" id="pk-umbrella"><span>折りたたみ傘</span></label></li>
+        </ul>
+      </div>
+      <div class="check-group">
+        <h3>買い物の持ち帰り用</h3>
+        <ul class="checklist">
+          <li><label><input type="checkbox" id="pk-cooler"><span>クーラーバッグ（あればクーラーボックス）</span></label></li>
+          <li><label><input type="checkbox" id="pk-icepack"><span>保冷剤（宿で冷凍を相談）</span></label></li>
+          <li><label><input type="checkbox" id="pk-paper"><span>キッチンペーパーとポリ袋（わさび用）</span></label></li>
+          <li><label><input type="checkbox" id="pk-bag"><span>エコバッグ</span></label></li>
+        </ul>
+      </div>
+      <div class="check-group">
+        <h3>そのほか</h3>
+        <ul class="checklist">
+          <li><label><input type="checkbox" id="pk-dolphin"><span>イルカのぬいぐるみ</span></label></li>
+          <li><label><input type="checkbox" id="pk-drybag"><span>ぬいぐるみ用の防水袋</span></label></li>
+          <li><label><input type="checkbox" id="pk-tissue"><span>ハンカチ・ティッシュ</span></label></li>
         </ul>
       </div>
     </div>
+    <button type="button" class="check-reset" id="check-reset">チェックをすべて外す</button>
   </section>
 
   <section id="contacts" aria-labelledby="contacts-title">
@@ -460,7 +407,8 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
       <div>
         <dt>はとのす荘</dt>
         <dd>
-          10/4（日）宿泊・2食付／チェックイン15:00から（夕食付きは18:00まで）／チェックアウト11:00／温泉15:00–23:30・6:00–9:30
+          <strong>10/4（日）宿泊・2食付</strong><br>
+          チェックイン15:00から（夕食付きは18:00まで）／チェックアウト11:00／温泉15:00–23:30・6:00–9:30
           <div class="contact-links">
             <a href="tel:0428847123">0428-84-7123</a>
             <a href="https://www.okutamas.co.jp/hatonosu/" target="_blank" rel="noopener noreferrer">公式サイト</a>
@@ -468,82 +416,13 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
         </dd>
       </div>
       <div>
-        <dt>小河内ダム・水と緑のふれあい館</dt>
-        <dd>
-          展望塔10:00–16:00／ふれあい館9:30–17:00。堤体は天候により通行止めになることがある。
-          <div class="contact-links">
-            <a href="tel:0428862731">ふれあい館 0428-86-2731</a>
-            <a href="https://www.waterworks.metro.tokyo.lg.jp/kouhou/pr/okutama" target="_blank" rel="noopener noreferrer">施設案内</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>玉堂美術館</dt>
-        <dd>
-          青梅市御岳1-75／10:00–17:00（入館16:30まで）
-          <div class="contact-links">
-            <a href="tel:0428788335">0428-78-8335</a>
-            <a href="https://www.gyokudo.jp/guide.html" target="_blank" rel="noopener noreferrer">ご利用案内</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>奥多摩わさび本舗 山城屋</dt>
-        <dd>
-          奥多摩町氷川717-3（奥多摩駅前）／9:00–17:00／駐車場12台
-          <div class="contact-links">
-            <a href="tel:0428832368">0428-83-2368</a>
-            <a href="https://www.yamasiroya.co.jp/shop.html" target="_blank" rel="noopener noreferrer">直売店の案内</a>
-          </div>
-        </dd>
-      </div>
-      <div>
         <dt>そば・うどん 丹三郎</dt>
         <dd>
-          奥多摩町丹三郎260／11:30–15:00（売り切れ次第終了）／駐車場10台
+          <strong>10/5（月）12:00・予約済み</strong><br>
+          奥多摩町丹三郎260／11:30–15:00／駐車場10台
           <div class="contact-links">
             <a href="tel:0428847777">0428-84-7777</a>
             <a href="https://tabelog.com/tokyo/A1330/A133004/13016476/" target="_blank" rel="noopener noreferrer">店舗情報</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>昼食の予備</dt>
-        <dd>
-          釜めし なかい（奥多摩町大丹波175・予約はネットのみ）／アースガーデン（奥多摩町白丸361-1・11:00–16:00）
-          <div class="contact-links">
-            <a href="https://otaba-nakai.com/" target="_blank" rel="noopener noreferrer">なかい 公式</a>
-            <a href="https://okutama-earthgarden-yoyaku.com/" target="_blank" rel="noopener noreferrer">アースガーデン 公式</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>たかさん豆腐店</dt>
-        <dd>
-          あきる野市油平214-10（秋川駅近く）／10:00–18:00
-          <div class="contact-links">
-            <a href="tel:0425955483">042-595-5483</a>
-            <a href="https://tabelog.com/tokyo/A1330/A133001/13258728/" target="_blank" rel="noopener noreferrer">店舗情報</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>道の駅 八王子滝山</dt>
-        <dd>
-          八王子市滝山町1-592-2／8:00–19:00
-          <div class="contact-links">
-            <a href="tel:0426961201">042-696-1201</a>
-            <a href="https://www.michinoeki-hachioji.net/" target="_blank" rel="noopener noreferrer">公式サイト</a>
-          </div>
-        </dd>
-      </div>
-      <div>
-        <dt>角上魚類 日野店</dt>
-        <dd>
-          日野市川辺堀之内271-1（国道20号 日野バイパス沿い）／平日10:00–19:00
-          <div class="contact-links">
-            <a href="tel:0425838611">042-583-8611</a>
-            <a href="https://www.kakujoe.co.jp/shop/hino.php" target="_blank" rel="noopener noreferrer">店舗案内</a>
           </div>
         </dd>
       </div>
@@ -555,20 +434,13 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
     <div class="prep-content">
       <h3>前日までに</h3>
       <ul>
-        <li>丹三郎を10/5（月）11:30で予約（0428-84-7777）。</li>
         <li>日程変更・中止の場合は、はとのす荘・ちわき・丹三郎へ連絡。</li>
-        <li>家のおろし金を確認。</li>
       </ul>
       <h3>当日の朝に</h3>
       <ul>
         <li>天気予報と雨雲レーダー。</li>
         <li>国道411号（鳩ノ巣駅前〜将門交差点の片側交互通行）、小河内ダム堤体、奥多摩周遊道路の通行状況。</li>
-      </ul>
-      <h3>持ち物</h3>
-      <ul>
-        <li>クーラーバッグと保冷剤（わさび・豆腐・刺身用）。宿で凍らせられなければ、2日目にコンビニで氷を買う。</li>
-        <li>折りたたみ傘、湖畔用の羽織りもの、ぬいぐるみ用の防水袋。</li>
-        <li>現金。給油量も確認。</li>
+        <li>給油量。</li>
       </ul>
       <div class="links">
         <a href="https://www.jma.go.jp/bosai/" target="_blank" rel="noopener noreferrer">気象庁</a>
@@ -584,6 +456,16 @@ footer{margin-top:26px;font-size:12px;color:#5d6c75;text-align:center}
 <script>
 // 印刷時は確認メモを開いた状態にする
 addEventListener("beforeprint",()=>{document.getElementById("prep").open=true});
+// 持ち物チェックの状態をこの端末に保存する
+(()=>{
+  const KEY="okutama-2026-10-packing";
+  const boxes=[...document.querySelectorAll(".checklist input")];
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.id,b.checked]))))}catch(e){}};
+  let saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+  boxes.forEach(b=>{b.checked=!!saved[b.id];b.addEventListener("change",save)});
+  document.getElementById("check-reset").addEventListener("click",()=>{boxes.forEach(b=>{b.checked=false});save()});
+})();
 </script>
 </body>
 </html>
